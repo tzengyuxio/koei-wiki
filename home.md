@@ -2,7 +2,7 @@
 title: 光栄遊戲百科事典
 description: 
 published: true
-date: 2023-02-19T07:59:28.657Z
+date: 2023-02-19T15:44:18.740Z
 tags: 
 editor: markdown
 dateCreated: 2023-02-12T20:55:06.081Z
@@ -21,5 +21,6 @@ dateCreated: 2023-02-12T20:55:06.081Z
 目前主要工作為頭像資料庫的建置，進度可參考 [這邊](用語/顏)。
 
 之後預計計畫：
+- 大眾臉資料解析
 - 人物資料
 - 地點資料
