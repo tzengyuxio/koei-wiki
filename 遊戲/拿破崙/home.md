@@ -2,7 +2,7 @@
 title: 拿破崙
 description: ランペルール | L'EMPEREUR
 published: true
-date: 2023-04-09T09:01:15.980Z
+date: 2023-04-09T10:38:14.094Z
 tags: lempe
 editor: markdown
 dateCreated: 2023-02-13T16:24:27.288Z
@@ -151,3 +151,7 @@ dateCreated: 2023-02-13T16:24:27.288Z
 | 01.DAT      |             |
 | PACK.DAT    |             |
 | SAVEDATA    |             |
+
+## References
+
+- [ランペルール \- Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%A9%E3%83%B3%E3%83%9A%E3%83%AB%E3%83%BC%E3%83%AB)
