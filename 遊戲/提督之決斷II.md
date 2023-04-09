@@ -8,6 +8,6 @@ editor: markdown
 dateCreated: 2023-02-19T07:39:55.116Z
 ---
 
-## 顏
+## 顏 Faces
 
-![tk2_dos_f00-index-noted.png](/assets/faces/00indexes/tk2_dos_f00-index-noted.png)
+主條目：[提督之決斷II 人物顏](/遊戲/提督之決斷II/人物顏)
