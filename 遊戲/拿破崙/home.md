@@ -62,74 +62,74 @@ dateCreated: 2023-02-13T16:24:27.288Z
 
 ### 國家
 
-|ID |  中文  |  英文  |
-|--:|--------|--------|
-|  0|法蘭西  |France  |
-|  1|荷蘭    |Holland |
-|  2|巴伐利亞|Bavaria |
-|  3|丹麥    |Denmark |
-|  4|土耳其  |Turkey  |
-|  5|意大利  |Italy   |
-|  6|威尼斯  |Venice  |
-|  7|那普斯  |Naples  |
-|  8|葡萄牙  |Portugal|
-|  9|瑞典    |Sweden  |
-| 10|西班牙  |Spain   |
-| 11|普魯士  |Prussia |
-| 12|俄羅斯  |Russia  |
-| 13|奧地利  |Austria |
-| 14|英格蘭  |England |
+|  ID  |   中文   |   英文   |
+| ---: | -------- | -------- |
+|    0 | 法蘭西   | France   |
+|    1 | 荷蘭     | Holland  |
+|    2 | 巴伐利亞 | Bavaria  |
+|    3 | 丹麥     | Denmark  |
+|    4 | 土耳其   | Turkey   |
+|    5 | 意大利   | Italy    |
+|    6 | 威尼斯   | Venice   |
+|    7 | 那普斯   | Naples   |
+|    8 | 葡萄牙   | Portugal |
+|    9 | 瑞典     | Sweden   |
+|   10 | 西班牙   | Spain    |
+|   11 | 普魯士   | Prussia  |
+|   12 | 俄羅斯   | Russia   |
+|   13 | 奧地利   | Austria  |
+|   14 | 英格蘭   | England  |
 
 ### 城市
 
-|ID |   中文   |    英文     |
-|--:|----------|-------------|
-|  0|都柏林    |Dublin       |
-|  1|愛丁堡    |Edinburgh    |
-|  2|利物浦    |Liverpool    |
-|  3|布里斯托爾|Bristol      |
-|  4|倫敦      |London       |
-|  5|奧斯陸    |Christiana   |
-|  6|斯德哥爾摩|Stockholm    |
-|  7|哥本哈根  |Copenhagen   |
-|  8|阿姆斯特丹|Amsterdam    |
-|  9|魯貝克    |Lubeck       |
-| 10|柏林      |Berlin       |
-| 11|華沙      |Warsaw       |
-| 12|柯尼斯堡  |Konigsberg   |
-| 13|聖彼得堡  |St.Petersburg|
-| 14|明斯克    |Minsk        |
-| 15|斯摩棱斯克|Smolensk     |
-| 16|莫斯科    |Moscow       |
-| 17|基輔      |Kiev         |
-| 18|克勞森堡  |Klausenburg  |
-| 19|布加勒斯特|Bucharest    |
-| 20|布達佩斯  |Budapest     |
-| 21|維也納    |Vienna       |
-| 22|布拉格    |Prague       |
-| 23|慕尼黑    |Munich       |
-| 24|法蘭克福  |Frankfurt    |
-| 25|里爾      |Lille        |
-| 26|聖美祿    |St.Malo      |
-| 27|巴黎      |Paris        |
-| 28|布倫      |Bordeaux     |
-| 29|里昂      |Lyon         |
-| 30|馬賽      |Marseilles   |
-| 31|米蘭      |Milano       |
-| 32|佛羅倫斯  |Florence     |
-| 33|威尼斯    |Venice       |
-| 34|薩拉耶沃  |Sarajevo     |
-| 35|貝爾格萊德|Belgrade     |
-| 36|羅馬      |Rome         |
-| 37|那不勒斯  |Naples       |
-| 38|伊斯坦堡  |Istanbul     |
-| 39|雅典      |Athens       |
-| 40|克魯納    |Corunna      |
-| 41|里斯本    |Lisbon       |
-| 42|直布羅陀  |Gibraltar    |
-| 43|馬德里    |Madrid       |
-| 44|薩拉戈薩  |Saragossa    |
-| 45|巴塞羅那  |Barcelona    |
+|  ID  |    中文    |     英文      |
+| ---: | ---------- | ------------- |
+|    0 | 都柏林     | Dublin        |
+|    1 | 愛丁堡     | Edinburgh     |
+|    2 | 利物浦     | Liverpool     |
+|    3 | 布里斯托爾 | Bristol       |
+|    4 | 倫敦       | London        |
+|    5 | 奧斯陸     | Christiana    |
+|    6 | 斯德哥爾摩 | Stockholm     |
+|    7 | 哥本哈根   | Copenhagen    |
+|    8 | 阿姆斯特丹 | Amsterdam     |
+|    9 | 魯貝克     | Lubeck        |
+|   10 | 柏林       | Berlin        |
+|   11 | 華沙       | Warsaw        |
+|   12 | 柯尼斯堡   | Konigsberg    |
+|   13 | 聖彼得堡   | St.Petersburg |
+|   14 | 明斯克     | Minsk         |
+|   15 | 斯摩棱斯克 | Smolensk      |
+|   16 | 莫斯科     | Moscow        |
+|   17 | 基輔       | Kiev          |
+|   18 | 克勞森堡   | Klausenburg   |
+|   19 | 布加勒斯特 | Bucharest     |
+|   20 | 布達佩斯   | Budapest      |
+|   21 | 維也納     | Vienna        |
+|   22 | 布拉格     | Prague        |
+|   23 | 慕尼黑     | Munich        |
+|   24 | 法蘭克福   | Frankfurt     |
+|   25 | 里爾       | Lille         |
+|   26 | 聖美祿     | St.Malo       |
+|   27 | 巴黎       | Paris         |
+|   28 | 布倫       | Bordeaux      |
+|   29 | 里昂       | Lyon          |
+|   30 | 馬賽       | Marseilles    |
+|   31 | 米蘭       | Milano        |
+|   32 | 佛羅倫斯   | Florence      |
+|   33 | 威尼斯     | Venice        |
+|   34 | 薩拉耶沃   | Sarajevo      |
+|   35 | 貝爾格萊德 | Belgrade      |
+|   36 | 羅馬       | Rome          |
+|   37 | 那不勒斯   | Naples        |
+|   38 | 伊斯坦堡   | Istanbul      |
+|   39 | 雅典       | Athens        |
+|   40 | 克魯納     | Corunna       |
+|   41 | 里斯本     | Lisbon        |
+|   42 | 直布羅陀   | Gibraltar     |
+|   43 | 馬德里     | Madrid        |
+|   44 | 薩拉戈薩   | Saragossa     |
+|   45 | 巴塞羅那   | Barcelona     |
 
 ## 檔案 Files
 
