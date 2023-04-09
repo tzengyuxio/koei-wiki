@@ -1,8 +1,8 @@
 ---
 title: 三國志VII
-description: 
+description: 三國志VII | Romance of the Three Kingdoms VII
 published: true
-date: 2023-04-09T11:38:12.372Z
+date: 2023-04-09T11:38:44.663Z
 tags: 三國志系列, san7
 editor: markdown
 dateCreated: 2023-04-09T11:38:12.372Z
