@@ -1,9 +1,11 @@
 ---
 title: 維新之嵐
-description: 
+description: 維新の嵐
 published: true
+date: 2023-04-09T10:43:38.408Z
 tags: ishin
-Editor: markdown
+editor: markdown
+dateCreated: 2023-04-09T10:07:14.295Z
 ---
 
 ## 顏 Faces
