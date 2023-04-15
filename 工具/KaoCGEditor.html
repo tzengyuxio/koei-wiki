@@ -8,11 +8,79 @@ editor: code
 dateCreated: 2023-04-15T17:59:27.200Z
 -->
 
-<h1>Title</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>顏CG編輯器</title>
+</head>
+<body>
+    <h1>顏CG編輯器</h1>
 
-<p>Some text here</p>
+    <p>Some text here</p>
 
-<input type="file" id="fileInput">
-<canvas id="canvas"></canvas>
-<!--canvas id="canvas2"></canvas-->
+	<!-- 上傳檔案用的按鈕和下拉式選單 -->
+	<select id="selectOption" onchange="checkButtonStatus()">
+		<option value="" disabled selected>Select an option</option>
+		<option value="san2">三國志II</option>
+		<option value="san3">三國志III</option>
+		<option value="kohryuki">項劉記</option>
+		<option value="suikoden">水滸傳</option>
+	</select>
+	<!-- 顯示選項值的區塊 -->
+	請上傳：<span id="selectedOption"></span>
+	<input type="file" id="fileInput" onchange="checkButtonStatus()" disabled>
 
+	<!-- 下載檔案的按鈕 -->
+	<button onclick="downloadFile()" id="downloadButton" disabled>Download file</button>
+
+    <hr/>
+
+	<!-- 畫圖的 canvas -->
+	<canvas id="canvas" width="200" height="200"></canvas>
+
+	<!-- JavaScript 代碼區塊 -->
+	<script type="text/javascript">
+
+        /* 選項內容的字典 */
+        var optionDict = {
+            "san2": "kaodata.dat",
+            "san3": "kaodata.dat",
+            "kohryuki": "kao.kr1",
+            "suikoden": "kaoibm.dat"
+        };
+
+		/* 檢查按鈕狀態 */
+		function checkButtonStatus() {
+			var selectBox = document.getElementById("selectOption");
+			var fileInput = document.getElementById("fileInput");
+			var downloadButton = document.getElementById("downloadButton");
+            var selectedOption = document.getElementById("selectedOption");
+
+			if (selectBox.value !== "" && fileInput.value !== "") {
+				// 如果選項和檔案都已選，就啟用下載按鈕
+				downloadButton.disabled = false;
+			} else {
+				// 否則就禁用下載按鈕
+				downloadButton.disabled = true;
+			}
+			if (selectBox.value !== "") {
+				// 如果選項已選，就啟用檔案上傳按鈕
+				fileInput.disabled = false;
+                selectedOption.innerText = optionDict[selectBox.value];
+			} else {
+				// 否則就禁用檔案上傳按鈕
+				fileInput.disabled = true;
+                selectedOption.innerText = "";
+			}
+		}
+
+		/* 下載檔案 */
+		function downloadFile() {
+			alert("Downloading file...");
+		}
+
+	</script>
+
+    <script src="app.js"></script>
+</body>
+</html>

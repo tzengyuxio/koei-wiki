@@ -1,35 +1,37 @@
-const fileInput = document.getElementById("fileInput");
-const canvas = document.getElementById("canvas");
-// const canvas2 = document.getElementById("canvas2");
-// const context2 = canvas2.getContext('2d');
+document.addEventListener("DOMContentLoaded", function () {
+  const fileInput = document.getElementById("fileInput");
+  const canvas = document.getElementById("canvas");
+  // const canvas2 = document.getElementById("canvas2");
+  // const context2 = canvas2.getContext('2d');
 
-fileInput.addEventListener("change", (event) => {
-  const file = event.target.files[0];
-  const reader = new FileReader();
+  fileInput.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
-  reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(file);
 
-  reader.onload = (event) => {
-    const arrayBuffer = event.target.result;
-    const dataView = new DataView(arrayBuffer);
-    const uint8Buffer = new Uint8Array(arrayBuffer);
+    reader.onload = (event) => {
+      const arrayBuffer = event.target.result;
+      const dataView = new DataView(arrayBuffer);
+      const uint8Buffer = new Uint8Array(arrayBuffer);
 
-    canvas.width = 64 * 16;
-    canvas.height = 80 * 14;
+      canvas.width = 64 * 16;
+      canvas.height = 80 * 14;
 
-    var faceDataSize = 960;
-    const ctx = canvas.getContext("2d");
-    for (let i = 0; i < 219; i++) {
-      var pos = i * faceDataSize;
-      var posX = (i % 16) * 64;
-      var posY = Math.floor(i / 16) * 80;
-      // console.log("put image at", i, posX, posY);
-      var faceData = uint8Buffer.slice(pos, pos + faceDataSize);
-      faceImage = dataToImage(faceData);
-      ctx.putImageData(faceImage, posX, posY);
-      // context2.putImageData(faceImage, 0, 0)
-    }
-  };
+      var faceDataSize = 960;
+      const ctx = canvas.getContext("2d");
+      for (let i = 0; i < 219; i++) {
+        var pos = i * faceDataSize;
+        var posX = (i % 16) * 64;
+        var posY = Math.floor(i / 16) * 80;
+        // console.log("put image at", i, posX, posY);
+        var faceData = uint8Buffer.slice(pos, pos + faceDataSize);
+        faceImage = dataToImage(faceData);
+        ctx.putImageData(faceImage, posX, posY);
+        // context2.putImageData(faceImage, 0, 0)
+      }
+    };
+  });
 });
 
 function dataToImage(data) {
