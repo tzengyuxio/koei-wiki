@@ -12,6 +12,7 @@ dateCreated: 2023-04-15T17:59:27.200Z
 <html>
 <head>
 	<title>顏CG編輯器</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <h1>顏CG編輯器</h1>
@@ -19,7 +20,7 @@ dateCreated: 2023-04-15T17:59:27.200Z
     <p>Some text here</p>
 
 	<!-- 上傳檔案用的按鈕和下拉式選單 -->
-	<select id="selectOption" onchange="checkButtonStatus()">
+	<select id="selectOption" onchange="checkButtonStatus(event)">
 		<option value="" disabled selected>Select an option</option>
 		<option value="san2">三國志II</option>
 		<option value="san3">三國志III</option>
@@ -28,7 +29,7 @@ dateCreated: 2023-04-15T17:59:27.200Z
 	</select>
 	<!-- 顯示選項值的區塊 -->
 	請上傳：<span id="selectedOption"></span>
-	<input type="file" id="fileInput" onchange="checkButtonStatus()" disabled>
+	<input type="file" id="fileInput" onchange="checkButtonStatus(event)" disabled>
 
 	<!-- 下載檔案的按鈕 -->
 	<button onclick="downloadFile()" id="downloadButton" disabled>Download file</button>
@@ -36,6 +37,7 @@ dateCreated: 2023-04-15T17:59:27.200Z
     <hr/>
 
 	<!-- 畫圖的 canvas -->
+    <div id="canvasContainer" style="max-width:1024px"></div>
 	<canvas id="canvas" width="200" height="200"></canvas>
 
     <script src="app.js"></script>
