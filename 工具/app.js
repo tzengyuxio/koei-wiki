@@ -1103,16 +1103,22 @@ function grouper(arr, size, fillValue = null) {
   return groups;
 }
 
+function checkButtonStatusByOption() {
+  deleteSubtree(canvasContainer);
+  checkButtonStatus()
+}
+
+function checkButtonStatusByFileInput() {
+  deleteSubtree(canvasContainer);
+  checkButtonStatus()
+}
+
 /* 檢查按鈕狀態 */
-function checkButtonStatus(event) {
+function checkButtonStatus() {
   var selectBox = document.getElementById("selectOption");
   var fileInput = document.getElementById("fileInput");
   var downloadButton = document.getElementById("downloadButton");
   var selectedOption = document.getElementById("selectedOption");
-
-  if (event.target === selectBox) {
-    deleteSubtree(canvasContainer);
-  }
 
   if (selectBox.value !== "" && fileInput.value !== "") {
     // 如果選項和檔案都已選，就啟用下載按鈕
