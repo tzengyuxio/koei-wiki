@@ -1,8 +1,14 @@
 document.addEventListener("DOMContentLoaded", function () {
   const fileInput = document.getElementById("fileInput");
   const canvas = document.getElementById("canvas");
-  // const canvas2 = document.getElementById("canvas2");
-  // const context2 = canvas2.getContext('2d');
+
+  /* 選項內容的字典 */
+  var optionDict = {
+    san2: "kaodata.dat",
+    san3: "kaodata.dat",
+    kohryuki: "kao.kr1",
+    suikoden: "kaoibm.dat",
+  };
 
   fileInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
@@ -101,4 +107,33 @@ function grouper(arr, size, fillValue = null) {
     groups.push([...arr.slice(groups.length * size), ...fillArr]);
   }
   return groups;
+}
+
+/* 檢查按鈕狀態 */
+function checkButtonStatus() {
+  var selectBox = document.getElementById("selectOption");
+  var fileInput = document.getElementById("fileInput");
+  var downloadButton = document.getElementById("downloadButton");
+  var selectedOption = document.getElementById("selectedOption");
+
+  if (selectBox.value !== "" && fileInput.value !== "") {
+    // 如果選項和檔案都已選，就啟用下載按鈕
+    downloadButton.disabled = false;
+  } else {
+    // 否則就禁用下載按鈕
+    downloadButton.disabled = true;
+  }
+  if (selectBox.value !== "") {
+    // 如果選項已選，就啟用檔案上傳按鈕
+    fileInput.disabled = false;
+    selectedOption.innerText = optionDict[selectBox.value];
+  } else {
+    // 否則就禁用檔案上傳按鈕
+    fileInput.disabled = true;
+    selectedOption.innerText = "";
+  }
+}
+/* 下載檔案 */
+function downloadFile() {
+  alert("Downloading file...");
 }
