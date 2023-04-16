@@ -2,7 +2,7 @@
 title: 顏CG編輯器
 description: 
 published: false
-date: 2023-04-16T17:35:40.314Z
+date: 2023-04-16T17:36:47.288Z
 tags: 
 editor: code
 dateCreated: 2023-04-15T17:59:27.200Z
@@ -10,14 +10,16 @@ dateCreated: 2023-04-15T17:59:27.200Z
 
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>顏CG編輯器</title>
-    <link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <h1>顏CG編輯器</h1>
 
-    <p>Some text here</p>
+<body>
+	<h1>顏CG編輯器</h1>
+
+	<p>Some text here</p>
 
 	<!-- 上傳檔案用的按鈕和下拉式選單 -->
 	<select id="selectOption" onchange="checkButtonStatusByOption()">
@@ -34,12 +36,13 @@ dateCreated: 2023-04-15T17:59:27.200Z
 	<!-- 下載檔案的按鈕 -->
 	<button onclick="downloadFile()" id="downloadButton" disabled>Download file</button>
 
-    <hr/>
+	<hr />
 
 	<!-- 畫圖的 canvas -->
-    <div id="canvasContainer" style="max-width:1024px"></div>
+	<div id="canvasContainer" style="max-width:1024px"></div>
 	<canvas id="canvas" width="200" height="200"></canvas>
 
-    <script src="app.js"></script>
+	<script src="app.js"></script>
 </body>
+
 </html>
