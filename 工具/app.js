@@ -1,14 +1,40 @@
+/* 選項內容的字典 */
+let optionDict = {
+  san2: {
+    filename: "kaodata.dat",
+    width: 64,
+    height: 80,
+    count: -1,
+    halfHeight: true,
+  },
+  san3: {
+    filename: "kaodata.dat",
+    width: 64,
+    height: 80,
+    count: -1,
+    halfHeight: false,
+  },
+  kohryuki: {
+    filename: "kao.kr1",
+    width: 64,
+    height: 80,
+    count: -1,
+    halfHeight: false,
+  },
+  suikoden: {
+    filename: "kaoibm.dat",
+    width: 64,
+    height: 80,
+    count: -1,
+    halfHeight: false,
+  },
+};
+
+let faceParameters;
+
 document.addEventListener("DOMContentLoaded", function () {
   const fileInput = document.getElementById("fileInput");
   const canvas = document.getElementById("canvas");
-
-  /* 選項內容的字典 */
-  var optionDict = {
-    san2: "kaodata.dat",
-    san3: "kaodata.dat",
-    kohryuki: "kao.kr1",
-    suikoden: "kaoibm.dat",
-  };
 
   fileInput.addEventListener("change", (event) => {
     const file = event.target.files[0];
@@ -18,30 +44,46 @@ document.addEventListener("DOMContentLoaded", function () {
 
     reader.onload = (event) => {
       const arrayBuffer = event.target.result;
-      const dataView = new DataView(arrayBuffer);
       const uint8Buffer = new Uint8Array(arrayBuffer);
+      let width = faceParameters.width;
+      let height = faceParameters.height;
+      let num_col = 16;
 
-      canvas.width = 64 * 16;
-      canvas.height = 80 * 14;
+      var faceDataSize = faceParameters.halfHeight
+        ? (width * height * 3) / 8 / 2
+        : (width * height * 3) / 8;
 
-      var faceDataSize = 960;
+      var faceCount =
+        faceParameters.count === -1
+          ? Math.floor(uint8Buffer.byteLength / faceDataSize)
+          : faceParameters.count;
+
+      canvas.width = width * num_col;
+      canvas.height = height * Math.ceil(faceCount / num_col);
+
       const ctx = canvas.getContext("2d");
-      for (let i = 0; i < 219; i++) {
+      for (let i = 0; i < faceCount; i++) {
         var pos = i * faceDataSize;
-        var posX = (i % 16) * 64;
-        var posY = Math.floor(i / 16) * 80;
-        // console.log("put image at", i, posX, posY);
+        var posX = (i % num_col) * width;
+        var posY = Math.floor(i / num_col) * height;
         var faceData = uint8Buffer.slice(pos, pos + faceDataSize);
-        faceImage = dataToImage(faceData);
+        faceImage = dataToImage(
+          faceData,
+          width,
+          height,
+          faceParameters.halfHeight
+        );
         ctx.putImageData(faceImage, posX, posY);
-        // context2.putImageData(faceImage, 0, 0)
       }
     };
   });
 });
 
-function dataToImage(data) {
-  const imageData = new ImageData(64, 80);
+function dataToImage(data, width, height, halfHeight) {
+  var selectBox = document.getElementById("selectOption");
+  var hh = optionDict[selectBox.value].halfHeight;
+
+  const imageData = new ImageData(width, height);
   var colorIndexes = toColorIndexes(data);
 
   var colors = [
@@ -56,23 +98,27 @@ function dataToImage(data) {
   ];
 
   for (i = 0; i < colorIndexes.length; i++) {
-    let x = i % 64;
-    let y = Math.floor(i / 64);
+    let x = i % width;
+    let y = Math.floor(i / width);
     var c = colors[colorIndexes[i]];
-    // let idx = Math.ceil(i / 64) * 64 * 2 + (i % 64);
-    let idx = (2 * y * 64 + x) * 4;
-    imageData.data[idx] = c[0];
-    imageData.data[idx + 1] = c[1];
-    imageData.data[idx + 2] = c[2];
-    imageData.data[idx + 3] = 255;
-    idx = ((2 * y + 1) * 64 + x) * 4;
-    imageData.data[idx] = c[0];
-    imageData.data[idx + 1] = c[1];
-    imageData.data[idx + 2] = c[2];
-    imageData.data[idx + 3] = 255;
-    // if (i < 0) {
-    //   console.log('idx: ', i, idx, colorIndexes.length);
-    // }
+    if (hh) {
+      let idx = (2 * y * width + x) * 4;
+      imageData.data[idx] = c[0];
+      imageData.data[idx + 1] = c[1];
+      imageData.data[idx + 2] = c[2];
+      imageData.data[idx + 3] = 255;
+      idx = ((2 * y + 1) * width + x) * 4;
+      imageData.data[idx] = c[0];
+      imageData.data[idx + 1] = c[1];
+      imageData.data[idx + 2] = c[2];
+      imageData.data[idx + 3] = 255;
+    } else {
+      let idx = (y * width + x) * 4;
+      imageData.data[idx] = c[0];
+      imageData.data[idx + 1] = c[1];
+      imageData.data[idx + 2] = c[2];
+      imageData.data[idx + 3] = 255;
+    }
   }
   return imageData;
 }
@@ -90,8 +136,6 @@ function toColorIndexes(data) {
       indexes.push(n);
     }
   });
-
-  // console.log("toColorIndexes", indexes[0], indexes[1], indexes[2], indexes[4]);
 
   return indexes;
 }
@@ -126,13 +170,15 @@ function checkButtonStatus() {
   if (selectBox.value !== "") {
     // 如果選項已選，就啟用檔案上傳按鈕
     fileInput.disabled = false;
-    selectedOption.innerText = optionDict[selectBox.value];
+    faceParameters = optionDict[selectBox.value];
+    selectedOption.innerText = faceParameters.filename;
   } else {
     // 否則就禁用檔案上傳按鈕
     fileInput.disabled = true;
     selectedOption.innerText = "";
   }
 }
+
 /* 下載檔案 */
 function downloadFile() {
   alert("Downloading file...");
