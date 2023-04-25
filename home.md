@@ -2,7 +2,7 @@
 title: 光栄遊戲百科事典
 description: 
 published: true
-date: 2023-04-15T15:46:06.337Z
+date: 2023-04-25T17:45:04.453Z
 tags: 
 editor: markdown
 dateCreated: 2023-02-12T20:55:06.081Z
@@ -13,6 +13,10 @@ dateCreated: 2023-02-12T20:55:06.081Z
 一個關於《三國志》系列、《信長之野望》系列，以及早期光榮遊戲的網站。
 
 ## 更新履歷
+
+### 2023-04-25
+
+- 新增[顏ＣＧ編輯器](https://tzengyuxio.me/kaocgeditor/)
 
 ### 2023-04-15
 
