@@ -2,7 +2,7 @@
 title: 光栄遊戲百科事典
 description: 
 published: true
-date: 2023-04-28T21:14:12.998Z
+date: 2023-04-29T01:20:38.683Z
 tags: 
 editor: markdown
 dateCreated: 2023-02-12T20:55:06.081Z
@@ -14,13 +14,17 @@ dateCreated: 2023-02-12T20:55:06.081Z
 
 ## 更新履歷
 
+### 2023-04-29
+
+- 新增[《三國志III》人名勘誤表](https://koei-wiki.tzengyuxio.me/zh-tw/%E9%81%8A%E6%88%B2/%E4%B8%89%E5%9C%8B%E5%BF%97III/%E4%BA%BA%E5%90%8D%E5%8B%98%E8%AA%A4)。
+
 ### 2023-04-25
 
-- 新增[顏ＣＧ編輯器](https://tzengyuxio.me/kaocgeditor/)
+- 新增[顏ＣＧ編輯器](https://tzengyuxio.me/kaocgeditor/)。
 
 ### 2023-04-15
 
-- 新增[《項劉記》人物資料一覽表](/遊戲/項劉記/人物資料.md)
+- 新增[《項劉記》人物資料一覽表](/遊戲/項劉記/人物資料.md)。
 
 ### 2023-04-13
 
