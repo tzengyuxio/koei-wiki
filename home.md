@@ -2,7 +2,7 @@
 title: 光栄遊戲百科事典
 description: 
 published: true
-date: 2023-04-29T01:20:38.683Z
+date: 2023-09-30T18:48:45.835Z
 tags: 
 editor: markdown
 dateCreated: 2023-02-12T20:55:06.081Z
@@ -13,6 +13,10 @@ dateCreated: 2023-02-12T20:55:06.081Z
 一個關於《三國志》系列、《信長之野望》系列，以及早期光榮遊戲的網站。
 
 ## 更新履歷
+
+### 2023-10-01
+
+- 更新網址為 https://koei.wiki
 
 ### 2023-05-15
 
