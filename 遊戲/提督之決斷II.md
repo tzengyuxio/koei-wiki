@@ -2,7 +2,7 @@
 title: 提督之決斷II
 description: 提督の決断II | P.T.O. II
 published: true
-date: 2023-04-09T10:39:37.875Z
+date: 2023-04-15T16:53:21.080Z
 tags: tk2
 editor: markdown
 dateCreated: 2023-02-19T07:39:55.116Z
