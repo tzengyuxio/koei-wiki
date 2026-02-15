@@ -26,8 +26,24 @@
 ## 4. 遊戲頭像整合注意事項
 
 - `布律納.md`（Guillaume Brune）不在遊戲 255 人名單中，無對應遊戲頭像，placeholder 未替換。
-- `蘇爾特.md` 的遊戲中文名實為「史考得」（ID=30），已手動對應頭像，但檔名與 CSV 遊戲中文名不一致，日後整理時需留意。
+- `蘇爾特.md` 的遊戲中文名實為「史考得」（ID=17），已依 `顏` 欄位正確對應為 `LEMPE_DOS_F0017.png`。
 - 以下 12 個條目無歷史肖像畫（`/assets/portraits/` 中無對應 jpg），僅有遊戲頭像：佛蘭特、卡爾十三世、卡西勒布、史考得、威瑪、巴拉肖夫、庫利塔、康斯坦丁、查理斯、洛巴諾夫、維特根施泰因、馬斯塔法四世。
 
+## 5. 歷史肖像缺圖（Wikipedia/Wikimedia Commons 均無可用圖片）
+
+以下 9 個條目的歷史肖像 jpg 在 md 中有引用但檔案不存在，且在 Wikipedia 及 Wikimedia Commons 上找不到可用肖像畫，需人工尋找或移除引用：
+
+| 條目 | 缺少的檔案 | 人物原名 |
+| :--- | :--- | :--- |
+| `克利斯坦.md` | werner_hosewinckel_christie.jpg | Werner Hosewinckel Christie |
+| `卡巴庫爾.md` | kabakc_mustafa.jpg | Kabakçı Mustafa |
+| `希爾曼.md` | johann_adolf_von_thielmann.jpg | Johann Adolf von Thielmann |
+| `拉姆齊.md` | norman_ramsay.jpg | Norman Ramsay |
+| `沙伯龍尼.md` | gian_galeazzo_serbelloni.jpg | Gian Galeazzo Serbelloni |
+| `波謝.md` | henry_percy.jpg | Henry Percy |
+| `瑞凡.md` | jean_francois_leval.jpg | Jean François Leval |
+| `魯索.md` | vincenzo_russo.jpg | Vincenzo Russo |
+| `麥克唐納.md` | james_macdonell.jpg | James Macdonell |
+
 ---
-*最後更新日期：2026-02-15*
+*最後更新日期：2026-02-16*
