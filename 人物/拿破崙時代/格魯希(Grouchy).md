@@ -27,6 +27,10 @@ dateCreated: 2026-02-16T12:00:00.000Z
 
 <div style="display: flex; gap: 1em; align-items: flex-end;">
 <figure>
+<img src="/assets/portraits/emmanuel_de_grouchy.jpg" alt="埃馬紐埃爾·德·格魯希肖像" height="320">
+<figcaption>埃馬紐埃爾·德·格魯希的肖像</figcaption>
+</figure>
+<figure>
 <img src="/assets/portraits/gamefaces/LEMPE_DOS_F0023.png" alt="格魯希遊戲頭像" height="320">
 <figcaption>遊戲中的頭像</figcaption>
 </figure>
