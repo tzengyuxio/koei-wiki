@@ -1,5 +1,5 @@
 ---
-title: 莫羅
+title: 莫羅(Moreau)
 description: "共和國名將；後流亡"
 published: true
 date: 2026-02-15T08:44:02.000Z
