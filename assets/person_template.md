@@ -1,11 +1,9 @@
 ---
 title: {遊戲內中文名}
 description: "{人物描述}"
-published: true
+published: false
 date: {YYYY-MM-DDTHH:MM:SS.000Z}
-tags:
-  - lempe
-{標籤列表}
+tags: {標籤列表}
 editor: markdown
 dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
 ---

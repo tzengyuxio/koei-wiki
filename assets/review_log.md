@@ -1,3 +1,13 @@
+---
+title: review log
+description:
+published: false
+date: 2026-02-16T01:49:54.242Z
+tags:
+editor: markdown
+dateCreated: 2023-02-16T20:55:06.081Z
+---
+
 # 人物百科條目檢視日誌 (拿破崙時代)
 
 此文件紀錄了 `人物/拿破崙時代/` 目錄下條目的潛在問題，供日後人工檢視。
