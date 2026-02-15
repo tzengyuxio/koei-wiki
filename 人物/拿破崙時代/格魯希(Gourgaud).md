@@ -1,6 +1,6 @@
 ---
 title: 格魯希(Gourgaud)
-description: "ZH名格魯希與EN名Gourgaud不符；ZH誤用了Grouchy的譯名"
+description: "拿破崙最忠誠的副官，於聖赫勒拿島記錄下珍貴的流亡日記"
 published: true
 date: 2026-02-15T08:51:31.000Z
 tags: lempe
