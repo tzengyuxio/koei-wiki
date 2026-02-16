@@ -31,7 +31,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 <figcaption>愛德華·米約將軍的肖像</figcaption>
 </figure>
 <figure>
-<img src="/assets/portraits/gamefaces/LEMPE_DOS_F0025.png" alt="莫羅遊戲頭像" height="320">
+<img src="/assets/faces/lempe/LEMPE_DOS_F0025.png" alt="莫羅遊戲頭像" height="320">
 <figcaption>遊戲中的頭像</figcaption>
 </figure>
 </div>

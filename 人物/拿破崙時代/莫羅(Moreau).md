@@ -31,7 +31,7 @@ dateCreated: 2026-02-15T08:44:02.000Z
 <figcaption>讓·維克多·馬里·莫羅的肖像</figcaption>
 </figure>
 <figure>
-<img src="/assets/portraits/gamefaces/LEMPE_DOS_F0041.png" alt="莫羅遊戲頭像" height="320">
+<img src="/assets/faces/lempe/LEMPE_DOS_F0041.png" alt="莫羅遊戲頭像" height="320">
 <figcaption>遊戲中的頭像</figcaption>
 </figure>
 </div>

@@ -31,7 +31,7 @@ dateCreated: 2026-02-15T08:51:31.000Z
 <figcaption>加斯帕爾·古爾戈的肖像</figcaption>
 </figure>
 <figure>
-<img src="/assets/portraits/gamefaces/LEMPE_DOS_F0052.png" alt="格魯希遊戲頭像" height="320">
+<img src="/assets/faces/lempe/LEMPE_DOS_F0052.png" alt="格魯希遊戲頭像" height="320">
 <figcaption>遊戲中的頭像</figcaption>
 </figure>
 </div>

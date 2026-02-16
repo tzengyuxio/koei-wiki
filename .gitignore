@@ -6,3 +6,5 @@ lempe-persons-mapping拷貝.csv
 .claude/
 .playwright-mcp/
 assets/*.mkdn
+GUIDELINES.md
+ARCHITECTURE.md
