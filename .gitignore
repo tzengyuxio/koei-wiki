@@ -2,3 +2,6 @@
 *.swp
 *~
 lempe-persons-mapping拷貝.csv
+.gemini/
+.claude/
+.playwright-mcp/
