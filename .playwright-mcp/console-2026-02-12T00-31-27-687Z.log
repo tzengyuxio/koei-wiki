@@ -1,0 +1,45 @@
+[     565ms] [ERROR] Refused to apply style from 'https://gamefaqs.gamespot.com/a/css/v13.20250306212919.css' because its MIME type ('text/html') is not a supported stylesheet MIME type, and strict MIME checking is enabled. @ https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:0
+[     569ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://gamefaqs.gamespot.com/a/js/gamefaqs.20240930203849.js:0
+[     570ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://gamefaqs.gamespot.com/a/js/quill.20240930203849.js:0
+[     574ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://gamefaqs.gamespot.com/a/js/jquery_gf.20240930203849.js:0
+[     574ms] [ERROR] Refused to execute script from 'https://gamefaqs.gamespot.com/a/js/jquery_gf.20240930203849.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:0
+[     575ms] [ERROR] Refused to execute script from 'https://gamefaqs.gamespot.com/a/js/gamefaqs.20240930203849.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:0
+[     575ms] [ERROR] Refused to execute script from 'https://gamefaqs.gamespot.com/a/js/quill.20240930203849.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:0
+[     596ms] ReferenceError: $ is not defined
+    at https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:46:15
+[     624ms] ReferenceError: $ is not defined
+    at https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:64:1
+[     625ms] ReferenceError: $ is not defined
+    at https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:146:1
+[     625ms] ReferenceError: $ is not defined
+    at https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:232:1
+[     627ms] ReferenceError: $ is not defined
+    at https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:333:1
+[     629ms] ReferenceError: $ is not defined
+    at https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:480:131
+    at https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:480:174
+[     649ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://gamefaqs.gamespot.com/a/box/3/6/2/49362_thumb.jpg:0
+[    2367ms] Uncaught (in promise) TypeError: Cannot convert undefined or null to object
+    at Zo (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:168235)
+    at callByBidGroup (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:310428)
+    at call (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:310139)
+    at <anonymous> (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:174138)
+    at <anonymous> (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:18418)
+    at c (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:18163)
+    at execute (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:173803)
+    at <anonymous> (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:320828)
+    at execute (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:320735)
+    at execute (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:331010)
+    at <anonymous> (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:215036)
+    at <anonymous> (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:18418)
+    at c (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:18163)
+    at execute (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:214823)
+    at <anonymous> (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:208953)
+    at <anonymous> (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:215046)
+    at o (https://script.wikia.nocookie.net/fandom-ae-assets/platforms/v151.20.0/gamefaqs/main.bundle.js:1:18220)
+[    2834ms] [ERROR] Failed to load resource: the server responded with a status of 403 () @ https://gamefaqs.gamespot.com/favicon.ico:0
+[    4890ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    4894ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    4895ms] [ERROR] Attestation check for Shared Storage on https://www.googleadservices.com failed. @ https://www.googleadservices.com/pagead/managed/js/activeview/current/reach_worklet.html:0
+[    9203ms] [WARNING] The resource https://www.googletagservices.com/tag/js/gpt.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:0
+[    9203ms] [WARNING] The resource https://js-sec.indexww.com/ht/p/183728-151106130411182.js was preloaded using link preload but not used within a few seconds from the window's load event. Please make sure it has an appropriate `as` value and it is preloaded intentionally. @ https://gamefaqs.gamespot.com/boards/587411-lempereur/73596932:0
