@@ -1,0 +1,69 @@
+---
+title: {條目名稱}
+description: "{人物描述}"
+published: true
+date: {YYYY-MM-DDTHH:MM:SS.000Z}
+tags: {遊戲tag1}, {遊戲tag2}, {時代}
+editor: markdown
+dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
+---
+
+## 基本資料
+
+| 項目 | 內容 |
+| :--- | :--- |
+| 中文名 | {中文名} |
+| 字 | {字號，無則刪除此列} |
+| 原文 | {原文名，西洋人物適用} |
+| 生卒 | {生年}–{卒年} |
+| 勢力 | {勢力/國籍} |
+
+## 人物畫像
+
+<div style="display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;">
+<figure>
+<img src="/assets/portraits/{portrait_file}" alt="{中文名}肖像" height="320">
+<figcaption>歷史肖像</figcaption>
+</figure>
+<figure>
+<img src="/assets/faces/{game1_id}/{face_file}" alt="{中文名} {遊戲1名}" height="160">
+<figcaption>{遊戲1名}</figcaption>
+</figure>
+<figure>
+<img src="/assets/faces/{game2_id}/{face_file}" alt="{中文名} {遊戲2名}" height="160">
+<figcaption>{遊戲2名}</figcaption>
+</figure>
+</div>
+
+## 遊戲數值
+
+### {遊戲1名}
+
+| {欄位1} | {欄位2} | {欄位3} |
+| :---: | :---: | :---: |
+| {值} | {值} | {值} |
+
+### {遊戲2名}
+
+| {欄位1} | {欄位2} | {欄位3} | {欄位4} |
+| :---: | :---: | :---: | :---: |
+| {值} | {值} | {值} | {值} |
+
+## 列傳
+
+{人物列傳，共通歷史傳記，不分遊戲。300–1200 字，不加 H3 小標題。}
+
+## 攻略建議
+
+### {遊戲1名}
+
+<kbd>{縮寫1}</kbd> {該遊戲的攻略建議}
+
+### {遊戲2名}
+
+<kbd>{縮寫2}</kbd> {該遊戲的攻略建議}
+
+## References
+
+- [{中文名} - 维基百科]({中文維基URL})
+- [{原文名} - Wikipedia]({英文維基URL})
