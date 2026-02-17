@@ -1,10 +1,8 @@
 .DS_Store
 *.swp
 *~
-lempe-persons-mapping拷貝.csv
 .gemini/
 .claude/
 .playwright-mcp/
-assets/*.mkdn
-GUIDELINES.md
-ARCHITECTURE.md
+CLAUDE.md
+GEMINI.md
