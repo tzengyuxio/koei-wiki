@@ -1,5 +1,5 @@
 ---
-title: 莫羅(Moreau)
+title: 莫羅 (Moreau)
 description: "法蘭西共和國名將，霍恩林登戰役勝利者，後流亡並協助聯軍"
 published: true
 date: 2026-02-15T08:44:02.000Z
