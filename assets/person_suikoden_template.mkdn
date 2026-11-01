@@ -1,0 +1,101 @@
+---
+title: {條目名稱}
+description: "{一句話描述}"
+published: true
+date: {YYYY-MM-DDTHH:MM:SS.000Z}
+tags: 水滸, suikoden, 一百零八星, {天罡星／地煞星}
+editor: markdown
+dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
+---
+
+<!--
+水滸人物模板（凡例 §3.1「水滸人物條目」）
+- data:X begin／end 標記之間的內容由 script 從資料產生，重新產生時會覆蓋，不要手改；之外的內容 script 不碰（凡例 §10）
+- 標「可選」的段落，該人物沒有內容就整段刪除（含標題）
+- 108 星人物加 一百零八星，再加 天罡星 或 地煞星；非 108 星（高俅、王進、瓊英等）兩個都刪除
+-->
+
+## 基本資料
+
+| 項目 | 內容 |
+| :--- | :--- |
+| 姓名 | {姓名} |
+| 綽號 | {綽號，無則刪除此列} |
+| 星號 | {例：天魁星；非 108 星則刪除此列} |
+| 梁山座次 | {例：第 1 位；非 108 星則刪除此列} |
+| 出身 | {出身或原職業} |
+| 兵器 | {兵器，無則刪除此列} |
+| 結局 | {例：征方臘時陣亡} |
+| 歷史原型 | {有史可考時才列，否則刪除此列} |
+
+## 人物畫像
+
+<!--
+- PC-88、PC-98、FC 三版排一列，依發行順序；該版本沒有此人則刪除該格
+- 圖片網址：https://img.simagame.me/kaodata/faces/{資料集}/{遊戲內ID}.png（暫定，見 kaodata docs/backlog/wiki-face-png.md）
+-->
+
+<!-- data:portraits begin -->
+<div style="display: flex; align-items: flex-end; gap: 12px 8px; flex-wrap: wrap;">
+<figure style="margin: 0;">
+<img src="{PC-88 頭像網址}" alt="{姓名} 水滸傳・天命之誓 PC-88" height="120" style="image-rendering: pixelated;">
+<figcaption><kbd>水</kbd> PC-88</figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{PC-98 頭像網址}" alt="{姓名} 水滸傳・天命之誓 PC-98" height="120" style="image-rendering: pixelated;">
+<figcaption><kbd>水</kbd> PC-98</figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{FC 頭像網址}" alt="{姓名} 水滸傳・天命之誓 FC" height="120" style="image-rendering: pixelated;">
+<figcaption><kbd>水</kbd> FC</figcaption>
+</figure>
+</div>
+<!-- data:portraits end -->
+
+## 遊戲數值
+
+### 水滸傳・天命之誓（PC-98）
+
+<!-- 欄位同 遊戲/水滸傳・天命之誓/人物資料.md；舵：能駕船者填 ○ -->
+
+<!-- data:stats-pc98 begin -->
+| ID | 年齡 | 性別 | 身份 | 體力 | 能耐 | 技能 | 智慧 | 忠義 | 仁愛 | 勇氣 | 舵 |
+| :---: | :---: | :---: | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| {ID} | {年齡} | {性別} | {身份} | {體力} | {能耐} | {技能} | {智慧} | {忠義} | {仁愛} | {勇氣} | {舵} |
+<!-- data:stats-pc98 end -->
+
+## 遊戲中的登場
+
+<!-- 可選。遊戲裡的特殊處理：初始所在地、登用條件、專屬事件、與原著不同的設定等 -->
+
+{遊戲中的登場}
+
+## 列傳
+
+<!-- 依《水滸傳》小說情節撰寫，自然分段，不加 H3；字數見凡例 §4；提到的人物、地點、用語都加連結，每個目標只連第一次（凡例 §6） -->
+
+{列傳}
+
+## 史實
+
+<!-- 可選。限有史可考的人物（如宋江、高俅），寫正史記載與小說的差異 -->
+
+{史實}
+
+## 相關人物
+
+<!-- 可選。結義、師徒、夫妻、主從等 -->
+
+- {關係}：[{人名}](/人物/水滸/{人名})
+
+## 攻略建議
+
+<kbd>水</kbd> {攻略建議}
+
+## References
+
+<!-- 順序：中文維基 → 日文維基 → 英文維基（有條目才放），其後是其他網站 -->
+
+- [{姓名} - 维基百科]({中文維基URL})
+- [{姓名} - Wikipedia（日本語）]({日文維基URL})
+- [{英文名} - Wikipedia]({英文維基URL})

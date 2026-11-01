@@ -1,0 +1,203 @@
+---
+title: {條目名稱}
+description: "{一句話描述}"
+published: true
+date: {YYYY-MM-DDTHH:MM:SS.000Z}
+tags: 三國, {出典標籤：正史／演義／其他出典，可多個}, {勢力}
+editor: markdown
+dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
+---
+
+<!--
+三國人物模板（凡例 §3.1「三國人物條目」）
+- data:X begin／end 標記之間的內容由 script 從資料產生，重新產生時會覆蓋，不要手改；之外的內容 script 不碰（凡例 §10）
+- 標「可選」的段落，該人物沒有內容就整段刪除（含標題）
+- 出典標籤：在正史出現 → 正史；在《三國演義》出現 → 演義；只出自其他作品（花關索傳、吉川三國志、民間傳說等）→ 其他出典
+-->
+
+## 基本資料
+
+| 項目 | 內容 |
+| :--- | :--- |
+| 姓名 | {姓名} |
+| 字 | {字，無則刪除此列} |
+| 生卒 | {生年}–{卒年}（不詳寫「不詳」） |
+| 籍貫 | {籍貫，無則刪除此列} |
+| 所屬 | {勢力或主君，依時序以 → 相接} |
+| 出典 | {正史／演義／花關索傳／吉川三國志／民間傳說…，可多個，以頓號分隔} |
+| 遊戲寫法 | {遊戲寫法與史書不同時才列，例：蔡冒（<kbd>三2</kbd>）；否則刪除此列} |
+
+## 人物畫像
+
+### 正傳
+
+<!--
+- 固定 14 格（三1–三14），依代數排列，未登場的代也保留格子
+- 每格 96×120（4:5）；64×80 的頭像放大 1.5 倍，加 image-rendering: pixelated
+- 正傳頭像都是 4:5，唯一例外是三1（48×80，照原比例）；object-fit: contain 讓它在格子裡置中、不變形
+- 未登場：把 <img> 換成 <div style="width: 96px; height: 120px; background: #eee;"></div>，figcaption 加「未登場」
+- <img> 要加 display: block，否則行內圖片下緣的空隙會讓 caption 和未登場格對不齊
+- 圖片網址：https://img.simagame.me/kaodata/faces/{資料集}/{遊戲內ID}.png（暫定，見 kaodata docs/backlog/wiki-face-png.md）
+- 資料集 ID 依 kaodata docs/mainline.md 的正傳對照
+-->
+
+<!-- data:portraits-mainline begin -->
+<div style="display: grid; grid-template-columns: repeat(7, 96px); gap: 12px 8px; overflow-x: auto;">
+<figure style="margin: 0;">
+<img src="{三1 頭像網址}" alt="{姓名} 三國志" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三1</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三2 頭像網址}" alt="{姓名} 三國志II" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三2</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三3 頭像網址}" alt="{姓名} 三國志III" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三3</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三4 頭像網址}" alt="{姓名} 三國志IV" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三4</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三5 頭像網址}" alt="{姓名} 三國志V" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三5</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三6 頭像網址}" alt="{姓名} 三國志VI" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三6</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三7 頭像網址}" alt="{姓名} 三國志VII" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三7</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三8 頭像網址}" alt="{姓名} 三國志VIII" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三8</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三9 頭像網址}" alt="{姓名} 三國志IX" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三9</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三10 頭像網址}" alt="{姓名} 三國志X" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三10</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三11 頭像網址}" alt="{姓名} 三國志11" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三11</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三12 頭像網址}" alt="{姓名} 三國志12" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三12</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三13 頭像網址}" alt="{姓名} 三國志13" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三13</kbd></figcaption>
+</figure>
+<figure style="margin: 0;">
+<img src="{三14 頭像網址}" alt="{姓名} 三國志14" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
+<figcaption><kbd>三14</kbd></figcaption>
+</figure>
+</div>
+<!-- data:portraits-mainline end -->
+
+### 光榮其他作品
+
+<!-- 可選。第一批：san1-fc、san2-fc、san1-sfc、san2-sfc、san1-x68、英傑傳（eiketsu-pc98）；之後可加孔明傳、曹操傳等。格數不固定，原比例、高度 120，依首發年代排列 -->
+
+<!-- data:portraits-koei begin -->
+<div style="display: flex; align-items: flex-end; gap: 12px 8px; flex-wrap: wrap;">
+<figure style="margin: 0;">
+<img src="{頭像網址}" alt="{姓名} {作品名}" height="120" style="image-rendering: pixelated;">
+<figcaption>{作品名}（{平台}）</figcaption>
+</figure>
+</div>
+<!-- data:portraits-koei end -->
+
+### 其他作品
+
+<!-- 可選。非光榮的三國遊戲；caption 寫作品名與廠商，依首發年代排列 -->
+
+<!-- data:portraits-other begin -->
+<div style="display: flex; align-items: flex-end; gap: 12px 8px; flex-wrap: wrap;">
+<figure style="margin: 0;">
+<img src="{頭像網址}" alt="{姓名} {作品名}" height="120" style="image-rendering: pixelated;">
+<figcaption>{作品名}（{廠商}，{平台}）</figcaption>
+</figure>
+</div>
+<!-- data:portraits-other end -->
+
+## 遊戲數值
+
+<!--
+- —：該代沒有這項能力（已預填）；整列「未登場」：該代沒有這個人
+- 三3 的陸指、水指不列，統率欄填 —
+- 三1–三12 的數值來源：kaodata-re MISC_TABLE/ROTK - Character Stats & Abilities.csv
+- <details> 內的表格前後必須空一行，不空行表格會壞掉（Wiki.js 實測 2026-11-02）
+-->
+
+<!-- data:stats-main begin -->
+<details open>
+<summary>歷代能力</summary>
+
+| 作品 | 統率 | 武力 | 智力 | 政治 | 魅力 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| <kbd>三1</kbd> | — | {武力} | {智力} | — | {魅力} |
+| <kbd>三2</kbd> | — | {武力} | {智力} | — | {魅力} |
+| <kbd>三3</kbd> | — | {武力} | {智力} | {政治} | {魅力} |
+| <kbd>三4</kbd> | {統率} | {武力} | {智力} | {政治} | {魅力} |
+| <kbd>三5</kbd> | — | {武力} | {智力} | {政治} | {魅力} |
+| <kbd>三6</kbd> | {統率} | {武力} | {智力} | {政治} | {魅力} |
+| <kbd>三7</kbd> | — | {武力} | {智力} | {政治} | {魅力} |
+| <kbd>三8</kbd> | — | {武力} | {智力} | {政治} | {魅力} |
+| <kbd>三9</kbd> | {統率} | {武力} | {智力} | {政治} | — |
+| <kbd>三10</kbd> | {統率} | {武力} | {智力} | {政治} | {魅力} |
+| <kbd>三11</kbd> | {統率} | {武力} | {智力} | {政治} | {魅力} |
+| <kbd>三12</kbd> | {統率} | {武力} | {智力} | {政治} | — |
+| <kbd>三13</kbd> | {統率} | {武力} | {智力} | {政治} | {魅力} |
+| <kbd>三14</kbd> | {統率} | {武力} | {智力} | {政治} | {魅力} |
+
+</details>
+<!-- data:stats-main end -->
+
+## 遊戲中的登場
+
+<!-- 可選。遊戲裡的特殊處理：非武將的 NPC／事件／寶物形式登場、初登場代數、只在特定劇本出現、專屬事件或寶物或戰法、換臉（如老年頭像）、遊戲中的錯字等。以 <kbd> 標明代數 -->
+
+{例：<kbd>三1</kbd>–<kbd>三X</kbd> 不是武將，以事件中的 NPC 登場；<kbd>三Y</kbd> 起成為可登用的武將。}
+
+## 列傳
+
+<!--
+- 第一句交代出典：正史人物寫正史生平；演義虛構人物（如周倉）寫演義情節；演義以外的虛構人物（如鮑三娘）寫出處故事與後來如何進入遊戲
+- 自然分段，不加 H3；字數見凡例 §4；提到的人物、地點、用語都加連結，每個目標只連第一次（凡例 §6）
+-->
+
+{列傳}
+
+## 演義中的形象
+
+<!-- 可選。限正史人物，且演義的形象與正史差異大時才寫（如周瑜、魏延）；演義虛構人物不另立此段 -->
+
+{演義中的形象}
+
+## 相關人物
+
+<!-- 可選。父子、配偶、義兄弟、主從等 -->
+
+- {關係}：[{人名}](/人物/三國/{人名})
+
+## 攻略建議
+
+<!-- 可選。以三14 為主 -->
+
+<kbd>三14</kbd> {攻略建議}
+
+## References
+
+<!-- 順序：中文維基 → 日文維基 → 英文維基（有條目才放），其後是其他網站 -->
+
+- [{姓名} - 维基百科]({中文維基URL})
+- [{姓名} - Wikipedia（日本語）]({日文維基URL})
+- [{英文名} - Wikipedia]({英文維基URL})
