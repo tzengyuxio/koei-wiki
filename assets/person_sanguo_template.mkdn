@@ -37,7 +37,7 @@ dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
 - 正傳頭像都是 4:5，唯一例外是三1（48×80，照原比例）；object-fit: contain 讓它在格子裡置中、不變形
 - 未登場：把 <img> 換成 <div style="width: 96px; height: 120px; background: #eee;"></div>，figcaption 加「未登場」
 - <img> 要加 display: block，否則行內圖片下緣的空隙會讓 caption 和未登場格對不齊
-- 圖片網址：https://img.simagame.me/kaodata/faces/{資料集}/{遊戲內ID}.png（暫定，見 kaodata docs/backlog/wiki-face-png.md）
+- 圖片網址：https://img.simagame.me/kaodata/faces/{資料集}/{遊戲內ID}.png；各資料集的人物清單：https://img.simagame.me/kaodata/faces/{資料集}/index.json（id 不補零，起算依原作，如三1 從 1 起）
 - 資料集 ID 依 kaodata docs/mainline.md 的正傳對照
 -->
 
