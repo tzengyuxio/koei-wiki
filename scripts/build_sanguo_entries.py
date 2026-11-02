@@ -147,7 +147,7 @@ def render_new(wiki: str, row: dict, bio: dict, extra: dict, blocks: dict, old: 
     tags = ", ".join(["三國"] + [s for s in re.split("[、,]", source) if s] + ([faction] if faction else []))
     text = (bio or {}).get("bio", "").strip()
     desc = plain(text.split("。")[0]) + "。" if text else ""
-    out = ["---", f"title: {title_of(wiki)}", f'description: "{desc}"', "published: false",
+    out = ["---", f"title: {title_of(wiki)}", f'description: "{desc}"', "published: true",
            f"date: {now}", f"tags: {tags}", "editor: markdown", f"dateCreated: {created}", "---", "",
            "## 基本資料", "", "| 項目 | 內容 |", "| :--- | :--- |", f"| 姓名 | {name} |"]
     if bio and bio.get("courtesy"):
