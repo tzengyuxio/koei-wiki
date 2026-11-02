@@ -145,7 +145,7 @@ def ask_qwen(system: str, user: str, thinking: bool) -> tuple[str, dict]:
     ).stdout.strip()
     body = {
         "model": "qwen-tw",
-        "max_tokens": 12000 if thinking else 3000,
+        "max_tokens": 28000 if thinking else 3000,  # thinking shares this budget
         "chat_template_kwargs": {"enable_thinking": thinking},
         "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
     }
