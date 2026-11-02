@@ -31,86 +31,87 @@ dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
 
 ### 正傳
 
+I–V 為 PC-98 版，VI–14 為 Windows 版；IV 以後為威力加強版。
+
 <!--
-- 固定 14 格（三1–三14），依代數排列，未登場的代也保留格子
-- 每格 96×120（4:5）；64×80 的頭像放大 1.5 倍，加 image-rendering: pixelated
-- 正傳頭像都是 4:5，唯一例外是三1（48×80，照原比例）；object-fit: contain 讓它在格子裡置中、不變形
-- 未登場：把 <img> 換成 <div style="width: 96px; height: 120px; background: #eee;"></div>，figcaption 加「未登場」
-- <img> 要加 display: block，否則行內圖片下緣的空隙會讓 caption 和未登場格對不齊
+- 固定 14 格（三1–三14），依代數排列，caption 寫 I–X、11–14（同遊戲內的頭像一覽）
+- 版面全在 assets/wikijs/theme.css（Wiki.js 後台 CSS Override）；條目只寫 class，不寫 style（凡例 §7.2）
+- 每格 96×120（4:5）；三1（48×80）照原比例置中，由 CSS 的 object-fit: contain 處理
+- 未登場：把 <img> 換成 <div class="kw-absent">未登場</div>
 - 圖片網址：https://img.simagame.me/kaodata/faces/{資料集}/{遊戲內ID}.png；各資料集的人物清單：https://img.simagame.me/kaodata/faces/{資料集}/index.json（id 不補零，起算依原作，如三1 從 1 起）
 - 資料集 ID 依 kaodata docs/mainline.md 的正傳對照
 -->
 
 <!-- data:portraits-mainline begin -->
-<div style="display: grid; grid-template-columns: repeat(7, 96px); gap: 12px 8px; overflow-x: auto;">
-<figure style="margin: 0;">
-<img src="{三1 頭像網址}" alt="{姓名} 三國志" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三1</kbd></figcaption>
+<div class="kw-portraits-mainline">
+<figure class="kw-face">
+<img src="{三1 頭像網址}" alt="{姓名} 三國志" width="96" height="120">
+<figcaption>I</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三2 頭像網址}" alt="{姓名} 三國志II" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三2</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三2 頭像網址}" alt="{姓名} 三國志II" width="96" height="120">
+<figcaption>II</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三3 頭像網址}" alt="{姓名} 三國志III" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三3</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三3 頭像網址}" alt="{姓名} 三國志III" width="96" height="120">
+<figcaption>III</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三4 頭像網址}" alt="{姓名} 三國志IV" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三4</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三4 頭像網址}" alt="{姓名} 三國志IV" width="96" height="120">
+<figcaption>IV</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三5 頭像網址}" alt="{姓名} 三國志V" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三5</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三5 頭像網址}" alt="{姓名} 三國志V" width="96" height="120">
+<figcaption>V</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三6 頭像網址}" alt="{姓名} 三國志VI" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三6</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三6 頭像網址}" alt="{姓名} 三國志VI" width="96" height="120">
+<figcaption>VI</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三7 頭像網址}" alt="{姓名} 三國志VII" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三7</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三7 頭像網址}" alt="{姓名} 三國志VII" width="96" height="120">
+<figcaption>VII</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三8 頭像網址}" alt="{姓名} 三國志VIII" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三8</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三8 頭像網址}" alt="{姓名} 三國志VIII" width="96" height="120">
+<figcaption>VIII</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三9 頭像網址}" alt="{姓名} 三國志IX" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三9</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三9 頭像網址}" alt="{姓名} 三國志IX" width="96" height="120">
+<figcaption>IX</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三10 頭像網址}" alt="{姓名} 三國志X" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三10</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三10 頭像網址}" alt="{姓名} 三國志X" width="96" height="120">
+<figcaption>X</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三11 頭像網址}" alt="{姓名} 三國志11" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三11</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三11 頭像網址}" alt="{姓名} 三國志11" width="96" height="120">
+<figcaption>11</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三12 頭像網址}" alt="{姓名} 三國志12" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三12</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三12 頭像網址}" alt="{姓名} 三國志12" width="96" height="120">
+<figcaption>12</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三13 頭像網址}" alt="{姓名} 三國志13" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三13</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三13 頭像網址}" alt="{姓名} 三國志13" width="96" height="120">
+<figcaption>13</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{三14 頭像網址}" alt="{姓名} 三國志14" width="96" height="120" style="display: block; object-fit: contain; image-rendering: pixelated;">
-<figcaption><kbd>三14</kbd></figcaption>
+<figure class="kw-face">
+<img src="{三14 頭像網址}" alt="{姓名} 三國志14" width="96" height="120">
+<figcaption>14</figcaption>
 </figure>
 </div>
 <!-- data:portraits-mainline end -->
 
 ### 光榮其他作品
 
-<!-- 可選。第一批：san1-fc、san2-fc、san1-sfc、san2-sfc、san1-x68、英傑傳（eiketsu-pc98）；之後可加孔明傳、曹操傳等。格數不固定，原比例、高度 120，依首發年代排列 -->
+<!-- 可選。第一批：san1-fc、san1-x68、san1-sfc、san2-fc、san2-sfc、英傑傳（eiketsu-pc98）；之後可加孔明傳、曹操傳等。格數不固定，原比例、高度 120。排列：先依原作（三國志 → 三國志II → 外傳），同一原作內依移植版在日本的發售日（kaodata src/ui/releases.ts）。caption 寫作品名<br>平台 -->
 
 <!-- data:portraits-koei begin -->
-<div style="display: flex; align-items: flex-end; gap: 12px 8px; flex-wrap: wrap;">
-<figure style="margin: 0;">
-<img src="{頭像網址}" alt="{姓名} {作品名}" height="120" style="image-rendering: pixelated;">
-<figcaption>{作品名}（{平台}）</figcaption>
+<div class="kw-portraits">
+<figure class="kw-face">
+<img src="{頭像網址}" alt="{姓名} {作品名}（{平台}）" height="120">
+<figcaption>{作品名}<br>{平台}</figcaption>
 </figure>
 </div>
 <!-- data:portraits-koei end -->
@@ -120,10 +121,10 @@ dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
 <!-- 可選。非光榮的三國遊戲；caption 寫作品名與廠商，依首發年代排列 -->
 
 <!-- data:portraits-other begin -->
-<div style="display: flex; align-items: flex-end; gap: 12px 8px; flex-wrap: wrap;">
-<figure style="margin: 0;">
-<img src="{頭像網址}" alt="{姓名} {作品名}" height="120" style="image-rendering: pixelated;">
-<figcaption>{作品名}（{廠商}，{平台}）</figcaption>
+<div class="kw-portraits">
+<figure class="kw-face">
+<img src="{頭像網址}" alt="{姓名} {作品名}（{廠商}，{平台}）" height="120">
+<figcaption>{作品名}<br>{廠商}，{平台}</figcaption>
 </figure>
 </div>
 <!-- data:portraits-other end -->
@@ -138,7 +139,7 @@ dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
 -->
 
 <!-- data:stats-main begin -->
-<details open>
+<details class="kw-stats" open>
 <summary>歷代能力</summary>
 
 | 作品 | 統率 | 武力 | 智力 | 政治 | 魅力 |

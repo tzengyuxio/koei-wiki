@@ -58,17 +58,13 @@ NO_STAT = {"三1": {"統率", "政治"}, "三2": {"統率", "政治"}, "三3": {
 # Game-native stat names -> main-table names.
 STAT_ALIAS = {"知力": "智力", "カリスマ": "魅力"}
 
-CAPTION = '<figcaption style="text-align: center;">{}</figcaption>'
-CELL_IMG = ('<figure style="margin: 0;">\n<img src="{src}" alt="{name} 三國志{num}" width="96" height="120" '
-            'style="display: block; object-fit: contain; image-rendering: pixelated;">\n'
-            + CAPTION.format("{num}") + "\n</figure>")
-CELL_EMPTY = ('<figure style="margin: 0;">\n<div style="display: flex; align-items: center; justify-content: center; '
-              'width: 96px; height: 120px; background: #eee; color: #888;">未登場</div>\n'
-              + CAPTION.format("{num}") + "\n</figure>")
-# margin-top: Wiki.js h3 has no bottom margin, so the images would touch the heading.
-GRID = ('<div style="display: grid; grid-template-columns: repeat(7, 96px); gap: 12px 8px; '
-        'margin-top: 12px; overflow-x: auto;">')
-FLEX = '<div style="display: flex; align-items: flex-end; gap: 12px 8px; flex-wrap: wrap; margin-top: 12px;">'
+# Layout lives in assets/wikijs/theme.css (Wiki.js CSS override); entries only carry class names.
+CELL_IMG = ('<figure class="kw-face">\n<img src="{src}" alt="{name} {title}" width="96" height="120">\n'
+            "<figcaption>{num}</figcaption>\n</figure>")
+CELL_EMPTY = ('<figure class="kw-face">\n<div class="kw-absent">未登場</div>\n'
+              "<figcaption>{num}</figcaption>\n</figure>")
+GRID = '<div class="kw-portraits-mainline">'
+FLEX = '<div class="kw-portraits">'
 
 
 
@@ -115,7 +111,8 @@ def portraits_mainline(name: str, row: dict, faces: dict) -> str:
     for ds, _, num in MAINLINE:
         i = first_id(row[ds])
         if i is not None and i in faces[ds]:
-            cells.append(CELL_IMG.format(src=IMG.format(ds, i), name=name, num=num))
+            cells.append(CELL_IMG.format(src=IMG.format(ds, i), name=name, num=num,
+                                        title="三國志" + ("" if num == "I" else num)))
         else:
             cells.append(CELL_EMPTY.format(num=num))
     return block("portraits-mainline", GRID + "\n" + "\n".join(cells) + "\n</div>")
@@ -126,16 +123,15 @@ def portraits_koei(name: str, row: dict, faces: dict) -> str | None:
     for ds, title, platform in KOEI:
         i = first_id(row[ds])
         if i is not None and i in faces[ds]:
-            cells.append(f'<figure style="margin: 0;">\n<img src="{IMG.format(ds, i)}" alt="{name} {title}（{platform}）" '
-                         f'height="120" style="display: block; margin: 0 auto; image-rendering: pixelated;">\n'
-                         + CAPTION.format(f"{title}<br>{platform}") + "\n</figure>")
+            cells.append(f'<figure class="kw-face">\n<img src="{IMG.format(ds, i)}" alt="{name} {title}（{platform}）" '
+                         f'height="120">\n<figcaption>{title}<br>{platform}</figcaption>\n</figure>')
     if not cells:
         return None
     return block("portraits-koei", FLEX + "\n" + "\n".join(cells) + "\n</div>")
 
 
 def stats_main(row: dict, stats: dict) -> str:
-    lines = ["<details open>", "<summary>歷代能力</summary>", "",
+    lines = ['<details class="kw-stats" open>', "<summary>歷代能力</summary>", "",
              "| 作品 | " + " | ".join(STATS) + " |", "| :---: |" + " :---: |" * len(STATS)]
     for ds, kbd, _ in MAINLINE:
         i = first_id(row[ds])

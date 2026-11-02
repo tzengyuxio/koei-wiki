@@ -1,0 +1,72 @@
+/*
+ * koei-wiki site CSS for Wiki.js.
+ * Paste into Administration > Theme > Code Injection > CSS Override, wrapped in <style>...</style>.
+ * This file is the source of truth; the admin field is a copy.
+ *
+ * Entries only carry class names (written by scripts/build_*_entries.py); all layout lives here,
+ * so changing alignment or sizes never touches the Markdown files. See EDITORIAL.mkdn §10.
+ */
+
+/* ---- Portrait blocks ---------------------------------------------------- */
+
+/* Mainline: fixed 14 cells, 7 per row. h3 in Wiki.js has no bottom margin, hence margin-top. */
+.contents .kw-portraits-mainline {
+  display: grid;
+  grid-template-columns: repeat(7, 96px);
+  gap: 12px 8px;
+  margin-top: 12px;
+  overflow-x: auto;
+}
+
+/* Other works: free-flowing, original aspect ratio, bottoms aligned. */
+.contents .kw-portraits {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px 8px;
+  margin-top: 12px;
+}
+
+.contents .kw-face {
+  margin: 0;
+  text-align: center;
+}
+
+.contents .kw-face img {
+  display: block; /* no inline gap under the image, so captions line up with empty cells */
+  margin: 0 auto;
+  height: 120px;
+  image-rendering: pixelated;
+}
+
+/* Mainline cells are 4:5 (96x120); 三1 (48x80) is centred without distortion. */
+.contents .kw-portraits-mainline .kw-face img {
+  width: 96px;
+  object-fit: contain;
+}
+
+.contents .kw-face figcaption {
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+/* Generation where the person does not appear. */
+.contents .kw-absent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 120px;
+  background: #eee;
+  color: #888;
+  font-size: 14px;
+}
+
+/* ---- Stats tables ------------------------------------------------------- */
+
+.contents .kw-stats table td,
+.contents .kw-stats table th {
+  text-align: center;
+}

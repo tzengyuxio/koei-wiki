@@ -168,7 +168,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 *   **本地化**：第三方圖片不應直連，須下載後存放於 `assets/portraits/` 或 `assets/faces/{game_id}/`。本站自有的圖床 `img.simagame.me`（Cloudflare R2，與 kaodata 共用）不算外部圖片，三國、水滸的遊戲頭像直接引用該處。
 *   **尺寸規範**：
     *   **歷史肖像**：長邊不超過 **1280px**，等比例縮放。
-    *   **遊戲頭像**：高度統一設定為 **160px**（或依特定遊戲調整，需保持同款遊戲一致）。三國、水滸人物條目的頭像統一以 **96×120**（4:5）顯示，64×80 的頭像放大 1.5 倍並加 `image-rendering: pixelated`。4:5 只要求三國志正傳，唯一例外是三1（48×80），照原比例以 `object-fit: contain` 在格子裡置中、不拉寬；其他作品（如水滸 FC 版的 40×48）一律照原比例，以高度 120 等比例顯示。網址為 `https://img.simagame.me/kaodata/faces/<dataset>/<id>.png`（樣貌 `<id>-<k>.png`），各資料集附 `index.json` 人物清單（見 kaodata `docs/backlog/wiki-face-png.md`）。
+    *   **遊戲頭像**：高度統一設定為 **160px**（或依特定遊戲調整，需保持同款遊戲一致）。三國、水滸人物條目的頭像統一以 **96×120**（4:5）顯示，64×80 的頭像放大 1.5 倍、像素不模糊。4:5 只要求三國志正傳，唯一例外是三1（48×80），照原比例在格子裡置中、不拉寬；其他作品（如水滸 FC 版的 40×48）一律照原比例，以高度 120 等比例顯示。網址為 `https://img.simagame.me/kaodata/faces/<dataset>/<id>.png`（樣貌 `<id>-<k>.png`），各資料集附 `index.json` 人物清單（見 kaodata `docs/backlog/wiki-face-png.md`）。
 *   **瘦身**：圖片上傳前建議經過 tinify 或類似工具壓縮。
 *   **暫存流程**：歷史肖像先下載至 `assets/portraits/wip/`，經縮圖與瘦身後移至 `assets/portraits/`。
 
@@ -190,6 +190,20 @@ dateCreated: 2026-02-16T12:00:00.000Z
 ```
 
 *   **重要規則**：`<div>` 容器內部**不可留有空行**（包含標籤之間）。若留有空行，Markdown 解釋器可能會將其內容誤判為段落並產生錯誤的 HTML 轉換。
+
+#### 站台 CSS class（三國、水滸人物條目）
+
+三國、水滸人物條目的頭像與能力表只寫 class，不寫 `style`；版面全部定義在 `assets/wikijs/theme.css`，貼在 Wiki.js 後台「管理 → 主題 → Code Injection → CSS Override」（前後加 `<style>`）。要改對齊、間距、尺寸只改 CSS，不必改動 Markdown 檔，也不產生大量 commit。該檔是正本，後台欄位是複本，兩邊要一起改。
+
+| class | 用途 |
+| :--- | :--- |
+| `kw-portraits-mainline` | 三國志正傳 14 格頭像，7 欄 grid |
+| `kw-portraits` | 其他作品頭像，自動換行，下緣對齊 |
+| `kw-face` | 單張頭像（`<figure>`），caption 置中 |
+| `kw-absent` | 未登場的灰底格（96×120，中間寫「未登場」） |
+| `kw-stats` | 能力表的 `<details>`，表格置中 |
+
+`<img>` 仍保留 `width`／`height` 屬性，CSS 沒載入時版面不至於跑掉。
 
 ## §8 特殊組件
 

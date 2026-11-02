@@ -36,17 +36,17 @@ dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
 -->
 
 <!-- data:portraits begin -->
-<div style="display: flex; align-items: flex-end; gap: 12px 8px; flex-wrap: wrap;">
-<figure style="margin: 0;">
-<img src="{PC-88 頭像網址}" alt="{姓名} 水滸傳・天命之誓 PC-88" height="120" style="image-rendering: pixelated;">
+<div class="kw-portraits">
+<figure class="kw-face">
+<img src="{PC-88 頭像網址}" alt="{姓名} 水滸傳・天命之誓 PC-88" height="120">
 <figcaption><kbd>水</kbd> PC-88</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{PC-98 頭像網址}" alt="{姓名} 水滸傳・天命之誓 PC-98" height="120" style="image-rendering: pixelated;">
+<figure class="kw-face">
+<img src="{PC-98 頭像網址}" alt="{姓名} 水滸傳・天命之誓 PC-98" height="120">
 <figcaption><kbd>水</kbd> PC-98</figcaption>
 </figure>
-<figure style="margin: 0;">
-<img src="{FC 頭像網址}" alt="{姓名} 水滸傳・天命之誓 FC" height="120" style="image-rendering: pixelated;">
+<figure class="kw-face">
+<img src="{FC 頭像網址}" alt="{姓名} 水滸傳・天命之誓 FC" height="120">
 <figcaption><kbd>水</kbd> FC</figcaption>
 </figure>
 </div>
