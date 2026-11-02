@@ -12,12 +12,11 @@ dateCreated: 2023-02-13T11:37:34.739Z
 
 光栄遊戲百科事典（[koei.wiki](https://koei.wiki/)）的內容 repo：光榮歷史模擬遊戲的人物、地點、用語與遊戲資料。
 
-## 發布方式
+## 網站與 repo
 
-- 站台是 Wiki.js 2.x，從本 repo 的 `main` **單向拉取**（後台 Git 儲存的 Sync Direction 是「Pull from target」）：push 到 `main` 就會上線。git 是唯一正本，**不要在網頁上編輯**：網頁編輯只會 commit 在 Wiki.js 的本地 clone，不會推回 GitHub，之後 push 同一頁時會卡在 rebase 衝突（2026-11-03 曾因此停住同步）。
-- `.md` 都會被匯入成頁面。不想上站的文件用 `.mkdn`（凡例、決策紀錄、模板、資料說明），或在 front matter 寫 `published: false`。
-- 改名或刪除 `.md` 不會自動刪掉站上的頁面，要到後台手動刪除（會出現 `pathspec ... did not match` 錯誤，可忽略）。
-- 站台 CSS 的正本是 `assets/wikijs/theme.css`，貼在後台「管理 → 主題 → Code Injection → CSS Override」。條目只寫 `kw-*` class，不寫 `style`。
+- 網站以 [Wiki.js](https://js.wiki/) 架設，內容從本 repo 的 `main` 同步，git 是正本。
+- `.md` 會成為網站頁面；不上站的文件（凡例、決策紀錄、模板、資料說明）用 `.mkdn`，或在 front matter 寫 `published: false`。
+- 網站樣式的正本是 `assets/wikijs/theme.css`。條目只寫 `kw-*` class，不寫 `style`。
 
 ## 目錄
 
@@ -38,7 +37,7 @@ dateCreated: 2023-02-13T11:37:34.739Z
 | 範圍 | 腳本 | 資料 |
 | :--- | :--- | :--- |
 | 三國人物 | `scripts/build_sanguo_mapping.py` → `scripts/build_sanguo_entries.py` | 頭像：kaodata（`img.simagame.me`）；能力值、遊戲列傳：kaodata-re 匯出；說明見 `assets/data/sanguo/README.mkdn` |
-| 水滸人物 | `scripts/build_suikoden_mapping.py`、`scripts/suikoden_bios.py` → `scripts/build_suikoden_entries.py` | 頭像：kaodata（`img.simagame.me`）；能力值：`遊戲/水滸傳・天命之誓/人物資料.md`；列傳：hikari Qwen 草稿；說明見 `assets/data/suikoden/README.mkdn` |
+| 水滸人物 | `scripts/build_suikoden_mapping.py`、`scripts/suikoden_bios.py` → `scripts/build_suikoden_entries.py` | 頭像：kaodata（`img.simagame.me`）；能力值：`遊戲/水滸傳・天命之誓/人物資料.md`；列傳：依小說原文與維基百科整理；說明見 `assets/data/suikoden/README.mkdn` |
 | 拿破崙城市 | `scripts/build_lempe_city_maps.py` | 大地圖與戰場地圖：famicom-re（`assets/maps/lempe/`） |
 
-列傳草稿由 hikari 上的 Qwen 依原文撰寫，須人工審核後才上站。
+部分列傳先由語言模型依原文與維基百科整理成草稿，經人工審核後才上站。
