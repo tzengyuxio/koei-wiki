@@ -31,3 +31,19 @@
 - `人物資料.md` 有幾個字和遊戲、小說都不同（如方腊、李云、湯窿、石遷、彭汜、寇威），姓名欄採小說寫法，備註記下原寫法
 - 施恩的座次依版本不同，可能排第 85 或第 93 位；本表依維基百科採 85
 - 「上青」「李懷」在 120 回本中查無此名，暫照遊戲寫法並標記待考
+
+## 列傳草稿
+
+`suikoden-bios.jsonl`：每人一行 `{"name","bio","sources":{"novel_chapters","wikipedia"},"model"}`，由 `scripts/suikoden_bios.py` 呼叫 hikari 上的 Qwen（thinking 模式）產生，依據 zh.wikisource 120 回本原文與 zh.wikipedia。
+
+- 原文依姓名與綽號挑回目；小說不寫全名的人（如「姓寇名烕」、梁中書），在腳本的 `NOVEL_KEYS` 補搜尋詞
+- 「上青」「李懷」查無原文，`bio` 留空並加 `note`，條目顯示「列傳待補」
+- 草稿須人工審核；改內容直接改 jsonl 再重產條目
+
+## 條目產生
+
+`scripts/build_suikoden_entries.py [--all | 名1 名2 ...] [--dry-run] [--force]` 依模板 `assets/person_suikoden_template.mkdn` 產生 `人物/水滸/*.md`：
+
+- 檔案不存在或還是 Wiki.js 空白頁時整頁產生；其他檔案只替換 `data:portraits`、`data:stats-pc98` 區塊（`--force` 才整頁重寫，會蓋掉手改）
+- 列傳的內文連結在產生時加上（jsonl 保持純文字）：其他水滸人物與梁山泊，每個目標只連第一次，長名優先；「上青」「李懷」不連，誤命中的詞（如「石寶塔」）列在腳本的 `PROTECTED`
+- 標籤：水滸, suikoden；108 星另加 一百零八星 與 天罡星／地煞星

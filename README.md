@@ -38,7 +38,7 @@ dateCreated: 2023-02-13T11:37:34.739Z
 | 範圍 | 腳本 | 資料 |
 | :--- | :--- | :--- |
 | 三國人物 | `scripts/build_sanguo_mapping.py` → `scripts/build_sanguo_entries.py` | 頭像：kaodata（`img.simagame.me`）；能力值、遊戲列傳：kaodata-re 匯出；說明見 `assets/data/sanguo/README.mkdn` |
-| 水滸人物 | `scripts/build_suikoden_mapping.py`、`scripts/suikoden_bios.py` | 對照表與列傳草稿；說明見 `assets/data/suikoden/README.mkdn` |
+| 水滸人物 | `scripts/build_suikoden_mapping.py`、`scripts/suikoden_bios.py` → `scripts/build_suikoden_entries.py` | 頭像：kaodata（`img.simagame.me`）；能力值：`遊戲/水滸傳・天命之誓/人物資料.md`；列傳：hikari Qwen 草稿；說明見 `assets/data/suikoden/README.mkdn` |
 | 拿破崙城市 | `scripts/build_lempe_city_maps.py` | 大地圖與戰場地圖：famicom-re（`assets/maps/lempe/`） |
 
 列傳草稿由 hikari 上的 Qwen 依原文撰寫，須人工審核後才上站。

@@ -32,6 +32,8 @@ API = "https://hikari.tail81eb54.ts.net:4000/v1/chat/completions"
 UA = {"User-Agent": "koei-wiki-bios/1 (https://github.com/tzengyuxio/koei-wiki)"}
 NOVEL_TITLE = "水滸傳 (120回本)/第{:03d}回"
 NOVEL_BUDGET = 80000  # chars of novel text per person (~60k tokens, half of the 131k context)
+# Extra search keys for people the novel never names in full (e.g. 「姓寇名烕」).
+NOVEL_KEYS = {"寇烕": ["名烕"], "何玄通": ["法諱玄通"], "梁世傑": ["梁中書"]}
 
 SYSTEM = """你是《水滸傳》百科的編輯，替人物條目撰寫「列傳」。
 規則：
@@ -176,7 +178,7 @@ def main() -> None:
 
     for name in names:
         row = rows[name]
-        keys = [name] + ([row["綽號"]] if row["綽號"] else [])
+        keys = [name] + ([row["綽號"]] if row["綽號"] else []) + NOVEL_KEYS.get(name, [])
         chapters = pick_chapters(novel, keys)
         wiki_title, wiki_text = wiki_extract(name)
         facts = f"姓名：{name}\n綽號：{row['綽號'] or '無'}\n星號：{row['星號'] or '非一百零八星'}\n梁山座次：{row['梁山座次'] or '無'}"
