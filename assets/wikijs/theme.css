@@ -1,6 +1,6 @@
 /*
  * koei-wiki site CSS for Wiki.js.
- * Paste into Administration > Theme > Code Injection > CSS Override, wrapped in <style>...</style>.
+ * Paste into Administration > Theme > Code Injection > CSS Override, wrapped in a style element (open and close tags).
  * This file is the source of truth; the admin field is a copy.
  *
  * Entries only carry class names (written by scripts/build_*_entries.py); all layout lives here,
@@ -68,5 +68,38 @@
 
 .contents .kw-stats table td,
 .contents .kw-stats table th {
+  text-align: center;
+}
+
+/* ---- Maps (L'Empereur city entries) ------------------------------------- */
+
+.contents .kw-map {
+  display: inline-block;
+  margin: 12px 16px 0 0;
+  vertical-align: top;
+  text-align: center;
+}
+
+.contents .kw-map img {
+  display: block;
+  image-rendering: pixelated;
+}
+
+/* The marker's left/top come from the entry (percent of the map); its size is one 8px tile. */
+.contents .kw-map-frame {
+  position: relative;
+}
+
+.contents .kw-map-marker {
+  position: absolute;
+  width: 3.5714%;  /* 8 / 224 */
+  height: 5.5556%; /* 8 / 144 */
+  outline: 3px solid #e00;
+  outline-offset: 1px;
+}
+
+.contents .kw-map figcaption {
+  margin-top: 2px;
+  font-size: 14px;
   text-align: center;
 }

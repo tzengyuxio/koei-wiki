@@ -193,7 +193,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 
 #### 站台 CSS class（三國、水滸人物條目）
 
-三國、水滸人物條目的頭像與能力表只寫 class，不寫 `style`；版面全部定義在 `assets/wikijs/theme.css`，貼在 Wiki.js 後台「管理 → 主題 → Code Injection → CSS Override」（前後加 `<style>`）。要改對齊、間距、尺寸只改 CSS，不必改動 Markdown 檔，也不產生大量 commit。該檔是正本，後台欄位是複本，兩邊要一起改。
+三國、水滸人物條目的頭像與能力表、拿破崙城市條目的地圖只寫 class，不寫 `style`；版面全部定義在 `assets/wikijs/theme.css`，貼在 Wiki.js 後台「管理 → 主題 → Code Injection → CSS Override」（前後加 `<style>`）。要改對齊、間距、尺寸只改 CSS，不必改動 Markdown 檔，也不產生大量 commit。該檔是正本，後台欄位是複本，兩邊要一起改。
 
 | class | 用途 |
 | :--- | :--- |
@@ -202,6 +202,8 @@ dateCreated: 2026-02-16T12:00:00.000Z
 | `kw-face` | 單張頭像（`<figure>`），caption 置中 |
 | `kw-absent` | 未登場的灰底格（96×120，中間寫「未登場」） |
 | `kw-stats` | 能力表的 `<details>`，表格置中 |
+| `kw-map` | 地圖（`<figure>`），放大 3 倍、像素不模糊 |
+| `kw-map-frame`／`kw-map-marker` | 大地圖上標示城市的紅框；位置以百分比寫在條目（`style="left/top"`），大小在 CSS |
 
 `<img>` 仍保留 `width`／`height` 屬性，CSS 沒載入時版面不至於跑掉。
 
