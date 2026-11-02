@@ -12,7 +12,8 @@ Inputs:
   ~/works/kaodata-re/export/koei-wiki/stats/<dataset>.jsonl  optional, ID-keyed stats
   ~/.cache/koei-wiki/kaodata-faces/        index.json cache (build_sanguo_mapping.py)
 
-Usage: scripts/build_sanguo_entries.py [--all | 名1 名2 ...] [--dry-run]
+Usage: scripts/build_sanguo_entries.py [--all | 名1 名2 ...] [--dry-run] [--force]
+  --force  rewrite whole files even if they are no longer stubs (loses hand edits)
 """
 
 import csv
@@ -27,21 +28,27 @@ DATA = ROOT / "assets/data/sanguo"
 OUT_DIR = ROOT / "人物/三國"
 STATS_DIR = Path.home() / "works/kaodata-re/export/koei-wiki/stats"  # not in git (kaodata-re export)
 FACES = Path.home() / ".cache/koei-wiki/kaodata-faces"
+TRAITS_CSV = Path.home() / "works/kaodata-re/MISC_TABLE/ROTK - Character Stats & Abilities.csv"
 IMG = "https://img.simagame.me/kaodata/faces/{}/{}.png"
 
-MAINLINE = [  # (dataset, kbd label, title for alt text)
-    ("san1-pc98", "三1", "三國志"), ("san2-pc98", "三2", "三國志II"),
-    ("san3-pc98", "三3", "三國志III"), ("san4pk-pc98", "三4", "三國志IV"),
-    ("san5pk-pc98", "三5", "三國志V"), ("san6pk-win", "三6", "三國志VI"),
-    ("san7pk-win", "三7", "三國志VII"), ("san8pk-win", "三8", "三國志VIII"),
-    ("san9pk-win", "三9", "三國志IX"), ("san10pk-win", "三10", "三國志X"),
-    ("san11pk-win", "三11", "三國志11"), ("san12pk-win", "三12", "三國志12"),
-    ("san13pk-win", "三13", "三國志13"), ("san14pk-win", "三14", "三國志14"),
+# (dataset, kbd label, portrait caption numeral as in the games' own galleries)
+MAINLINE = [
+    ("san1-pc98", "三1", "I"), ("san2-pc98", "三2", "II"), ("san3-pc98", "三3", "III"),
+    ("san4pk-pc98", "三4", "IV"), ("san5pk-pc98", "三5", "V"), ("san6pk-win", "三6", "VI"),
+    ("san7pk-win", "三7", "VII"), ("san8pk-win", "三8", "VIII"), ("san9pk-win", "三9", "IX"),
+    ("san10pk-win", "三10", "X"), ("san11pk-win", "三11", "11"), ("san12pk-win", "三12", "12"),
+    ("san13pk-win", "三13", "13"), ("san14pk-win", "三14", "14"),
 ]
-KOEI = [  # (dataset, caption); order as decided with the user
-    ("san1-fc", "三國志（FC）"), ("san2-fc", "三國志II（FC）"),
-    ("san1-sfc", "超級三國志（SFC）"), ("san2-sfc", "超級三國志II（SFC）"),
-    ("san1-x68", "三國志（X68000）"), ("eiketsu-pc98", "三國志英傑傳（PC-98）"),
+MAINLINE_NOTE = "I–V 為 PC-98 版，VI–14 為 Windows 版；IV 以後為威力加強版。"
+# (dataset, title, platform): grouped by original game (I, II, 英傑傳), then by the
+# port's Japanese release date (kaodata src/ui/releases.ts).
+KOEI = [
+    ("san1-fc", "三國志", "FC"),            # 1988-10-30
+    ("san1-x68", "三國志", "X68000"),       # 1988-12-09
+    ("san1-sfc", "超級三國志", "SFC"),      # 1994-08-12
+    ("san2-fc", "三國志II", "FC"),          # 1990-11-02
+    ("san2-sfc", "超級三國志II", "SFC"),    # 1991-09-15
+    ("eiketsu-pc98", "三國志英傑傳", "PC-98"),  # 1995-02
 ]
 STATS = ["統率", "武力", "智力", "政治", "魅力"]
 # Stats a generation does not have (template's pre-filled —).
@@ -51,17 +58,24 @@ NO_STAT = {"三1": {"統率", "政治"}, "三2": {"統率", "政治"}, "三3": {
 # Game-native stat names -> main-table names.
 STAT_ALIAS = {"知力": "智力", "カリスマ": "魅力"}
 
-CELL_IMG = ('<figure style="margin: 0;">\n<img src="{src}" alt="{name} {title}" width="96" height="120" '
+CAPTION = '<figcaption style="text-align: center;">{}</figcaption>'
+CELL_IMG = ('<figure style="margin: 0;">\n<img src="{src}" alt="{name} 三國志{num}" width="96" height="120" '
             'style="display: block; object-fit: contain; image-rendering: pixelated;">\n'
-            "<figcaption><kbd>{kbd}</kbd></figcaption>\n</figure>")
-CELL_EMPTY = ('<figure style="margin: 0;">\n<div style="width: 96px; height: 120px; background: #eee;"></div>\n'
-              "<figcaption><kbd>{kbd}</kbd> 未登場</figcaption>\n</figure>")
+            + CAPTION.format("{num}") + "\n</figure>")
+CELL_EMPTY = ('<figure style="margin: 0;">\n<div style="display: flex; align-items: center; justify-content: center; '
+              'width: 96px; height: 120px; background: #eee; color: #888;">未登場</div>\n'
+              + CAPTION.format("{num}") + "\n</figure>")
+# margin-top: Wiki.js h3 has no bottom margin, so the images would touch the heading.
+GRID = ('<div style="display: grid; grid-template-columns: repeat(7, 96px); gap: 12px 8px; '
+        'margin-top: 12px; overflow-x: auto;">')
+FLEX = '<div style="display: flex; align-items: flex-end; gap: 12px 8px; flex-wrap: wrap; margin-top: 12px;">'
+
 
 
 def faces_index() -> dict[str, set[int]]:
     """dataset -> IDs that have at least one face."""
     out = {}
-    for ds, _ in [(d, 0) for d, *_ in MAINLINE] + KOEI:
+    for ds in [d for d, *_ in MAINLINE] + [d for d, *_ in KOEI]:
         rows = json.loads((FACES / f"{ds}.json").read_text(encoding="utf-8"))
         out[ds] = {r["id"] for r in rows if r.get("faces")}
     return out
@@ -77,6 +91,17 @@ def load_stats() -> dict[str, dict[int, dict]]:
     return out
 
 
+def load_traits() -> dict[str, list[str]]:
+    """wiki name -> extra tags (女性, 異民族 and the people's name) from the kaodata-re table."""
+    out = {}
+    for r in csv.DictReader(open(TRAITS_CSV, encoding="utf-8")):
+        wiki = r["姓名"].replace(" (", "_").rstrip(")")
+        tags = (["女性"] if r["女"] else []) + (["異民族", r["異民族"]] if r["異民族"] else [])
+        if tags:
+            out[wiki] = tags
+    return out
+
+
 def first_id(cell: str) -> int | None:
     return int(cell.split("|")[0]) if cell else None
 
@@ -87,28 +112,26 @@ def block(name: str, body: str) -> str:
 
 def portraits_mainline(name: str, row: dict, faces: dict) -> str:
     cells = []
-    for ds, kbd, title in MAINLINE:
+    for ds, _, num in MAINLINE:
         i = first_id(row[ds])
         if i is not None and i in faces[ds]:
-            cells.append(CELL_IMG.format(src=IMG.format(ds, i), name=name, title=title, kbd=kbd))
+            cells.append(CELL_IMG.format(src=IMG.format(ds, i), name=name, num=num))
         else:
-            cells.append(CELL_EMPTY.format(kbd=kbd))
-    grid = '<div style="display: grid; grid-template-columns: repeat(7, 96px); gap: 12px 8px; overflow-x: auto;">'
-    return block("portraits-mainline", grid + "\n" + "\n".join(cells) + "\n</div>")
+            cells.append(CELL_EMPTY.format(num=num))
+    return block("portraits-mainline", GRID + "\n" + "\n".join(cells) + "\n</div>")
 
 
 def portraits_koei(name: str, row: dict, faces: dict) -> str | None:
     cells = []
-    for ds, caption in KOEI:
+    for ds, title, platform in KOEI:
         i = first_id(row[ds])
         if i is not None and i in faces[ds]:
-            cells.append(f'<figure style="margin: 0;">\n<img src="{IMG.format(ds, i)}" alt="{name} {caption}" '
-                         f'height="120" style="image-rendering: pixelated;">\n'
-                         f"<figcaption>{caption}</figcaption>\n</figure>")
+            cells.append(f'<figure style="margin: 0;">\n<img src="{IMG.format(ds, i)}" alt="{name} {title}（{platform}）" '
+                         f'height="120" style="display: block; margin: 0 auto; image-rendering: pixelated;">\n'
+                         + CAPTION.format(f"{title}<br>{platform}") + "\n</figure>")
     if not cells:
         return None
-    flex = '<div style="display: flex; align-items: flex-end; gap: 12px 8px; flex-wrap: wrap;">'
-    return block("portraits-koei", flex + "\n" + "\n".join(cells) + "\n</div>")
+    return block("portraits-koei", FLEX + "\n" + "\n".join(cells) + "\n</div>")
 
 
 def stats_main(row: dict, stats: dict) -> str:
@@ -138,13 +161,13 @@ def title_of(wiki: str) -> str:
     return f"{base} ({tag})" if tag else base
 
 
-def render_new(wiki: str, row: dict, bio: dict, extra: dict, blocks: dict, old: str) -> str:
+def render_new(wiki: str, row: dict, bio: dict, extra: dict, traits: list, blocks: dict, old: str) -> str:
     name = wiki.partition("_")[0]
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     created = m.group(1) if (m := re.search(r"^dateCreated: (\S+)", old, re.M)) else now
     faction = (bio or {}).get("faction") or extra.get("勢力") or row["勢力"]
     source = extra.get("出典", "")
-    tags = ", ".join(["三國"] + [s for s in re.split("[、,]", source) if s] + ([faction] if faction else []))
+    tags = ", ".join(["三國"] + [s for s in re.split("[、,]", source) if s] + ([faction] if faction else []) + traits)
     text = (bio or {}).get("bio", "").strip()
     desc = plain(text.split("。")[0]) + "。" if text else ""
     out = ["---", f"title: {title_of(wiki)}", f'description: "{desc}"', "published: true",
@@ -156,10 +179,10 @@ def render_new(wiki: str, row: dict, bio: dict, extra: dict, blocks: dict, old: 
         out.append(f"| 所屬 | {faction} |")
     if source:
         out.append(f"| 出典 | {source} |")
-    out += ["", "## 人物畫像", "", "### 正傳", "", blocks["portraits-mainline"]]
+    out += ["", "## 人物畫像", "", "### 正傳", "", MAINLINE_NOTE, "", blocks["portraits-mainline"]]
     if "portraits-koei" in blocks:
         out += ["", "### 光榮其他作品", "", blocks["portraits-koei"]]
-    out += ["", "## 遊戲數值", "", blocks["stats-main"], "", "## 列傳", "", text or "{列傳}"]
+    out += ["", "## 遊戲數值", "", blocks["stats-main"], "", "## 列傳", "", text or "<!-- 列傳待補 -->"]
     refs = (bio or {}).get("refs") or []
     if refs:
         out += ["", "## References", ""] + [f"- [{name} - 维基百科]({u})" for u in refs]
@@ -181,7 +204,7 @@ def main() -> None:
             for line in open(DATA / "sanguo-bios.jsonl", encoding="utf-8") if line.strip()}
     new = {r["wiki名"]: r for r in csv.DictReader(open(DATA / "persons-new.csv", encoding="utf-8"))}
     names = list(mapping) if "--all" in sys.argv else args
-    faces, stats = faces_index(), load_stats()
+    faces, stats, traits = faces_index(), load_stats(), load_traits()
     counts = {"new": 0, "updated": 0, "unchanged": 0}
     for wiki in names:
         row = mapping[wiki]
@@ -192,8 +215,9 @@ def main() -> None:
             blocks["portraits-koei"] = k
         path = OUT_DIR / f"{wiki}.md"
         old = path.read_text(encoding="utf-8") if path.exists() else ""
-        if not old or "Your content here" in old:
-            text, kind = render_new(wiki, row, bios.get(wiki), new.get(wiki, {}), blocks, old), "new"
+        if not old or "Your content here" in old or "--force" in sys.argv:
+            text = render_new(wiki, row, bios.get(wiki), new.get(wiki, {}), traits.get(wiki, []), blocks, old)
+            kind = "new"
         else:
             text = replace_blocks(old, blocks)
             kind = "updated" if text != old else "unchanged"
