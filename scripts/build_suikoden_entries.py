@@ -31,6 +31,7 @@ DATA = ROOT / "assets/data/suikoden"
 OUT_DIR = ROOT / "人物/水滸"
 STATS_MD = ROOT / "遊戲/水滸傳・天命之誓/人物資料.md"
 IMG = "https://img.simagame.me/kaodata/faces/suikoden-{}/{}.png"
+TITLE = "水滸傳・天命之誓"
 PLATFORMS = [("pc88", "PC-88"), ("pc98", "PC-98"), ("fc", "FC")]  # release order
 STAT_COLS = ["年齡", "性別", "身份", "體力", "能耐", "技能", "智慧", "忠義", "仁愛", "勇氣", "舵"]
 # Names never auto-linked: not found in the 120-chapter novel, and short enough to
@@ -56,8 +57,8 @@ def load_stats() -> dict[int, dict]:
 
 def portraits(name: str, row: dict) -> str:
     cells = [f'<figure class="kw-face">\n<img src="{IMG.format(p, row[p + "_id"])}" '
-             f'alt="{name} 水滸傳・天命之誓 {label}" height="120">\n'
-             f"<figcaption><kbd>水</kbd> {label}</figcaption>\n</figure>"
+             f'alt="{name} {TITLE}（{label}）" height="120">\n'
+             f"<figcaption>{TITLE}<br>{label}</figcaption>\n</figure>"
              for p, label in PLATFORMS if row[p + "_id"]]
     return block("portraits", '<div class="kw-portraits">\n' + "\n".join(cells) + "\n</div>")
 
