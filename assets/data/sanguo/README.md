@@ -7,7 +7,7 @@
 | `persons-unmatched.csv` | 遊戲裡有、但沒有對上 wiki 條目的人物，供人工檢查 | 同上 |
 | `persons-overrides.csv` | 人工指定的對應（同名人物、特殊寫法），欄位 `dataset,id,wiki名,備註`；`wiki名` 填 `-` 表示不是三國人物、不對應 | 手動維護 |
 | `persons-new.csv` | 還沒有 wiki 檔案的三國人物，欄位 `wiki名,勢力,出典,備註`；script 會把它們當成條目一起對應 | 手動維護 |
-| `persons-excluded.csv` | 刻意不對應的遊戲人物（其他時代、遊戲原創、泛稱），欄位 `dataset,id,類別,備註` | 手動維護 |
+| `persons-excluded.csv` | 刻意不對應的遊戲人物（其他時代、遊戲原創、泛稱、神仙），欄位 `dataset,id,類別,備註` | 手動維護 |
 
 ## persons-mapping.csv
 
@@ -26,3 +26,13 @@ kaodata 的 `index.json`（`https://img.simagame.me/kaodata/faces/<資料集>/in
 4. 對上唯一一個 wiki 條目就寫入；對上多個（同名人物）或對不上，寫進 `persons-unmatched.csv`。
 
 `index.json` 快取在 `~/.cache/koei-wiki/kaodata-faces/`，加 `--refresh` 重新下載。
+
+## 遊戲內列傳（不進版控）
+
+kaodata-re 從繁中版遊戲抽出的武將列傳，放在 `~/works/kaodata-re/export/koei-wiki/<資料集>.jsonl`，只在本機，因為內容是遊戲文字。寫列傳時當作資料來源之一。
+
+- 格式：一行一段，`{"dataset","id","name","lang":"zh-Hant","kind","text"}`。`kind` 是 `簡介`、`演義`、`史實` 或 `單段`；遊戲寫「無記述」的段不輸出。
+- 資料集：`san4pk-dos`（454 人）、`san5pk-dos`（500）、`san6pk-win`（520）、`san13pk-win`（821）、`san14pk-win`（1001）。三4、三5 是單段，三13、三14 大多分簡介、演義、史實三段。
+- 對應：用 `id` 對 `persons-mapping.csv`。三4、三5 的 dos 版 ID 和 mapping 欄位 `san4pk-pc98`、`san5pk-pc98` 相同，已逐一比對過。沒對上的只有被排除的人物：三4、三5 的左賢王，三13 的 14 位古武將，三14 的英布。
+- 重產：在 kaodata-re 的 `dekoei/` 下執行 `../.venv/bin/python dekoei.py biography <資料集> --game-dir ../games/<資料集> --out ../export/koei-wiki/<資料集>.jsonl`。
+- 注意：三4、三5 的原文是光榮台灣內碼，三4 的「．」已改成「。」；三13、三14 的外字是依上下文判斷的。
