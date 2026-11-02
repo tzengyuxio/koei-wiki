@@ -139,7 +139,7 @@ def length_for(row: dict) -> str:
     return "約 300 字；資料少就如實簡短"
 
 
-def ask_qwen(system: str, user: str, thinking: bool) -> tuple[str, dict]:
+def ask_qwen(system: str, user: str, thinking: bool, max_tokens: int = 28000) -> tuple[str, dict]:
     key = subprocess.run(
         ["security", "find-generic-password", "-s", "hikari-litellm-koei-wiki", "-a",
          subprocess.run(["id", "-un"], capture_output=True, text=True).stdout.strip(), "-w"],
@@ -147,7 +147,7 @@ def ask_qwen(system: str, user: str, thinking: bool) -> tuple[str, dict]:
     ).stdout.strip()
     body = {
         "model": "qwen-tw",
-        "max_tokens": 28000 if thinking else 3000,  # thinking shares this budget
+        "max_tokens": max_tokens if thinking else 3000,  # thinking shares this budget
         "chat_template_kwargs": {"enable_thinking": thinking},
         "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
     }

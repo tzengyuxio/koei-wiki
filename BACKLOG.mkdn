@@ -14,4 +14,4 @@
 
 ## 網站
 
-- [ ] 評估升級 Wiki.js 3 — 3.0.1（2026-11-01）起為正式版，要升就直接上 3.0.2（含安全修正）。不能原地升級：另裝 3.x、2.x 匯出 `.wkbackup` 再匯入；限 PostgreSQL 17／18、Node.js 26；目前站台是 Node.js 18.17.0、PostgreSQL 15.4，兩者都要升大版本（PostgreSQL 要另做資料庫升級，如 pg_upgrade 或 dump／restore；3.x 是匯入 `.wkbackup` 到新站，可以直接開新的 PG 17／18）。git 同步、CSS Override 等模組設定不會搬過去，git 同步重設時先單向或接測試分支，避免雙向回寫上千檔；`{.tabset}` 會變一般文字（`遊戲/拿破崙.md`、`遊戲/項劉記.md`）；`kw-*` class 與 `style` 是否保留要先用測試站驗證。先架測試站驗證，不急著切換（2026-11-02）
+- [ ] 評估升級 Wiki.js 3 — 3.0.1（2026-11-01）起為正式版，要升就直接上 3.0.2（含安全修正）。不能原地升級：另裝 3.x、2.x 匯出 `.wkbackup` 再匯入；限 PostgreSQL 17／18、Node.js 26；目前站台是 Node.js 18.17.0、PostgreSQL 15.4，兩者都要升大版本（PostgreSQL 要另做資料庫升級，如 pg_upgrade 或 dump／restore；3.x 是匯入 `.wkbackup` 到新站，可以直接開新的 PG 17／18）。git 同步、CSS Override 等模組設定不會搬過去，git 同步重設時先單向或接測試分支，避免雙向回寫上千檔；`{.tabset}` 會變一般文字（`遊戲/拿破崙.md`、`遊戲/項劉記.md`）；`kw-*` class 與 `style` 依 3.0.2 原始碼會保留，但 `<details open>` 的 `open` 會被拿掉（能力表預設收合），仍要用測試站驗證；**3.x 只認 YAML 陣列形式的 `tags`**，現行的 `tags: a, b` 會被讀成沒有標籤，且雙向同步會改寫全部頁面的 front matter，切換前先在 repo 把 tags 轉成陣列；根目錄 README 會被當成首頁。先架測試站驗證，不急著切換。另：vault ADR-005（司馬Game 統一資料平台）以「v3 rewrite 停滯」為由排除 Wiki.js，3.0 已正式發布，可一併重新評估；koei.wiki 與開放編輯計畫的關係見 vault ADR-006（2026-11-02）

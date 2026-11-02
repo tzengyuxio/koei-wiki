@@ -14,7 +14,7 @@ dateCreated: 2023-02-13T11:37:34.739Z
 
 ## 發布方式
 
-- 站台是 Wiki.js 2.x，和本 repo 的 `main` **雙向 git 同步**：push 到 `main` 就會上線；在網頁上編輯也會 commit 回 repo，動手前先 `git pull`。
+- 站台是 Wiki.js 2.x，從本 repo 的 `main` **單向拉取**（後台 Git 儲存的 Sync Direction 是「Pull from target」）：push 到 `main` 就會上線。git 是唯一正本，**不要在網頁上編輯**：網頁編輯只會 commit 在 Wiki.js 的本地 clone，不會推回 GitHub，之後 push 同一頁時會卡在 rebase 衝突（2026-11-03 曾因此停住同步）。
 - `.md` 都會被匯入成頁面。不想上站的文件用 `.mkdn`（凡例、決策紀錄、模板、資料說明），或在 front matter 寫 `published: false`。
 - 改名或刪除 `.md` 不會自動刪掉站上的頁面，要到後台手動刪除（會出現 `pathspec ... did not match` 錯誤，可忽略）。
 - 站台 CSS 的正本是 `assets/wikijs/theme.css`，貼在後台「管理 → 主題 → Code Injection → CSS Override」。條目只寫 `kw-*` class，不寫 `style`。
