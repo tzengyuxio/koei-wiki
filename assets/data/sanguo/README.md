@@ -27,6 +27,17 @@ kaodata 的 `index.json`（`https://img.simagame.me/kaodata/faces/<資料集>/in
 
 `index.json` 快取在 `~/.cache/koei-wiki/kaodata-faces/`，加 `--refresh` 重新下載。
 
+## 條目產生
+
+`scripts/build_sanguo_entries.py [--all | 名1 名2 ...] [--dry-run]` 依 `persons-mapping.csv` 產生 `人物/三國/*.md`：空殼（`Your content here`）或不存在的檔整份產生，其他檔只替換 `data:` 區塊（凡例 §10）。
+
+## 遊戲內能力值（不進版控）
+
+kaodata-re 匯出的正傳 14 代能力值，放在 `~/works/kaodata-re/export/koei-wiki/stats/<資料集>.jsonl`，一人一行 `{"dataset","id","name","stats":{能力名:值}}`，能力名照遊戲原文（「知力」「智力」都當智力，三1 的「カリスマ」當魅力）。
+
+- 數值是記錄裡的基礎值，會隨劇本變的人取第一個劇本，所以會和 `MISC_TABLE` 那份 CSV 有少數不同（例：三10 呂蒙）。
+- 重產：在 kaodata-re 的 `dekoei/` 下執行 `../.venv/bin/python dekoei.py stats-export <資料集> --game-dir ../games/<資料集> --out ../export/koei-wiki/stats/<資料集>.jsonl`。
+
 ## 遊戲內列傳（不進版控）
 
 kaodata-re 從繁中版遊戲抽出的武將列傳，放在 `~/works/kaodata-re/export/koei-wiki/<資料集>.jsonl`，只在本機，因為內容是遊戲文字。寫列傳時當作資料來源之一。
