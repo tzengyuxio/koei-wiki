@@ -156,7 +156,7 @@ def write_index(mapping: dict, stats: dict, dry: bool) -> None:
     if not old or "Your content here" in old:
         now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
         created = m.group(1) if (m := re.search(r"^dateCreated: (\S+)", old, re.M)) else now
-        text = "\n".join(["---", "title: 水滸人物", 'description: "《水滸傳》人物索引：梁山泊一百單八將與其他登場人物。"',
+        text = "\n".join(["---", "title: 水滸", 'description: "《水滸傳》人物索引：梁山泊一百單八將與其他登場人物。"',
                           "published: true", f"date: {now}", "tags: 水滸, suikoden", "editor: markdown",
                           f"dateCreated: {created}", "---", "",
                           "《[水滸傳・天命之誓](/遊戲/水滸傳・天命之誓)》登場的 255 位人物，依梁山泊座次與身份分類。"

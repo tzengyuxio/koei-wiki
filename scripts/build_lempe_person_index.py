@@ -72,7 +72,7 @@ def main() -> None:
         now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
         created = m.group(1) if (m := re.search(r"^dateCreated: (\S+)", old, re.M)) else now
         text = "\n".join([
-            "---", "title: 拿破崙時代人物", 'description: "《拿破崙》登場人物索引，依國籍分類。"',
+            "---", "title: 拿破崙時代", 'description: "《拿破崙》登場人物索引，依國籍分類。"',
             "published: true", f"date: {now}", "tags: lempe", "editor: markdown", f"dateCreated: {created}",
             "---", "",
             f"《[拿破崙](/遊戲/拿破崙)》登場的 {len(people)} 位人物，依遊戲中的國籍分類；"

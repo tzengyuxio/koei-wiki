@@ -80,6 +80,12 @@
   text-align: center;
 }
 
+/* Hand-written entries (拿破崙, 項劉記) host 64x80 faces under /assets/faces/ and show them at 2-4x.
+   Index sheets are excluded: they are often shown smaller than their size, where nearest-neighbour looks ragged. */
+.contents img[src^="/assets/faces/"]:not([src*="INDEX"]):not([src*="index"]) {
+  image-rendering: pixelated;
+}
+
 .contents .kw-map img {
   display: block;
   image-rendering: pixelated;
