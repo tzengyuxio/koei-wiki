@@ -10,11 +10,15 @@ Usage: scripts/suikoden_bios.py 宋江 林沖 時遷 [--thinking] [--out FILE]
 Output: assets/data/suikoden/suikoden-bios.jsonl (one JSON per person; re-running
         a name replaces its line)
 Key:    Keychain service hikari-litellm-koei-wiki
+Env:    KOEI_LLM_API and KOEI_LLM_KEY_FILE override the endpoint and key (for running
+        on the model host itself, e.g. in tmux, without the Keychain)
 """
 
 import csv
 import json
+import os
 import re
+import signal
 import subprocess
 import sys
 import time
@@ -27,10 +31,11 @@ ROOT = Path(__file__).resolve().parent.parent
 MAPPING = ROOT / "assets/data/suikoden/suikoden-persons-mapping.csv"
 OUT = ROOT / "assets/data/suikoden/suikoden-bios.jsonl"
 CACHE = Path.home() / ".cache/koei-wiki/suikoden"
-API = "https://hikari.tail81eb54.ts.net:4000/v1/chat/completions"
+API = os.environ.get("KOEI_LLM_API", "https://hikari.tail81eb54.ts.net:4000/v1/chat/completions")
 # Wikimedia asks for a descriptive User-Agent; never put personal contact info here.
 UA = {"User-Agent": "koei-wiki-bios/1 (https://github.com/tzengyuxio/koei-wiki)"}
 NOVEL_TITLE = "水滸傳 (120回本)/第{:03d}回"
+DEADLINE = 1200  # seconds per request; the slowest normal one so far took ~300s
 NOVEL_BUDGET = 80000  # chars of novel text per person (~60k tokens, half of the 131k context)
 # Extra search keys for people the novel never names in full (e.g. 「姓寇名烕」).
 NOVEL_KEYS = {"寇烕": ["名烕"], "何玄通": ["法諱玄通"], "梁世傑": ["梁中書"]}
@@ -140,7 +145,8 @@ def length_for(row: dict) -> str:
 
 
 def ask_qwen(system: str, user: str, thinking: bool, max_tokens: int = 28000) -> tuple[str, dict]:
-    key = subprocess.run(
+    key_file = os.environ.get("KOEI_LLM_KEY_FILE")
+    key = Path(key_file).read_text().strip() if key_file else subprocess.run(
         ["security", "find-generic-password", "-s", "hikari-litellm-koei-wiki", "-a",
          subprocess.run(["id", "-un"], capture_output=True, text=True).stdout.strip(), "-w"],
         capture_output=True, text=True, check=True,
@@ -155,8 +161,18 @@ def ask_qwen(system: str, user: str, thinking: bool, max_tokens: int = 28000) ->
         API, data=json.dumps(body).encode(), method="POST",
         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
     )
-    with urllib.request.urlopen(req, timeout=1800) as r:
-        res = json.load(r)
+    # Hard deadline: the proxy sometimes keeps the connection open after the model has
+    # dropped the request, so the socket timeout never fires.
+    def give_up(*_):
+        raise TimeoutError(f"no response in {DEADLINE}s")
+
+    signal.signal(signal.SIGALRM, give_up)
+    signal.alarm(DEADLINE)
+    try:
+        with urllib.request.urlopen(req, timeout=1800) as r:
+            res = json.load(r)
+    finally:
+        signal.alarm(0)
     text = res["choices"][0]["message"]["content"]
     text = re.sub(r"<think>.*?</think>", "", text, flags=re.S).strip()
     return text, res.get("usage", {})

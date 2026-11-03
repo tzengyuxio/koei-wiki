@@ -17,11 +17,13 @@ Usage: scripts/sanguo_bios.py [--all | 名1 名2 ...] [--thinking] [--out FILE]
          (people with only one are kept for later), skipping names already in the output
 Output: assets/data/sanguo/sanguo-bios-qwen.jsonl (one JSON per person; re-running
         a name replaces its line)
-Key:    Keychain service hikari-litellm-koei-wiki
+Key:    Keychain service hikari-litellm-koei-wiki (KOEI_LLM_API / KOEI_LLM_KEY_FILE override,
+        see suikoden_bios.py); KAODATA_EXPORT overrides the export directory
 """
 
 import csv
 import json
+import os
 import re
 import sys
 import time
@@ -34,7 +36,8 @@ from suikoden_bios import ask_qwen, get_json  # noqa: E402  (same endpoint and H
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "assets/data/sanguo"
 OUT = DATA / "sanguo-bios-qwen.jsonl"
-EXPORT = Path.home() / "works/kaodata-re/export/koei-wiki"  # kaodata-re export, not in git
+# kaodata-re export, not in git
+EXPORT = Path(os.environ.get("KAODATA_EXPORT", Path.home() / "works/kaodata-re/export/koei-wiki"))
 CACHE = Path.home() / ".cache/koei-wiki/sanguo/wiki"
 # mapping column -> (export file, game title). PC-98 and DOS share character IDs.
 GAMES = [
