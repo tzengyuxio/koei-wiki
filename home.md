@@ -40,5 +40,9 @@ dateCreated: 2023-02-12T20:55:06.081Z
 - [2026 年更新履歷](/更新日誌/2026)
 - [2023 年更新履歷](/更新日誌/2023)
 
+## 追蹤我們
+
+想看更多光榮老遊戲的頭像、地圖與考據，歡迎追蹤 [司馬Game FB 粉專](https://www.facebook.com/simagame)。
+
 ---
 *Powered by Wiki.js*

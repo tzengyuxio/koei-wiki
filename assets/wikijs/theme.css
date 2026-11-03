@@ -128,6 +128,40 @@
   .contents ul.kw-cols { columns: 1; }
 }
 
+/* ---- Footer follow link (inserted by body.html) ------------------------- */
+
+/* .v-application footer: this CSS loads before Vuetify's, so a bare .v-footer loses to its align-items: center */
+.v-application footer.v-footer {
+  flex-wrap: wrap;
+  align-items: baseline; /* the link and "Powered by" differ in size; line up their text */
+  gap: 8px 16px;
+}
+
+.v-footer .kw-follow {
+  padding: 4px 12px;
+  border-radius: 16px;
+  background: #1877f2; /* Facebook blue */
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* Keep the link a plain inline element so its text sits on the line's baseline; only nudge the icon. */
+.v-footer .kw-follow svg {
+  vertical-align: -2px;
+  margin-right: 4px;
+}
+
+.v-footer .kw-follow:hover {
+  background: #166fe0;
+}
+
+/* Below Vuetify's lg breakpoint the sidebar collapses and Wiki.js shows fixed menu / back-to-top
+   buttons at the bottom left (16-105px), on top of the footer. */
+@media (max-width: 1263px) {
+  .v-application footer.v-footer { padding-left: 116px; } /* outrank Vuetify's .v-application .v-footer */
+}
+
 /* Hand-written entries (拿破崙, 項劉記) host 64x80 faces under /assets/faces/ and show them at 2-4x.
    Index sheets are excluded: they are often shown smaller than their size, where nearest-neighbour looks ragged. */
 .contents img[src^="/assets/faces/"]:not([src*="INDEX"]):not([src*="index"]) {

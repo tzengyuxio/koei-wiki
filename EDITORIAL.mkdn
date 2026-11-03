@@ -204,8 +204,11 @@ dateCreated: 2026-02-16T12:00:00.000Z
 | `kw-stats` | 能力表的 `<details>`，表格置中 |
 | `kw-map` | 地圖（`<figure>`），放大 3 倍、像素不模糊 |
 | `kw-map-frame`／`kw-map-marker` | 大地圖上標示城市的紅框；位置以百分比寫在條目（`style="left/top"`），大小在 CSS |
+| `kw-cols` | 索引頁的長清單分三欄（寫在清單下一行的 `{.kw-cols}`）；`kw-seat` 座次、`kw-note` 灰字附註 |
 
 `<img>` 仍保留 `width`／`height` 屬性，CSS 沒載入時版面不至於跑掉。
+
+每頁頁尾的「追蹤 司馬Game 粉專」連結由 `assets/wikijs/body.html` 加上，貼在同一頁的「Body HTML Injection」；樣式（`kw-follow`）也在 `theme.css`。同樣是 repo 為正本、後台為複本。
 
 #### 頭像 caption
 
