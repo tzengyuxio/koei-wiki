@@ -15,6 +15,7 @@ Inputs:
   遊戲/水滸傳・天命之誓/人物資料.md                   PC-98 stats by 遊戲ID
 
 Usage: scripts/build_suikoden_entries.py [--all | 名1 名2 ...] [--dry-run] [--force]
+  --all    also writes the person index 人物/水滸/home.md (data:index block)
   --force  rewrite whole files even if they are no longer stubs (loses hand edits)
 """
 
@@ -121,6 +122,52 @@ def render_new(row: dict, bio: dict, blocks: dict, targets: dict, old: str) -> s
     return "\n".join(out) + "\n"
 
 
+def index_block(mapping: dict, stats: dict) -> str:
+    """Person index for 人物/水滸/home.md: 天罡, 地煞, women, then everyone else by in-game role."""
+    def link(r: dict) -> str:
+        return r["wiki名"] if r["wiki名"] in NO_LINK else f"[{r['姓名']}](/人物/水滸/{r['wiki名']})"
+
+    def role(r: dict) -> dict:
+        return stats[int(r["遊戲ID"])]
+
+    rows = list(mapping.values())
+    out = []
+    for group in ("天罡", "地煞"):
+        members = sorted((r for r in rows if r["天罡地煞"] == group), key=lambda r: int(r["梁山座次"]))
+        out += [f"## {group}星（{len(members)} 人）", "", "| 座次 | 星號 | 綽號 | 姓名 |", "| ---: | :--- | :--- | :--- |"]
+        out += [f"| {r['梁山座次']} | {r['星號']} | {r['綽號']} | {link(r)} |" for r in members]
+        out.append("")
+    women = sorted((r for r in rows if role(r)["性別"] == "女"), key=lambda r: int(r["梁山座次"] or 999))
+    out += [f"## 女性角色（{len(women)} 人）", "", "| 姓名 | 綽號 | 座次 | 遊戲中的身份 |", "| :--- | :--- | ---: | :--- |"]
+    out += [f"| {link(r)} | {r['綽號']} | {r['梁山座次']} | {role(r)['身份']} |" for r in women]
+    others = [r for r in rows if not r["天罡地煞"]]
+    by_role: dict[str, list] = {}
+    for r in others:
+        by_role.setdefault(role(r)["身份"], []).append(link(r))
+    out += ["", f"## 其他人物（{len(others)} 人）", "", "依遊戲中的身份分類。", ""]
+    out += [f"- **{k}**：{'、'.join(v)}" for k, v in sorted(by_role.items(), key=lambda kv: -len(kv[1]))]
+    return block("index", "\n".join(out))
+
+
+def write_index(mapping: dict, stats: dict, dry: bool) -> None:
+    path = OUT_DIR / "home.md"
+    old = path.read_text(encoding="utf-8") if path.exists() else ""
+    body = index_block(mapping, stats)
+    if not old or "Your content here" in old:
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+        created = m.group(1) if (m := re.search(r"^dateCreated: (\S+)", old, re.M)) else now
+        text = "\n".join(["---", "title: 水滸人物", 'description: "《水滸傳》人物索引：梁山泊一百單八將與其他登場人物。"',
+                          "published: true", f"date: {now}", "tags: 水滸, suikoden", "editor: markdown",
+                          f"dateCreated: {created}", "---", "",
+                          "《[水滸傳・天命之誓](/遊戲/水滸傳・天命之誓)》登場的 255 位人物，依梁山泊座次與身份分類。"
+                          "遊戲數值一覽見[人物資料](/遊戲/水滸傳・天命之誓/人物資料)。", "", body]) + "\n"
+    else:
+        text = replace_blocks(old, {"index": body})
+    if not dry and text != old:
+        path.write_text(text, encoding="utf-8")
+    print("index", "unchanged" if text == old else "written")
+
+
 def replace_blocks(text: str, blocks: dict) -> str:
     for key, body in blocks.items():
         pat = re.compile(rf"<!-- data:{key} begin -->.*?<!-- data:{key} end -->", re.S)
@@ -154,6 +201,8 @@ def main() -> None:
         if not dry and text != old:
             path.write_text(text, encoding="utf-8")
     print(counts)
+    if "--all" in sys.argv:
+        write_index(mapping, stats, dry)
 
 
 if __name__ == "__main__":

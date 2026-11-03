@@ -1,9 +1,350 @@
 ---
-title: 人物
-description: 
+title: 拿破崙時代人物
+description: "《拿破崙》登場人物索引，依國籍分類。"
 published: true
-date: 2023-04-13T23:58:48.207Z
-tags: 
+date: 2026-11-03T13:05:20.000Z
+tags: lempe
 editor: markdown
 dateCreated: 2023-04-13T23:58:48.207Z
 ---
+
+《[拿破崙](/遊戲/拿破崙)》登場的 260 位人物，依遊戲中的國籍分類；條目名稱採遊戲中文版譯名。遊戲數值一覽見[人物資料](/遊戲/拿破崙/人物資料)。
+
+<!-- data:index begin -->
+## [法蘭西](/用語/法蘭西)（60 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 0 | [拿破崙](/人物/拿破崙時代/拿破崙) | 拿破崙·波拿巴 | Napoléon Bonaparte |
+| 1 | [喬斯福](/人物/拿破崙時代/喬斯福) | 約瑟夫·波拿巴 | Joseph Bonaparte |
+| 2 | [魯西恩](/人物/拿破崙時代/魯西恩) | 呂西安·波拿巴 | Lucien Bonaparte |
+| 3 | [路易斯 (法蘭西)](/人物/拿破崙時代/路易斯_法蘭西) | 路易·波拿巴 | Louis Bonaparte |
+| 4 | [哲羅姆](/人物/拿破崙時代/哲羅姆) | 熱羅姆·波拿巴 | Jérôme Bonaparte |
+| 5 | [尤金](/人物/拿破崙時代/尤金) | 歐仁·德·博阿尔內 | Eugène de Beauharnais |
+| 6 | [塞律里埃](/人物/拿破崙時代/塞律里埃) | 讓-馬蒂厄-菲利貝爾·塞律里埃 | Jean-Mathieu-Philibert Sérurier |
+| 7 | [卡爾諾](/人物/拿破崙時代/卡爾諾) | 拉扎爾·卡諾 | Lazare Carnot |
+| 8 | [伯奇爾](/人物/拿破崙時代/伯奇爾) | 路易-亞歷山大·貝爾蒂埃 | Louis-Alexandre Berthier |
+| 9 | [脫利蘭](/人物/拿破崙時代/脫利蘭) | 夏爾·莫里斯·德·塔列朗-佩里戈爾 | Charles Maurice de Talleyrand-Périgord |
+| 10 | [蒙塞](/人物/拿破崙時代/蒙塞) | 邦·阿德里安·让诺·德·蒙塞 | Bon-Adrien Jeannot de Moncey |
+| 11 | [巴羅斯](/人物/拿破崙時代/巴羅斯) | 保羅·巴拉斯 | Paul Barras |
+| 12 | [勒費弗爾](/人物/拿破崙時代/勒費弗爾) | 弗朗索瓦·約瑟夫·勒費弗爾 | François Joseph Lefebvre |
+| 13 | [歐吉里歐](/人物/拿破崙時代/歐吉里歐) | 皮埃爾·奧熱羅 | Pierre Augereau |
+| 14 | [儒爾當](/人物/拿破崙時代/儒爾當) | 讓-巴蒂斯特·儒爾當 | Jean-Baptiste Jourdan |
+| 15 | [馬塞納](/人物/拿破崙時代/馬塞納) | 安德烈·馬塞納 | André Masséna |
+| 16 | [福契](/人物/拿破崙時代/福契) | 約瑟夫·富歇 | Joseph Fouché |
+| 16 | [貝爾納多特](/人物/拿破崙時代/貝爾納多特) | 讓-巴蒂斯特·貝爾納多特 | Jean-Baptiste Bernadotte |
+| 17 | [蘇爾特](/人物/拿破崙時代/蘇爾特) | 讓-德迪厄·蘇爾特 | Jean-de-Dieu Soult |
+| 18 | [布律納](/人物/拿破崙時代/布律納) | 紀堯姆·布律恩 | Guillaume Brune |
+| 18 | [維特](/人物/拿破崙時代/維特) | 克洛德·維克托-佩蘭 | Claude Victor-Perrin |
+| 19 | [圣西里](/人物/拿破崙時代/圣西里) | 洛朗·德·古維翁-聖西爾 | Laurent de Gouvion Saint-Cyr |
+| 20 | [杜邦](/人物/拿破崙時代/杜邦) | 皮埃爾·杜邦·德·萊唐 | Pierre Dupont de l'Étang |
+| 21 | [德爾隆](/人物/拿破崙時代/德爾隆) | 讓-巴蒂斯特·德魯埃·德爾隆伯爵 | Jean-Baptiste Drouet comte d'Erlon |
+| 22 | [麥克唐納 (法蘭西)](/人物/拿破崙時代/麥克唐納_法蘭西) | 雅克·麥克唐納 | Jacques MacDonald |
+| 23 | [格魯希 (Grouchy)](/人物/拿破崙時代/格魯希_Grouchy) | 埃馬紐埃爾·德·格魯希 | Emmanuel de Grouchy |
+| 24 | [貝西埃爾](/人物/拿破崙時代/貝西埃爾) | 讓-巴蒂斯特·貝西埃爾 | Jean-Baptiste Bessières |
+| 25 | [莫羅 (Milhaud)](/人物/拿破崙時代/莫羅_Milhaud) | 米約 | Édouard Jean Baptiste Milhaud |
+| 26 | [木雷](/人物/拿破崙時代/木雷) | 若阿尚·繆拉 | Joachim Murat |
+| 27 | [迪賽伊克斯](/人物/拿破崙時代/迪賽伊克斯) | 路易·夏爾·安托萬·德賽 | Louis Charles Antoine Desaix |
+| 28 | [莫蒂埃](/人物/拿破崙時代/莫蒂埃) | 愛德華·莫蒂埃 | Édouard Mortier |
+| 29 | [墨勃格](/人物/拿破崙時代/墨勃格) | 拉圖爾-莫布爾侯爵 | Marie Victor de Fay marquis de Latour-Maubourg |
+| 30 | [史考得](/人物/拿破崙時代/史考得) | 尼古拉·讓-德迪厄·蘇爾特 | Nicolas Jean-de-Dieu Soult |
+| 31 | [耐伊](/人物/拿破崙時代/耐伊) | 米歇爾·內伊 | Michel Ney |
+| 32 | [佛蘭特](/人物/拿破崙時代/佛蘭特) | 路易·弗里昂 | Louis Friant |
+| 33 | [列寧斯](/人物/拿破崙時代/列寧斯) | 讓·拉納 | Jean Lannes |
+| 34 | [旺達姆](/人物/拿破崙時代/旺達姆) | 多米尼克·旺達姆 | Dominique Vandamme |
+| 35 | [坎伯尼](/人物/拿破崙時代/坎伯尼) | 皮埃爾·康布羅納 | Pierre Cambronne |
+| 36 | [克拉蒙](/人物/拿破崙時代/克拉蒙) | 弗朗索瓦·艾蒂安·德·凱勒曼 | François Étienne de Kellermann |
+| 37 | [絮歇](/人物/拿破崙時代/絮歇) | 路易·加布里埃爾·絮歇 | Louis Gabriel Suchet |
+| 38 | [達夫歐](/人物/拿破崙時代/達夫歐) | 路易-尼古拉·達武 | Louis-Nicolas Davout |
+| 39 | [布雷尼](/人物/拿破崙時代/布雷尼) | 路易·安托萬·福韋萊·德·布里昂 | Louis Antoine Fauvelet de Bourrienne |
+| 40 | [蒙特布朗](/人物/拿破崙時代/蒙特布朗) | 路易-皮埃爾·蒙布倫 | Louis-Pierre Montbrun |
+| 41 | [莫羅 (Moreau)](/人物/拿破崙時代/莫羅_Moreau) | 讓·維克多·馬里·莫羅 | Jean Victor Marie Moreau |
+| 42 | [朱諾](/人物/拿破崙時代/朱諾) | 讓-安多什·朱諾 | Jean-Andoche Junot |
+| 43 | [拉普](/人物/拿破崙時代/拉普) | 讓·拉普 | Jean Rapp |
+| 44 | [雷尼埃](/人物/拿破崙時代/雷尼埃) | 讓-路易-埃貝內澤·雷尼耶 | Jean-Louis-Ébénézer Reynier |
+| 45 | [塞巴斯蒂尼](/人物/拿破崙時代/塞巴斯蒂尼) | 奧拉斯·塞巴斯蒂亞尼 | Horace Sébastiani |
+| 46 | [布代](/人物/拿破崙時代/布代) | 讓-馬丹·珀蒂 | Jean-Martin Petit |
+| 47 | [馬蒙](/人物/拿破崙時代/馬蒙) | 奧古斯特·德·馬爾蒙 | Auguste de Marmont |
+| 48 | [吉納德](/人物/拿破崙時代/吉納德) | 艾蒂安·莫里斯·熱拉爾 | Étienne Maurice Gérard |
+| 49 | [拉薩爾](/人物/拿破崙時代/拉薩爾) | 安托萬·夏爾·路易·德·拉薩勒 | Antoine Charles Louis de Lasalle |
+| 50 | [雷耶](/人物/拿破崙時代/雷耶) | 奧諾雷·夏爾·雷伊 | Honoré Charles Reille |
+| 51 | [科蘭寇特](/人物/拿破崙時代/科蘭寇特) | 阿爾芒·德·科蘭庫爾 | Armand de Caulaincourt |
+| 52 | [格魯希 (Gourgaud)](/人物/拿破崙時代/格魯希_Gourgaud) | 加斯帕爾·古爾戈 | Gaspard Gourgaud |
+| 53 | [穆頓](/人物/拿破崙時代/穆頓) | 夏爾·特里斯坦·德·蒙托隆 | Charles Tristan de Montholon |
+| 54 | [拉貝都爾](/人物/拿破崙時代/拉貝都爾) | 夏爾·德·拉貝多耶爾 | Charles de La Bédoyère |
+| 132 | [都布勞司基](/人物/拿破崙時代/都布勞司基) | 揚·亨利克·東布羅夫斯基 | Jan Henryk Dąbrowski |
+| 136 | [波奈塔司基](/人物/拿破崙時代/波奈塔司基) | 約澤夫·安東尼·波尼亞托夫斯基 | Józef Antoni Poniatowski |
+| 138 | [馬迪諾](/人物/拿破崙時代/馬迪諾) | 尼古拉·夏爾·烏迪諾 | Nicolas Charles Oudinot |
+
+## [英格蘭](/用語/英格蘭)（37 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 55 | [喬治三世](/人物/拿破崙時代/喬治三世) | 喬治三世 | George III |
+| 56 | [喬治四世](/人物/拿破崙時代/喬治四世) | 喬治四世 | George IV |
+| 57 | [維多利亞](/人物/拿破崙時代/維多利亞) | 維多利亞女王 | Queen Victoria |
+| 58 | [亞丁頓](/人物/拿破崙時代/亞丁頓) | 亨利·阿丁頓 | Henry Addington |
+| 59 | [薛里登](/人物/拿破崙時代/薛里登) | 理查·布林斯利·謝里丹 | Richard Brinsley Sheridan |
+| 60 | [彼克頓](/人物/拿破崙時代/彼克頓) | 托馬斯·皮克頓 | Thomas Picton |
+| 61 | [皮特](/人物/拿破崙時代/皮特) | 小威廉·皮特 | William Pitt the Younger |
+| 62 | [巴紹特](/人物/拿破崙時代/巴紹特) | 第三代巴瑟斯特伯爵亨利·巴瑟斯特 | Henry Bathurst 3rd Earl Bathurst |
+| 63 | [比藍特](/人物/拿破崙時代/比藍特) | 威廉·弗雷德里克·範·比蘭特 | Willem Frederik van Bylandt |
+| 64 | [戈登](/人物/拿破崙時代/戈登) | 亞歷山大·戈登 | Alexander Gordon |
+| 65 | [奧蘭治](/人物/拿破崙時代/奧蘭治) | 奧蘭治親王威廉 | William Prince of Orange |
+| 66 | [穆爾](/人物/拿破崙時代/穆爾) | 約翰·摩爾爵士 | Sir John Moore |
+| 67 | [厄克司喬](/人物/拿破崙時代/厄克司喬) | 第一代安格爾西侯爵亨利·佩吉特 | Henry Paget 1st Marquess of Anglesey |
+| 68 | [藍伯特](/人物/拿破崙時代/藍伯特) | 約翰·蘭伯特 | John Lambert |
+| 69 | [畢瑞福德](/人物/拿破崙時代/畢瑞福德) | 威廉·貝雷斯福德 | William Beresford |
+| 70 | [威靈頓](/人物/拿破崙時代/威靈頓) | 第一代威靈頓公爵阿瑟·韋爾斯利 | Arthur Wellesley 1st Duke of Wellington |
+| 71 | [梅特蘭](/人物/拿破崙時代/梅特蘭) | 弗雷德里克·梅特蘭 | Frederick Maitland |
+| 72 | [康瓦利斯](/人物/拿破崙時代/康瓦利斯) | 第一代康沃利斯侯爵 | Charles Cornwallis 1st Marquess Cornwallis |
+| 73 | [華亭](/人物/拿破崙時代/華亭) | 卡爾·馮·阿爾滕 | Karl von Alten |
+| 74 | [菲利比克斯](/人物/拿破崙時代/菲利比克斯) | 安托萬·德·菲利波 | Antoine de Phélippeaux |
+| 75 | [范德魯](/人物/拿破崙時代/范德魯) | 約翰·奧姆斯比·范德勒爾 | John Ormsby Vandeleur |
+| 76 | [威維恩](/人物/拿破崙時代/威維恩) | 赫西·維維安 | Hussey Vivian |
+| 77 | [塞納爾蒙](/人物/拿破崙時代/塞納爾蒙) | 愛德華·薩默塞特勳爵 | Lord Edward Somerset |
+| 78 | [西爾](/人物/拿破崙時代/西爾) | 第一代希爾子爵羅蘭·希爾 | Rowland Hill 1st Viscount Hill |
+| 79 | [波謝](/人物/拿破崙時代/波謝) | 亨利·珀西 | Henry Percy |
+| 80 | [潘森彼](/人物/拿破崙時代/潘森彼) | 威廉·龐森比 | William Ponsonby |
+| 81 | [麥克唐納 (英格蘭)](/人物/拿破崙時代/麥克唐納_英格蘭) | 詹姆斯·麥克唐奈 | James Macdonell |
+| 82 | [科伯恩](/人物/拿破崙時代/科伯恩) | 約翰·科爾伯恩 | John Colborne |
+| 83 | [卡西勒布](/人物/拿破崙時代/卡西勒布) | 卡斯爾雷子爵羅伯特·斯圖爾特 | Robert Stewart Viscount Castlereagh |
+| 84 | [昂吉迪](/人物/拿破崙時代/昂吉迪) | （待考證） | （待考證） |
+| 85 | [馬什](/人物/拿破崙時代/馬什) | 亞歷山大·卡瓦利耶·默瑟 | Alexander Cavalié Mercer |
+| 86 | [多朗什](/人物/拿破崙時代/多朗什) | 威廉·豪·德蘭西 | William Howe De Lancey |
+| 87 | [拉姆齊](/人物/拿破崙時代/拉姆齊) | 諾曼·拉姆齊 | Norman Ramsay |
+| 88 | [查塔姆](/人物/拿破崙時代/查塔姆) | 第二代查塔姆伯爵約翰·皮特 | John Pitt 2nd Earl of Chatham |
+| 89 | [諾莫爾](/人物/拿破崙時代/諾莫爾) | （待考證） | （待考證） |
+| 90 | [貝林格](/人物/拿破崙時代/貝林格) | 喬治·巴林 | George Baring |
+| 91 | [多爾蓀](/人物/拿破崙時代/多爾蓀) | （待考證） | （待考證） |
+
+## [俄羅斯](/用語/俄羅斯)（30 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 92 | [鮑威爾一世](/人物/拿破崙時代/鮑威爾一世) | 保羅一世 | Paul I of Russia |
+| 93 | [亞厲山大一世](/人物/拿破崙時代/亞厲山大一世) | 亞歷山大一世 | Alexander I of Russia |
+| 94 | [本尼格森](/人物/拿破崙時代/本尼格森) | 列文·奧古斯特·馮·本尼格森 | Levin August von Bennigsen |
+| 95 | [羅斯托普金](/人物/拿破崙時代/羅斯托普金) | 費奧多爾·羅斯托普欽 | Fyodor Rostopchin |
+| 96 | [庫突斯歐夫](/人物/拿破崙時代/庫突斯歐夫) | 米哈伊爾·庫圖佐夫 | Mikhail Kutuzov |
+| 97 | [霍夫頓](/人物/拿破崙時代/霍夫頓) | 弗里德里希·威廉·馮·布克斯赫夫登 | Friedrich Wilhelm von Buxhoeveden |
+| 98 | [普拉托夫](/人物/拿破崙時代/普拉托夫) | 馬特維·普拉托夫 | Matvei Platov |
+| 99 | [葉爾莫洛夫](/人物/拿破崙時代/葉爾莫洛夫) | 阿列克謝·葉爾莫洛夫 | Alexei Yermolov |
+| 100 | [戈雷謝可夫](/人物/拿破崙時代/戈雷謝可夫) | 安德烈·伊萬諾維奇·戈爾恰科夫 | Andrei Ivanovich Gorchakov |
+| 101 | [布霍布登](/人物/拿破崙時代/布霍布登) | 卡爾·巴戈武特 | Karl Baggovut |
+| 102 | [巴克萊](/人物/拿破崙時代/巴克萊) | 巴克萊·德·托利 | Barclay de Tolly |
+| 103 | [列弗茨基](/人物/拿破崙時代/列弗茨基) | 尼古拉·拉耶夫斯基 | Nikolay Raevsky |
+| 104 | [洛巴諾夫](/人物/拿破崙時代/洛巴諾夫) | 費奧多爾·烏瓦羅夫 | Fyodor Uvarov |
+| 105 | [庫泰卓夫](/人物/拿破崙時代/庫泰卓夫) | 亞歷山大·伊萬諾維奇·庫泰索夫 | Alexander Ivanovich Kutaisov |
+| 106 | [巴格拉吉昂](/人物/拿破崙時代/巴格拉吉昂) | 彼得·巴格拉季翁 | Pyotr Bagration |
+| 107 | [柯羅夫](/人物/拿破崙時代/柯羅夫) | 科爾夫男爵 | Baron Fyodor Korff |
+| 108 | [德克特羅夫](/人物/拿破崙時代/德克特羅夫) | 德米特里·多赫圖羅夫 | Dmitry Dokhturov |
+| 109 | [奇恰可夫](/人物/拿破崙時代/奇恰可夫) | 安德烈·伊萬諾維奇·戈爾恰科夫 | Andrei Ivanovich Gorchakov |
+| 110 | [克萊茲](/人物/拿破崙時代/克萊茲) | 齊普里安·馮·克羅伊茨伯爵 | Cyprian Gualbert Heinrich Graf von Kreutz |
+| 111 | [維特根施泰因](/人物/拿破崙時代/維特根施泰因) | 彼得·維特根施泰因 | Peter Wittgenstein |
+| 112 | [托爾斯泰](/人物/拿破崙時代/托爾斯泰) | 彼得·亞歷山德羅維奇·托爾斯泰 | Pyotr Alexandrovich Tolstoy |
+| 113 | [凱敏斯基](/人物/拿破崙時代/凱敏斯基) | 尼古拉·米哈伊洛維奇·卡緬斯基 | Nikolai Mikhailovich Kamensky |
+| 114 | [圖柴可夫](/人物/拿破崙時代/圖柴可夫) | 尼古拉·圖奇科夫 | Nikolai Tuchkov |
+| 115 | [米洛拉多維奇](/人物/拿破崙時代/米洛拉多維奇) | 米哈伊爾·米洛拉多維奇 | Mikhail Miloradovich |
+| 116 | [尼維洛斯基](/人物/拿破崙時代/尼維洛斯基) | 德米特里·彼得羅維奇·涅韋羅夫斯基 | Dmitry Petrovich Neverovsky |
+| 117 | [哥利欣](/人物/拿破崙時代/哥利欣) | 德米特里·戈利岑 | Dmitry Golitsyn |
+| 118 | [西奧斯](/人物/拿破崙時代/西奧斯) | 卡爾·西弗斯 | Karl Sievers |
+| 119 | [托馬索夫](/人物/拿破崙時代/托馬索夫) | 亞歷山大·托爾馬索夫 | Alexander Tormasov |
+| 120 | [康斯坦丁](/人物/拿破崙時代/康斯坦丁) | 康斯坦丁·巴甫洛維奇大公 | Grand Duke Constantine Pavlovich |
+| 121 | [巴拉肖夫](/人物/拿破崙時代/巴拉肖夫) | 米哈伊爾·沃龍佐夫 | Mikhail Semyonovich Vorontsov |
+
+## [奧地利](/用語/奧地利)（29 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 147 | [法蘭一世](/人物/拿破崙時代/法蘭一世) | 弗朗茨一世 | Francis I of Austria |
+| 148 | [維爾姆澤](/人物/拿破崙時代/維爾姆澤) | 達格伯特·齊格蒙特·馮·維爾姆澤 | Dagobert Sigmund von Wurmser |
+| 149 | [阿爾文齊](/人物/拿破崙時代/阿爾文齊) | 約瑟夫·阿爾文齊 | Joseph Alvinczi |
+| 150 | [歐圖一世](/人物/拿破崙時代/歐圖一世) | 彼得·卡爾·奧特·馮·巴托爾凱斯 | Peter Karl Ott von Bátorkez |
+| 151 | [雷伯特](/人物/拿破崙時代/雷伯特) | 薩克森-科堡-薩爾費爾德的利奧波德 | Leopold of Saxe-Coburg-Saalfeld |
+| 152 | [麥克](/人物/拿破崙時代/麥克) | 卡爾·馬克·馮·萊貝里希 | Karl Mack von Leiberich |
+| 153 | [可班瑟](/人物/拿破崙時代/可班瑟) | 路德維希·馮·科本茨爾 | Ludwig von Cobenzl |
+| 154 | [維恩芳](/人物/拿破崙時代/維恩芳) | 馬克西米利安·馮·維姆普芬男爵 | Maximilian Freiherr von Wimpffen |
+| 155 | [貝利加德 (奧地利)](/人物/拿破崙時代/貝利加德_奧地利) | 海因里希·馮·貝勒加爾德 | Heinrich von Bellegarde |
+| 156 | [尤根](/人物/拿破崙時代/尤根) | 奧地利的萊納·約瑟夫大公 | Archduke Rainer Joseph of Austria |
+| 157 | [費迪南 (奧地利)](/人物/拿破崙時代/費迪南_奧地利) | 斐迪南大公 | Archduke Ferdinand of Austria-Este |
+| 158 | [施米圖](/人物/拿破崙時代/施米圖) | 約翰·海因里希·馮·施米特 | Johann Heinrich von Schmitt |
+| 159 | [米拉斯](/人物/拿破崙時代/米拉斯) | 米夏埃爾·馮·梅拉斯 | Michael von Melas |
+| 160 | [博利厄](/人物/拿破崙時代/博利厄) | 喬瓦尼·普羅韋拉侯爵 | Giovanni Marchese di Provera |
+| 161 | [路易斯 (奧地利)](/人物/拿破崙時代/路易斯_奧地利) | （待考證） | （待考證） |
+| 162 | [魏尼克](/人物/拿破崙時代/魏尼克) | 弗朗茨·馮·韋爾內克 | Franz von Werneck |
+| 163 | [查理斯](/人物/拿破崙時代/查理斯) | 卡爾大公 | Archduke Charles Duke of Teschen |
+| 164 | [施瓦岑貝格](/人物/拿破崙時代/施瓦岑貝格) | 卡爾·菲利普·施瓦岑貝格親王 | Karl Philipp Prince of Schwarzenberg |
+| 165 | [儒瑾](/人物/拿破崙時代/儒瑾) | 弗朗茨·約瑟夫·呂西尼昂侯爵 | Franz Joseph, Marquis de Lusignan |
+| 166 | [米特尼奇](/人物/拿破崙時代/米特尼奇) | 克萊門斯·馮·梅特涅 | Klemens von Metternich |
+| 167 | [約翰](/人物/拿破崙時代/約翰) | 約翰大公 | Archduke Johann of Austria |
+| 223 | [魯西萊](/人物/拿破崙時代/魯西萊) | 魯切拉伊家族 | Bernardo Rucellai (16th c.) or descendant |
+| 224 | [沙伯龍尼](/人物/拿破崙時代/沙伯龍尼) | 詹·加萊亞佐·塞爾貝洛尼 | Gian Galeazzo Serbelloni |
+| 225 | [基瑞邁迪](/人物/拿破崙時代/基瑞邁迪) | 摩納哥親王奧諾雷四世 | Honoré IV, Prince of Monaco |
+| 226 | [葛萊尼](/人物/拿破崙時代/葛萊尼) | （待考證） | （待考證） |
+| 227 | [奈利](/人物/拿破崙時代/奈利) | （待考證） | （待考證） |
+| 228 | [羅多維可](/人物/拿破崙時代/羅多維可) | 洛多維科·馬寧 | Lodovico Manin |
+| 229 | [珂里](/人物/拿破崙時代/珂里) | 米開朗基羅·亞歷山德羅·科利-馬爾奇 | Michelangelo Alessandro Colli-Marchi |
+| 230 | [碧利歐](/人物/拿破崙時代/碧利歐) | 約翰·彼得·博利厄 | Johann Peter de Beaulieu |
+
+## [普魯士](/用語/普魯士)（22 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 122 | [威廉三世](/人物/拿破崙時代/威廉三世) | 腓特烈·威廉三世 | Frederick William III of Prussia |
+| 123 | [布朗史威克](/人物/拿破崙時代/布朗史威克) | 布倫瑞克公爵卡爾·威廉·費迪南德 | Karl Wilhelm Ferdinand Duke of Brunswick |
+| 124 | [布魯爾](/人物/拿破崙時代/布魯爾) | 格布哈德·勒伯萊希特·馮·布呂歇爾 | Gebhard Leberecht von Blücher |
+| 125 | [霍恩洛厄](/人物/拿破崙時代/霍恩洛厄) | 霍恩洛厄-英格爾芬根親王弗里德里希·路德維希 | Friedrich Ludwig Prince of Hohenlohe-Ingelfingen |
+| 126 | [哈頓堡](/人物/拿破崙時代/哈頓堡) | 卡爾·奧古斯特·馮·哈登貝格 | Karl August von Hardenberg |
+| 127 | [威瑪](/人物/拿破崙時代/威瑪) | 薩克森-魏瑪-艾森納赫大公卡爾·奧古斯特 | Karl August Grand Duke of Saxe-Weimar-Eisenach |
+| 128 | [呂歇爾](/人物/拿破崙時代/呂歇爾) | 恩斯特·馮·呂歇爾 | Ernst von Rüchel |
+| 129 | [約克](/人物/拿破崙時代/約克) | 路德維希·約克·馮·瓦滕堡 | Ludwig Yorck von Wartenburg |
+| 130 | [沙安赫司特](/人物/拿破崙時代/沙安赫司特) | 格哈德·馮·沙恩霍斯特 | Gerhard von Scharnhorst |
+| 131 | [普羅](/人物/拿破崙時代/普羅) | 弗里德里希·威廉·比洛·馮·登訥維茨 | Friedrich Wilhelm Bülow von Dennewitz |
+| 133 | [斯泰恩](/人物/拿破崙時代/斯泰恩) | 海因里希·弗里德里希·卡爾·施泰因男爵 | Heinrich Friedrich Karl vom und zum Stein |
+| 134 | [格奈森諾](/人物/拿破崙時代/格奈森諾) | 奧古斯特·奈德哈特·馮·格奈森瑙 | August Neidhardt von Gneisenau |
+| 135 | [博恩](/人物/拿破崙時代/博恩) | 赫爾曼·馮·博恩 | Hermann von Boyen |
+| 137 | [克萊斯特](/人物/拿破崙時代/克萊斯特) | 克萊斯特·馮·諾倫多夫 | Friedrich Emil Ferdinand Heinrich von Kleist von Nollendorf |
+| 139 | [芮騰](/人物/拿破崙時代/芮騰) | 漢斯·恩斯特·卡爾·馮·齊滕 | Hans Ernst Karl von Zieten |
+| 140 | [弗里德瑞奇](/人物/拿破崙時代/弗里德瑞奇) | 不倫瑞克-沃爾芬比特爾公爵弗里德里希·威廉 | Frederick William, Duke of Brunswick-Wolfenbüttel |
+| 141 | [魯德維格](/人物/拿破崙時代/魯德維格) | 普魯士路易·費迪南德親王 | Prince Louis Ferdinand of Prussia |
+| 142 | [希爾曼](/人物/拿破崙時代/希爾曼) | 約翰·阿道夫·馮·蒂爾曼 | Johann Adolf von Thielmann |
+| 143 | [奧古斯特](/人物/拿破崙時代/奧古斯特) | 普魯士奧古斯特親王 | Prince Augustus of Prussia |
+| 144 | [席勒](/人物/拿破崙時代/席勒) | 費迪南德·馮·席爾 | Ferdinand von Schill |
+| 145 | [克勞塞維茨](/人物/拿破崙時代/克勞塞維茨) | 卡爾·馮·克勞塞維茨 | Carl von Clausewitz |
+| 146 | [科蘇泰司基](/人物/拿破崙時代/科蘇泰司基) | 揚·萊昂·科齊圖爾斯基 | Jan Leon Kozietulski |
+
+## [土耳其](/用語/土耳其)（20 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 181 | [薛林三世](/人物/拿破崙時代/薛林三世) | 塞利姆三世 | Selim III |
+| 182 | [馬斯塔法四世](/人物/拿破崙時代/馬斯塔法四世) | 穆斯塔法四世 | Mustafa IV |
+| 183 | [默函特二世](/人物/拿破崙時代/默函特二世) | 馬哈茂德二世 | Mahmud II |
+| 184 | [怕司凡諾格魯](/人物/拿破崙時代/怕司凡諾格魯) | 奧斯曼·帕茲萬托盧 | Osman Pazvantoğlu |
+| 185 | [阿部都](/人物/拿破崙時代/阿部都) | 阿卜杜勒卡迪爾貝伊 | Abdülkadir Bey |
+| 186 | [艾普西蘭特](/人物/拿破崙時代/艾普西蘭特) | 康斯坦丁·伊普西蘭蒂 | Constantine Ypsilantis |
+| 187 | [福洛西特](/人物/拿破崙時代/福洛西特) | 胡爾希德·艾哈邁德帕夏 | Hurshid Ahmed Pasha |
+| 188 | [瑞蓋司](/人物/拿破崙時代/瑞蓋司) | 里加斯·費萊奧斯 | Rigas Feraios |
+| 189 | [易卜拉欣](/人物/拿破崙時代/易卜拉欣) | 易卜拉欣貝伊 | Ibrahim Bey |
+| 190 | [佛吉爾](/人物/拿破崙時代/佛吉爾) | 優素夫·齊亞帕夏 | Yusuf Ziya Pasha |
+| 191 | [伊匹希莫司](/人物/拿破崙時代/伊匹希莫司) | 提米奧斯·弗拉哈瓦斯 | Thymios Vlachavas |
+| 192 | [蒂普連](/人物/拿破崙時代/蒂普連) | 特佩萊納的阿里帕夏 | Ali Pasha of Tepelena |
+| 193 | [穆拉德](/人物/拿破崙時代/穆拉德) | 穆拉德貝伊 | Murad Bey |
+| 194 | [阿里](/人物/拿破崙時代/阿里) | 約阿尼納的阿里帕夏 | Ali Pasha of Ioannina |
+| 195 | [卡巴庫爾](/人物/拿破崙時代/卡巴庫爾) | 卡巴克奇·穆斯塔法 | Kabakçı Mustafa |
+| 196 | [恰瑞比](/人物/拿破崙時代/恰瑞比) | （待考證） | （待考證） |
+| 197 | [拜拉克達](/人物/拿破崙時代/拜拉克達) | 阿列姆達爾·穆斯塔法帕夏 | Alemdar Mustafa Pasha |
+| 198 | [卡拉喬琪](/人物/拿破崙時代/卡拉喬琪) | 卡拉喬爾傑·彼得羅維奇 | Karađorđe Petrović |
+| 199 | [泰亞爾](/人物/拿破崙時代/泰亞爾) | 塔亞爾·馬哈穆德帕夏 | Tayyar Mahmud Pasha |
+| 200 | [塞蘭諾維奇](/人物/拿破崙時代/塞蘭諾維奇) | （待考證） | （待考證） |
+
+## [西班牙](/用語/西班牙)（17 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 201 | [卡洛司](/人物/拿破崙時代/卡洛司) | 卡洛斯四世 | Charles IV of Spain |
+| 202 | [費迪南 (西班牙)](/人物/拿破崙時代/費迪南_西班牙) | 費迪南七世 | Ferdinand VII of Spain |
+| 203 | [戴茲](/人物/拿破崙時代/戴茲) | 胡安·馬丁·迪耶斯「頑固者」 | Juan Martín Díez "El Empecinado" |
+| 204 | [伊凡塔多](/人物/拿破崙時代/伊凡塔多) | 因凡塔多公爵佩德羅·德·阿爾坎塔拉 | Pedro de Alcántara Duke of the Infantado |
+| 205 | [庫斯塔](/人物/拿破崙時代/庫斯塔) | 格雷戈里奧·加西亞·德·拉·庫埃斯塔 | Gregorio García de la Cuesta |
+| 206 | [布萊克](/人物/拿破崙時代/布萊克) | 華金·布萊克 | Joaquín Blake |
+| 207 | [伯雷德](/人物/拿破崙時代/伯雷德) | 佩德羅·貝拉爾德·伊·桑蒂利安 | Pedro Velarde y Santillán |
+| 208 | [艾布奎克](/人物/拿破崙時代/艾布奎克) | 第十四代阿爾布開克公爵 | José María de la Cueva 14th Duke of Albuquerque |
+| 209 | [卡斯塔那司](/人物/拿破崙時代/卡斯塔那司) | 弗朗西斯科·卡斯塔尼奧斯 | Francisco Castaños |
+| 210 | [戈第](/人物/拿破崙時代/戈第) | 曼努埃爾·戈多伊 | Manuel Godoy |
+| 211 | [達伊斯](/人物/拿破崙時代/達伊斯) | 路易斯·達奧伊斯·伊·托雷斯 | Luis Daoíz y Torres |
+| 212 | [阿瑞查戈](/人物/拿破崙時代/阿瑞查戈) | 胡安·卡洛斯·德·阿雷查加 | Juan Carlos de Areizaga |
+| 213 | [羅馬納](/人物/拿破崙時代/羅馬納) | 第三代拉羅馬納侯爵佩德羅·卡羅 | Pedro Caro 3rd Marquis of la Romana |
+| 214 | [寇爾](/人物/拿破崙時代/寇爾) | 阿達曼提奧斯·科萊斯 | Adamantios Korais |
+| 215 | [拉丁哥](/人物/拿破崙時代/拉丁哥) | 西奧多·馮·雷丁 | Theodor von Reding |
+| 216 | [米納](/人物/拿破崙時代/米納) | 弗朗西斯科·埃斯波斯·伊·米納 | Francisco Espoz y Mina |
+| 217 | [彼可奈](/人物/拿破崙時代/彼可奈) | 查爾斯·科茨沃思·平克尼 | Charles Cotesworth Pinckney |
+
+## [丹麥](/用語/丹麥)（9 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 246 | [克利斯汀七世](/人物/拿破崙時代/克利斯汀七世) | 克里斯蒂安七世 | Christian VII of Denmark |
+| 247 | [佛瑞德雷克](/人物/拿破崙時代/佛瑞德雷克) | 弗雷德里克六世 | Frederick VI of Denmark |
+| 248 | [伯恩斯多佛](/人物/拿破崙時代/伯恩斯多佛) | 克里斯蒂安·金特·馮·伯恩斯托夫 | Christian Günther von Bernstorff |
+| 249 | [詹森 (丹麥)](/人物/拿破崙時代/詹森_丹麥) | （待考證） | （待考證） |
+| 250 | [伯恩赫德](/人物/拿破崙時代/伯恩赫德) | （待考證） | （待考證） |
+| 251 | [史威恩](/人物/拿破崙時代/史威恩) | （待考證） | （待考證） |
+| 252 | [伊納克](/人物/拿破崙時代/伊納克) | （待考證） | （待考證） |
+| 253 | [海格](/人物/拿破崙時代/海格) | （待考證） | （待考證） |
+| 254 | [克利斯坦](/人物/拿破崙時代/克利斯坦) | 維爾納·霍塞溫克爾·克里斯蒂 | Werner Hosewinckel Christie |
+
+## [巴伐利亞](/用語/巴伐利亞)（7 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 174 | [麥克西米蘭](/人物/拿破崙時代/麥克西米蘭) | 馬克西米利安一世·約瑟夫 | Maximilian I Joseph of Bavaria |
+| 175 | [貝利加德 (巴伐利亞)](/人物/拿破崙時代/貝利加德_巴伐利亞) | 海因里希·馮·貝勒加德 | Heinrich von Bellegarde |
+| 176 | [科魯華特](/人物/拿破崙時代/科魯華特) | （待考證） | （待考證） |
+| 177 | [波那契](/人物/拿破崙時代/波那契) | 亨德里克·喬治·德·佩爾蓬謝-塞德尼茨基 | Hendrik George de Perponcher-Sedlnitsky |
+| 178 | [蒙吉拉斯](/人物/拿破崙時代/蒙吉拉斯) | 馬克西米利安·馮·蒙特格拉斯 | Maximilian von Montgelas |
+| 179 | [夏斯](/人物/拿破崙時代/夏斯) | 大衛·亨德里克·沙塞 | David Hendrik Chassé |
+| 180 | [瑞凡](/人物/拿破崙時代/瑞凡) | 讓·弗朗索瓦·勒瓦爾 | Jean François Leval |
+
+## [威尼斯](/用語/威尼斯)（6 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 231 | [曼寧](/人物/拿破崙時代/曼寧) | 盧多維科·馬寧 | Ludovico Manin |
+| 232 | [卡沙諾娃](/人物/拿破崙時代/卡沙諾娃) | 賈科莫·卡薩諾瓦 | Giacomo Casanova |
+| 233 | [巴塔里亞](/人物/拿破崙時代/巴塔里亞) | 弗朗切斯科·巴塔亞 | Francesco Battaja |
+| 234 | [寇尼里](/人物/拿破崙時代/寇尼里) | 喬治·科爾內爾 | Giorgio Corner |
+| 235 | [丹都羅](/人物/拿破崙時代/丹都羅) | 溫琴佐·丹多洛 | Vincenzo Dandolo |
+| 236 | [比沙洛](/人物/拿破崙時代/比沙洛) | 弗朗切斯科·佩薩羅 | Francesco Pesaro |
+
+## [那普斯](/用語/那普斯)（6 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 237 | [卡洛琳娜](/人物/拿破崙時代/卡洛琳娜) | 奧地利的瑪麗亞·卡羅利娜 | Maria Carolina of Austria |
+| 238 | [卡拉西歐羅](/人物/拿破崙時代/卡拉西歐羅) | 弗朗切斯科·卡拉喬洛 | Francesco Caracciolo |
+| 239 | [魯索](/人物/拿破崙時代/魯索) | 溫琴佐·魯索 | Vincenzo Russo |
+| 240 | [艾克頓](/人物/拿破崙時代/艾克頓) | 第六代從男爵約翰·阿克頓 | John Acton 6th Baronet |
+| 241 | [庫寇](/人物/拿破崙時代/庫寇) | 溫琴佐·庫奧科 | Vincenzo Cuoco |
+| 242 | [庫利塔](/人物/拿破崙時代/庫利塔) | 彼得羅·科萊塔 | Pietro Colletta |
+
+## [荷蘭](/用語/荷蘭)（6 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 168 | [威廉](/人物/拿破崙時代/威廉) | 威廉一世 | William I of the Netherlands |
+| 169 | [邦哈美](/人物/拿破崙時代/邦哈美) | 雅各布·德·伯姆 | Jacob de Boehm |
+| 170 | [荷根多](/人物/拿破崙時代/荷根多) | 吉斯貝特·卡雷爾·范霍亨多普 | Gijsbert Karel van Hogendorp |
+| 171 | [詹森 (荷蘭)](/人物/拿破崙時代/詹森_荷蘭) | 揚·威廉·揚森斯 | Jan Willem Janssens |
+| 172 | [坎培爾](/人物/拿破崙時代/坎培爾) | （待考證） | （待考證） |
+| 173 | [柯羅華特](/人物/拿破崙時代/柯羅華特) | 科爾內利斯·克賴延霍夫 | Cornelis Kraijenhoff |
+
+## [葡萄牙](/用語/葡萄牙)（4 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 218 | [佐奧六世](/人物/拿破崙時代/佐奧六世) | 若昂六世 | John VI of Portugal |
+| 219 | [葛拉漢](/人物/拿破崙時代/葛拉漢) | 第一代林多赫男爵托馬斯·格雷厄姆 | Thomas Graham 1st Baron Lynedoch |
+| 220 | [甫傑茲](/人物/拿破崙時代/甫傑茲) | 米格爾·佩雷拉·福爾雅斯 | Miguel Pereira Forjaz |
+| 221 | [桑吉斯](/人物/拿破崙時代/桑吉斯) | 朱利安·桑切斯·加西亞 | Julián Sánchez García |
+
+## [瑞典](/用語/瑞典)（4 人）
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+| 222 | [凡莫敦](/人物/拿破崙時代/凡莫敦) | 路德維希·馮·瓦爾莫登-金博恩 | Ludwig von Wallmoden-Gimborn |
+| 243 | [高斯塔夫四世](/人物/拿破崙時代/高斯塔夫四世) | 古斯塔夫四世·阿道夫 | Gustav IV Adolf of Sweden |
+| 244 | [卡爾十三世](/人物/拿破崙時代/卡爾十三世) | 卡爾十三世 | Charles XIII of Sweden |
+| 245 | [菲爾森](/人物/拿破崙時代/菲爾森) | 漢斯·阿克塞爾·馮·費爾森 | Hans Axel von Fersen |
+
+## 事件角色（3 人）
+
+只在事件中登場、不能操作的角色。
+
+| ID | 遊戲中名稱 | 中文譯名 | 原文 |
+| ---: | :--- | :--- | :--- |
+|  | [約瑟芬](/人物/拿破崙時代/約瑟芬) | 約瑟芬·德·博阿爾內 | Joséphine de Beauharnais |
+|  | [納爾遜](/人物/拿破崙時代/納爾遜) | 第一代納爾遜子爵霍雷肖·納爾遜 | Horatio Nelson, 1st Viscount Nelson |
+|  | [路易莎](/人物/拿破崙時代/路易莎) | 瑪麗·路易莎 | Marie Louise, Duchess of Parma |
+<!-- data:index end -->

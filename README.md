@@ -39,5 +39,6 @@ dateCreated: 2023-02-13T11:37:34.739Z
 | 三國人物 | `scripts/build_sanguo_mapping.py` → `scripts/build_sanguo_entries.py` | 頭像：kaodata（`img.simagame.me`）；能力值、遊戲列傳：kaodata-re 匯出；說明見 `assets/data/sanguo/README.mkdn` |
 | 水滸人物 | `scripts/build_suikoden_mapping.py`、`scripts/suikoden_bios.py` → `scripts/build_suikoden_entries.py` | 頭像：kaodata（`img.simagame.me`）；能力值：`遊戲/水滸傳・天命之誓/人物資料.md`；列傳：依小說原文與維基百科整理；說明見 `assets/data/suikoden/README.mkdn` |
 | 拿破崙城市 | `scripts/build_lempe_city_maps.py` | 大地圖與戰場地圖：famicom-re（`assets/maps/lempe/`） |
+| 拿破崙人物索引 | `scripts/build_lempe_person_index.py` | 各人物條目的基本資料與遊戲 ID |
 
 部分列傳先由語言模型依原文與維基百科整理成草稿，經人工審核後才上站。

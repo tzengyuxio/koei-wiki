@@ -303,7 +303,8 @@ dateCreated: 2026-02-16T12:00:00.000Z
 *   **位置**：標記放在 `<div>`／`<details>` 容器外面，各自獨立一行。
 *   **區塊名**：
     *   三國：`portraits-mainline`、`portraits-koei`、`portraits-other`、`stats-main`
-    *   水滸：`portraits`、`stats-pc98`
+    *   水滸：`portraits`、`stats-pc98`；索引頁 `人物/水滸/home.md`：`index`
+    *   拿破崙：索引頁 `人物/拿破崙時代/home.md`：`index`（`scripts/build_lempe_person_index.py`）
 
 ## 附錄 A：模板清單
 
