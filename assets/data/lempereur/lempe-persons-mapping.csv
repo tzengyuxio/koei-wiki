@@ -83,14 +83,14 @@
 81,McDonnel,麥克唐納,マクドネル,James Macdonell,詹姆斯·麥克唐奈,https://en.wikipedia.org/wiki/James_Macdonell,,滑鐵盧烏古蒙莊園防守英雄
 82,Colburn,科伯恩,コルボーン,John Colborne,約翰·科爾伯恩,https://en.wikipedia.org/wiki/John_Colborne%2C_1st_Baron_Seaton,,滑鐵盧第52團指揮官
 83,Castlereagh,卡西勒布,キャッスルリーフ,Robert Stewart Viscount Castlereagh,卡斯爾雷子爵羅伯特·斯圖爾特,https://en.wikipedia.org/wiki/Robert_Stewart%2C_Viscount_Castlereagh,https://zh.wikipedia.org/wiki/卡蘇里子爵羅伯特·史都華,外交大臣；維也納會議英方代表
-84,Wade,昂吉迪,アーチディーケ,,,,,待考證；EN名Wade / ZH名昂吉迪 / JP名アーチディーケ(Archduke?)三者完全不符；英國陣營利物浦；出生年1777
+84,Wade,昂吉迪,アーチディーケ,,,,,待考證；JP名アーチディーケ；英國陣營利物浦，約1777年生；查無候選，可能虛構（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 85,Mercer,馬什,マーサー,Alexander Cavalié Mercer,亞歷山大·卡瓦利耶·默瑟,https://en.wikipedia.org/wiki/Alexander_Cavalié_Mercer,,滑鐵盧砲兵軍官；著有回憶錄
 86,Delancey,多朗什,ドランシー,William Howe De Lancey,威廉·豪·德蘭西,https://en.wikipedia.org/wiki/William_Howe_De_Lancey,,威靈頓副官長；滑鐵盧陣亡
 87,Ramsay,拉姆齊,ラムゼイ,Norman Ramsay,諾曼·拉姆齊,https://en.wikipedia.org/wiki/Norman_Ramsay_(British_Army_officer),,騎馬砲兵軍官；滑鐵盧陣亡
 88,Chatham,查塔姆,チャタム,John Pitt 2nd Earl of Chatham,第二代查塔姆伯爵約翰·皮特,https://en.wikipedia.org/wiki/John_Pitt%2C_2nd_Earl_of_Chatham,,小皮特之兄；瓦爾赫倫遠征失敗
-89,Nomire,諾莫爾,ノーマイル,,,,,待考證；JP名ノーマイル(Normile?)；英國陣營愛丁堡；出生年1782
+89,Nomire,諾莫爾,ノーマイル,,,,,待考證；JP名ノーマイル；英國陣營愛丁堡，約1782年生；查無候選，可能虛構（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 90,Baring,貝林格,ベアリング,George Baring,喬治·巴林,https://en.wikipedia.org/wiki/George_Baring,,滑鐵盧拉海聖特莊園防守者
-91,Dawson,多爾蓀,ドーソン,,,,,待考證；JP名ドーソン=Dawson；英國陣營布里斯托爾；出生年1783
+91,Dawson,多爾蓀,ドーソン,,,,,"待考證；可能是 John Dawson, 2nd Earl of Portarlington（1781-1845，英國騎兵軍官，1798年從軍、參加滑鐵盧）：名字吻合、生年差約2年，但與布里斯托、俄羅斯陣營無關（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）"
 92,Pavel I,鮑威爾一世,パーヴェル,Paul I of Russia,保羅一世,https://en.wikipedia.org/wiki/Paul_I_of_Russia,https://zh.wikipedia.org/wiki/保罗一世_(俄国),俄國沙皇；1801年遇弒
 93,Alexander I,亞厲山大一世,アレクサンドル,Alexander I of Russia,亞歷山大一世,https://en.wikipedia.org/wiki/Alexander_I_of_Russia,https://zh.wikipedia.org/wiki/亚历山大一世_(俄国),俄國沙皇；反法同盟領袖
 94,Bennigsen,本尼格森,ベニングセン,Levin August von Bennigsen,列文·奧古斯特·馮·本尼格森,https://en.wikipedia.org/wiki/Levin_August,_Count_von_Bennigsen,
@@ -155,12 +155,12 @@
 153,Cobenzl,可班瑟,コベンツル,Ludwig von Cobenzl,路德維希·馮·科本茨爾,https://en.wikipedia.org/wiki/Ludwig_von_Cobenzl,,奧地利外交官
 154,Wienfun,維恩芳,ウィンフン,Maximilian Freiherr von Wimpffen,馬克西米利安·馮·維姆普芬男爵,https://en.wikipedia.org/wiki/Maximilian_von_Wimpffen,,JP名ウィンフン為Wimpffen的片假名縮寫；奧軍參謀長(1809)；阿斯佩恩-埃斯林戰役策劃者
 155,Belegarde,貝利加德,ベレガルデ,Heinrich von Bellegarde,海因里希·馮·貝勒加爾德,https://en.wikipedia.org/wiki/Heinrich_von_Bellegarde,,
-156,Eugen,尤根,オイゲン,,,,,待考證；JP名オイゲン=Eugen；奧地利陣營布拉格，軍團長；出生年約1757-1758（FC S1 1796年38歲、DOS S1 1795年38歲）。原推定萊納大公（1783年生）生年不合，已撤回（2026-11-03，依famicom-re/kaodata-re遊戲資料）
+156,Eugen,尤根,オイゲン,,,,,待考證；JP名オイゲン=Eugen；奧地利陣營布拉格，軍團長；出生年約1757-1758（FC S1 1796年38歲、DOS S1 1795年38歲）。原推定萊納大公（1783年生）生年不合，已撤回（2026-11-03，依famicom-re/kaodata-re遊戲資料）；見 assets/data/lempereur/unidentified-research.mkdn
 157,Ferdinand,費迪南,フェルディナント,Archduke Ferdinand of Austria-Este,斐迪南大公,https://en.wikipedia.org/wiki/Archduke_Ferdinand_Karl_Joseph_of_Austria-Este,,
 158,Schmidt,施米圖,シュミット,Johann Heinrich von Schmitt,約翰·海因里希·馮·施米特,https://en.wikipedia.org/wiki/Johann_Heinrich_von_Schmitt,,奧軍參謀；1796年萊茵戰役策劃者；1805年奧斯特里茨戰役陣亡
 159,Melas,米拉斯,メラス,Michael von Melas,米夏埃爾·馮·梅拉斯,https://en.wikipedia.org/wiki/Michael_von_Melas,,馬倫戈戰役奧軍指揮官
 160,Gruber,博利厄,プロヴェラ,Giovanni Marchese di Provera,喬瓦尼·普羅韋拉侯爵,https://en.wikipedia.org/wiki/Giovanni_Provera,,JP名プロヴェラ(Provera)與EN名Gruber不同；EN名Gruber可能為另一位奧軍軍官
-161,Luveck,路易斯,ルイス,,,,,待考證；JP名ルイス=Louis；奧地利陣營布達佩斯；出生年1769
+161,Luveck,路易斯,ルイス,,,,,待考證；JP名ルイス=Louis；奧地利陣營布達佩斯，司令，約1769年生；Wallmoden-Gimborn（1769年生）生年合但1796年僅上校，不採用（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 162,Werneck,魏尼克,ヴェルネック,Franz von Werneck,弗朗茨·馮·韋爾內克,https://en.wikipedia.org/wiki/Franz_von_Werneck,,烏爾姆戰役投降
 163,Charles,查理斯,カール,Archduke Charles Duke of Teschen,卡爾大公,https://en.wikipedia.org/wiki/Archduke_Charles%2C_Duke_of_Teschen,https://zh.wikipedia.org/wiki/卡尔大公_(奥地利-特申),奧地利最優秀將領；阿斯佩恩-埃斯林戰役勝利者
 164,Schwarzenberg,施瓦岑貝格,シュワルテンベルク,Karl Philipp Prince of Schwarzenberg,卡爾·菲利普·施瓦岑貝格親王,https://en.wikipedia.org/wiki/Karl_Philipp%2C_Prince_of_Schwarzenberg,https://zh.wikipedia.org/wiki/卡尔·菲利普_(施瓦岑贝格),萊比錫戰役聯軍總司令
@@ -171,11 +171,11 @@
 169,BonHomme,邦哈美,ボーム,Jacob de Boehm,雅各布·德·伯姆,,,JP名ボーム(Boehm/Böhm)；EN名BonHomme與JP名不符；可能為荷蘭或奧地利軍官
 170,Hogendorp,荷根多,ホーゲンドープ,Gijsbert Karel van Hogendorp,吉斯貝特·卡雷爾·范霍亨多普,https://en.wikipedia.org/wiki/Gijsbert_Karel_van_Hogendorp,,荷蘭政治家
 171,Jansen,詹森,ヤンセン,Jan Willem Janssens,揚·威廉·揚森斯,https://en.wikipedia.org/wiki/Jan_Willem_Janssens,,荷蘭軍官暨殖民地總督；開普殖民地總督及荷屬東印度總督
-172,Cambier,坎培爾,キャビエール,,,,,待考證；JP名キャビエール(Cabière?)；荷蘭陣營阿姆斯特丹；出生年1767
+172,Cambier,坎培爾,キャビエール,,,,,待考證；可能是 Jacob Jan Cambier（1756-1831，荷蘭政治人物：巴達維亞國民議會議長、戰爭部長、帝國立法院議員、1814後效力奧蘭治）：經歷與遊戲國籍變化吻合，但生年差約11年（遊戲約1767）（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 173,Krayenoff,柯羅華特,クレインホフ,Cornelis Kraijenhoff,科爾內利斯·克賴延霍夫,https://en.wikipedia.org/wiki/Cornelis_Kraijenhoff,,荷蘭將領
 174,Maximilian,麥克西米蘭,マクシミリアン,Maximilian I Joseph of Bavaria,馬克西米利安一世·約瑟夫,https://en.wikipedia.org/wiki/Maximilian_I_Joseph_of_Bavaria,https://zh.wikipedia.org/wiki/马克西米利安一世_(巴伐利亚国王),巴伐利亞國王
-175,Berg,貝利加德,ベルク,,,,,待考證；EN名Berg / JP名ベルク；中文版「貝利加德」誤用ID 155 Belegarde的譯名（kaodata-re notes/lempe.md，歷史名用「貝爾格」）；巴伐利亞陣營法蘭克福，司令；出生年約1763（FC S1 1796年33歲）；S4改屬法蘭西。原推定貝勒加德（奧地利人，1756年生）已撤回（2026-11-03）
-176,Cleves,科魯華特,クレーヴェ,,,,,待考證；JP名クレーヴェ=Kleve/Cleves；巴伐利亞陣營慕尼黑；出生年1765；可能為克萊沃公國相關人物或虛構角色
+175,Berg,貝利加德,ベルク,,,,,待考證；EN名Berg / JP名ベルク；中文版「貝利加德」誤用ID 155 Belegarde的譯名（kaodata-re notes/lempe.md，歷史名用「貝爾格」）；巴伐利亞陣營法蘭克福，司令；出生年約1763（FC S1 1796年33歲）；S4改屬法蘭西。原推定貝勒加德（奧地利人，1756年生）已撤回（2026-11-03）；見 assets/data/lempereur/unidentified-research.mkdn
+176,Cleves,科魯華特,クレーヴェ,,,,,待考證；JP名クレーヴェ；巴伐利亞陣營慕尼黑，約1765年生，S4改屬法蘭西；查無同名者；Wrede（1767）經歷相近但名字不合，不採用（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 177,Perponche,波那契,ペルポンシェ,Hendrik George de Perponcher-Sedlnitsky,亨德里克·喬治·德·佩爾蓬謝-塞德尼茨基,https://en.wikipedia.org/wiki/Hendrik_George_de_Perponcher_Sedlnitsky,,JP名ペルポンシェ確認為Perponcher；荷蘭將軍；滑鐵盧第二師師長
 178,Montgelas,蒙吉拉斯,モンジュラ,Maximilian von Montgelas,馬克西米利安·馮·蒙特格拉斯,https://en.wikipedia.org/wiki/Maximilian_von_Montgelas,,JP名モンジュラ(Montgelas)與EN名Montgelas確認；巴伐利亞首相
 179,Schase,夏斯,シャッセ,David Hendrik Chassé,大衛·亨德里克·沙塞,https://en.wikipedia.org/wiki/David_Hendrik_Chassé,,JP名シャッセ(Chassé)；EN名Schase為Chassé訛寫；荷蘭將軍；滑鐵盧戰役
@@ -184,22 +184,22 @@
 182,Mustafa IV,馬斯塔法四世,ムスタファ,Mustafa IV,穆斯塔法四世,https://en.wikipedia.org/wiki/Mustafa_IV,https://zh.wikipedia.org/wiki/穆斯塔法四世,鄂圖曼蘇丹
 183,Mahmut II,默函特二世,マフムト,Mahmud II,馬哈茂德二世,https://en.wikipedia.org/wiki/Mahmud_II,https://zh.wikipedia.org/wiki/马哈茂德二世,鄂圖曼蘇丹；改革者
 184,Pasvanoglu,怕司凡諾格魯,パズバンオウル,Osman Pazvantoğlu,奧斯曼·帕茲萬托盧,https://en.wikipedia.org/wiki/Osman_Pazvantoğlu,,
-185,Abdul,阿部都,アブドゥル,Abdülkadir Bey,阿卜杜勒卡迪爾貝伊,,,JP名アブドゥル=Abdul；鄂圖曼官員；具體身份不確定(待確認)
+185,Abdul,阿部都,アブドゥル,Abdülkadir Bey,阿卜杜勒卡迪爾貝伊,,,待確認；Abdülkadir Bey（1798-1800年鄂圖曼艦隊司令）查無生年，無法驗證（遊戲約1756年生，伊斯坦堡，1814年雅典）（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 186,Ypsilante,艾普西蘭特,イプシランティ,Constantine Ypsilantis,康斯坦丁·伊普西蘭蒂,https://en.wikipedia.org/wiki/Constantine_Ypsilantis,,瓦拉幾亞大公
 187,Frusht,福洛西特,フルシト,Hurshid Ahmed Pasha,胡爾希德·艾哈邁德帕夏,https://en.wikipedia.org/wiki/Hurshid_Pasha,,JP名フルシト=Hurshid；鄂圖曼將領暨大宰相；喬治亞裔；鎮壓塞爾維亞起義
 188,Rhigas,瑞蓋司,リガス,Rigas Feraios,里加斯·費萊奧斯,https://en.wikipedia.org/wiki/Rigas_Feraios,,希臘獨立先驅
 189,Ibrahim,易卜拉欣,イブラヒム,Ibrahim Bey,易卜拉欣貝伊,https://en.wikipedia.org/wiki/Ibrahim_Bey_(Mamluk),,馬木留克共同統治者；與穆拉德貝伊共治埃及；拿破崙入侵時逃亡
-190,Vizier,佛吉爾,ヴィザー,Yusuf Ziya Pasha,優素夫·齊亞帕夏,https://en.wikipedia.org/wiki/Yusuf_Ziyaüddin_Pasha,,JP名ヴィザー=Vizier(大宰相)；可能指優素夫·齊亞帕夏（約1765-1819，任大宰相1798-1805）(待確認)
+190,Vizier,佛吉爾,ヴィザー,,,,,待考證；JP名ヴィザー=Vizier，可能只是「波士尼亞的維齊爾」職稱；薩拉耶佛，司令，約1767年生。原推定優素夫·齊亞帕夏，但他任職都在東方、未曾在波士尼亞，已撤回（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 191,Epithimus,伊匹希莫司,エフティミオス,Thymios Vlachavas,提米奧斯·弗拉哈瓦斯,https://en.wikipedia.org/wiki/Thymios_Vlachavas,,JP名エフティミオス(Efthymios)確認；希臘盜匪領袖；反抗阿里帕夏的鄂圖曼統治；1809年被處決
 192,Tepelene,蒂普連,テベレン,Ali Pasha of Tepelena,特佩萊納的阿里帕夏,https://en.wikipedia.org/wiki/Ali_Pasha_of_Ioannina,https://zh.wikipedia.org/wiki/約阿尼納的阿里帕夏,JP名テベレン=Tepelen(a)；與ID 194 Ali為同一人的不同稱呼？或為其家族成員
 193,Murad,穆拉德,ムーラッド,Murad Bey,穆拉德貝伊,https://en.wikipedia.org/wiki/Murad_Bey,,JP名ムーラッド確認為Murad；馬木留克首領；金字塔戰役對手
 194,Ali,阿里,アリ,Ali Pasha of Ioannina,約阿尼納的阿里帕夏,https://en.wikipedia.org/wiki/Ali_Pasha_of_Ioannina,https://zh.wikipedia.org/wiki/約阿尼納的阿里帕夏,奧斯曼帝國阿爾巴尼亞裔總督，控制希臘大部分地區，被稱為「巴爾幹的拿破崙」
 195,Kabakchuor,卡巴庫爾,カバクチュオウル,Kabakçı Mustafa,卡巴克奇·穆斯塔法,https://en.wikipedia.org/wiki/Kabak%C3%A7%C4%B1_Mustafa,,JP名カバクチュオウル；鄂圖曼禁衛軍叛亂領袖；推翻塞利姆三世
-196,Cherebi,恰瑞比,チェレビ,,,,,待考證；JP名チェレビ=Çelebi(鄂圖曼尊稱)；鄂圖曼陣營布加勒斯特；出生年1773
+196,Cherebi,恰瑞比,チェレビ,,,,,待考證；JP名チェレビ=Çelebi（尊稱）；鄂圖曼陣營布加勒斯特，約1773年生；查無候選（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 197,Bayrakdar,拜拉克達,バイラクタル,Alemdar Mustafa Pasha,阿列姆達爾·穆斯塔法帕夏,https://en.wikipedia.org/wiki/Alemdar_Mustafa_Pasha,,JP名バイラクタル=Bayraktar/旗手；鄂圖曼大宰相；擁立馬哈茂德二世
 198,Karageorge,卡拉喬琪,カラジョルジェ,Karađorđe Petrović,卡拉喬爾傑·彼得羅維奇,https://en.wikipedia.org/wiki/Kara%C4%91or%C4%91e,https://zh.wikipedia.org/wiki/卡拉喬爾傑·彼得羅維奇,JP名カラジョルジェ確認；塞爾維亞革命領袖；卡拉喬爾傑維奇王朝始祖
 199,Tayarl,泰亞爾,タヤール,Tayyar Mahmud Pasha,塔亞爾·馬哈穆德帕夏,,,JP名タヤール確認為Tayyar；鄂圖曼地方權貴(阿揚)；控制特拉布宗省
-200,Selanovitch,塞蘭諾維奇,セラノヴィッチ,,,,,待考證；JP名セラノヴィッチ(Selenović?)；鄂圖曼陣營薩拉耶沃；出生年1769；可能為塞爾維亞反鄂圖曼起義人物
+200,Selanovitch,塞蘭諾維奇,セラノヴィッチ,,,,,待考證；JP名セラノヴィッチ；薩拉耶佛，約1769年生（FC版國籍為西班牙，疑為資料錯誤）；查無候選（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 201,Carlos,卡洛司,カルロス,Charles IV of Spain,卡洛斯四世,https://en.wikipedia.org/wiki/Charles_IV_of_Spain,https://zh.wikipedia.org/wiki/卡洛斯四世,西班牙國王
 202,Fernando,費迪南,フェルナンド,Ferdinand VII of Spain,費迪南七世,https://en.wikipedia.org/wiki/Ferdinand_VII_of_Spain,https://zh.wikipedia.org/wiki/费尔南多七世,西班牙國王
 203,Diaz,戴茲,エンペシナード,"Juan Martín Díez ""El Empecinado""",胡安·馬丁·迪耶斯「頑固者」,https://en.wikipedia.org/wiki/Juan_Mart%C3%ADn_D%C3%ADez,,JP名直接用了他的綽號「エンペシナード」(El Empecinado)，西班牙半島戰爭游擊隊領袖
@@ -225,17 +225,17 @@
 223,Rucellai,魯西萊,ルチェッラーイ,Bernardo Rucellai (16th c.) or descendant,魯切拉伊家族,,,JP名ルチェッラーイ(Rucellai)；佛羅倫斯名門；遊戲中可能指18世紀末後裔
 224,Serbelloni,沙伯龍尼,セルベローニ,Gian Galeazzo Serbelloni,詹·加萊亞佐·塞爾貝洛尼,https://en.wikipedia.org/wiki/Gian_Galeazzo_Serbelloni,,JP名セルベローニ確認；米蘭貴族；奧軍騎兵將領；出生年1744完全吻合
 225,Grimaldi,基瑞邁迪,グリマルディー,"Honoré IV, Prince of Monaco",摩納哥親王奧諾雷四世,"https://en.wikipedia.org/wiki/Honor%C3%A9_IV,_Prince_of_Monaco",,格里馬爾迪家族，摩納哥親王(1758-1819)，法國大革命期間被捕入獄
-226,Galiani,葛萊尼,ガリアーニ,,,,,待考證；JP名ガリアーニ=Galiani；奧地利(義大利)陣營米蘭；出生年1748
-227,Neri,奈利,ネーリ,,,,,待考證；JP名ネーリ=Neri；奧地利(義大利)陣營佛羅倫斯；出生年1749
+226,Galiani,葛萊尼,ガリアーニ,,,,,待考證；JP名ガリアーニ；奧地利陣營米蘭，行政型能力，約1748年生；著名的Ferdinando Galiani（1728-1787）生年不合，可能只借用姓氏（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
+227,Neri,奈利,ネーリ,,,,,待考證；JP名ネーリ；奧地利陣營佛羅倫斯，行政型能力，約1749年生；Pompeo Neri（1707-1776）已故，可能只借用姓氏（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 228,Lodovico,羅多維可,ロドヴィーコ,Lodovico Manin,洛多維科·馬寧,https://en.wikipedia.org/wiki/Ludovico_Manin,https://zh.wikipedia.org/wiki/盧多維科·馬寧,威尼斯共和國末代總督(Doge)，日文維基確認威尼斯陣營代表人物為マニン
 229,Colli,珂里,コッリ,Michelangelo Alessandro Colli-Marchi,米開朗基羅·亞歷山德羅·科利-馬爾奇,https://en.wikipedia.org/wiki/Michael_von_Colli,,1796年義大利戰役皮埃蒙特將領
 230,Beaulieu,碧利歐,ボーリュー,Johann Peter de Beaulieu,約翰·彼得·博利厄,https://en.wikipedia.org/wiki/Johann_Peter_Beaulieu,,JP名ボーリュー確認為Beaulieu；奧軍將領；1796年義大利戰役拿破崙對手
 231,Manin,曼寧,マニン,Ludovico Manin,盧多維科·馬寧,https://en.wikipedia.org/wiki/Ludovico_Manin,https://zh.wikipedia.org/wiki/卢多维科·马宁,威尼斯末代總督
 232,Casanova,卡沙諾娃,カサノヴァ,Giacomo Casanova,賈科莫·卡薩諾瓦,https://en.wikipedia.org/wiki/Giacomo_Casanova,https://zh.wikipedia.org/wiki/贾科莫·卡萨诺瓦,知名冒險家；1798年去世
-233,Battalia,巴塔里亞,バッターリア,Francesco Battaja,弗朗切斯科·巴塔亞,,,威尼斯共和國末期人物(待確認)
-234,Cornell,寇尼里,コルネル,Giorgio Corner,喬治·科爾內爾,,,JP名コルネル=Corner(Cornaro)；威尼斯名門Corner家族成員(待確認)
+233,Battalia,巴塔里亞,バッターリア,Francesco Battaja,弗朗切斯科·巴塔亞,,,待確認；Francesco Battagia：假名與1796-97年經歷（布雷西亞特任總督、坎波福爾米奧談判）吻合，生年查不到（遊戲約1756）（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
+234,Cornell,寇尼里,コルネル,,,,,待考證；JP名コルネル=Corner（威尼斯名門）；約1757年生；查無同期的Giorgio Corner，原推定撤回，暫作「Corner家族成員，個人不明」（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 235,Dandolo,丹都羅,ダンドロ,Vincenzo Dandolo,溫琴佐·丹多洛,https://en.wikipedia.org/wiki/Vincenzo_Dandolo,,支持拿破崙的威尼斯人
-236,Pesaro,比沙洛,ペサロ,Francesco Pesaro,弗朗切斯科·佩薩羅,https://en.wikipedia.org/wiki/Francesco_Pesaro,,威尼斯共和國末期政治家(待確認)
+236,Pesaro,比沙洛,ペサロ,,,,,待考證；JP名ペサロ=Pesaro；約1762年生；原推定Francesco Pesaro生於1740、卒於1799，與遊戲不合，已撤回，只保留姓氏線索（2026-11-03，見 assets/data/lempereur/unidentified-research.mkdn）
 237,Carolina,卡洛琳娜,カロリーナ,Maria Carolina of Austria,奧地利的瑪麗亞·卡羅利娜,https://en.wikipedia.org/wiki/Maria_Carolina_of_Austria,https://zh.wikipedia.org/wiki/玛丽亚·卡罗莱纳_(奥地利女大公),那不勒斯王后
 238,Caracciolo,卡拉西歐羅,カラッチョーロ,Francesco Caracciolo,弗朗切斯科·卡拉喬洛,https://en.wikipedia.org/wiki/Francesco_Caracciolo_(admiral),,那不勒斯海軍上將；被處決
 239,Russo,魯索,ルッソ,Vincenzo Russo,溫琴佐·魯索,https://en.wikipedia.org/wiki/Vincenzo_Russo,,義大利愛國者，帕特諾佩共和國(1799)支持者，被處決
@@ -248,9 +248,9 @@
 246,Christian VII,克利斯汀七世,クリスティアン,Christian VII of Denmark,克里斯蒂安七世,https://en.wikipedia.org/wiki/Christian_VII_of_Denmark,https://zh.wikipedia.org/wiki/克里斯蒂安七世,丹麥國王
 247,Frederik VI,佛瑞德雷克,フレデリク,Frederick VI of Denmark,弗雷德里克六世,https://en.wikipedia.org/wiki/Frederick_VI_of_Denmark,https://zh.wikipedia.org/wiki/弗雷德里克六世,丹麥國王
 248,Bernstorff,伯恩斯多佛,ベルンシュトルフ,Christian Günther von Bernstorff,克里斯蒂安·金特·馮·伯恩斯托夫,https://en.wikipedia.org/wiki/Christian_Günther_von_Bernstorff,,丹麥外交官
-249,Jansen,詹森,ヨハンセン,,,,,待考證；JP名ヨハンセン=Johansen（非Jansen）；丹麥陣營魯貝克；出生年1750；可能為虛構或極冷門人物
-250,Bernhard,伯恩赫德,ベンハート,,,,,待考證；JP名ベンハート=Bernhardt；丹麥陣營魯貝克；出生年1761；可能為虛構或極冷門人物
-251,Sweyn,史威恩,スヴェン,,,,,待考證；JP名スヴェン=Sven；丹麥陣營奧斯陸；出生年1746；可能為虛構或極冷門人物
-252,Erik,伊納克,エリク,,,,,待考證；JP名エリク=Erik；ZH名伊納克不符；丹麥陣營奧斯陸；出生年1766；可能為虛構或極冷門人物
-253,Hague,海格,ハーグ,,,,,待考證；JP名ハーグ=Haag/Hague；丹麥陣營奧斯陸；出生年1771；可能為虛構或極冷門人物
+249,Jansen,詹森,ヨハンセン,,,,,待考證；JP名ヨハンセン=Johansen（非Jansen）；丹麥陣營魯貝克；出生年1750；可能為虛構或極冷門人物；查無候選，見 assets/data/lempereur/unidentified-research.mkdn
+250,Bernhard,伯恩赫德,ベンハート,,,,,待考證；JP名ベンハート=Bernhardt；丹麥陣營魯貝克；出生年1761；可能為虛構或極冷門人物；查無候選，見 assets/data/lempereur/unidentified-research.mkdn
+251,Sweyn,史威恩,スヴェン,,,,,待考證；JP名スヴェン=Sven；丹麥陣營奧斯陸；出生年1746；可能為虛構或極冷門人物；查無候選，見 assets/data/lempereur/unidentified-research.mkdn
+252,Erik,伊納克,エリク,,,,,待考證；JP名エリク=Erik；ZH名伊納克不符；丹麥陣營奧斯陸；出生年1766；可能為虛構或極冷門人物；查無候選，見 assets/data/lempereur/unidentified-research.mkdn
+253,Hague,海格,ハーグ,,,,,待考證；JP名ハーグ=Haag/Hague；丹麥陣營奧斯陸；出生年1771；可能為虛構或極冷門人物；查無候選，見 assets/data/lempereur/unidentified-research.mkdn
 254,Christie,克利斯坦,クリスティー,Werner Hosewinckel Christie,維爾納·霍塞溫克爾·克里斯蒂,https://en.wikipedia.org/wiki/Werner_Hosewinckel_Christie,,JP名クリスティー確認；挪威政治家(1778-1849)；出生年完全吻合
