@@ -80,6 +80,54 @@
   text-align: center;
 }
 
+/* ---- Index lists ----------------------------------------------------------- */
+
+/* Long person lists (e.g. 108 stars in 人物/水滸.md): one item per line in Markdown, flowed into columns here. */
+.contents ul.kw-cols {
+  columns: 3;
+  column-gap: 24px;
+  max-width: 840px; /* columns sized to the content, not stretched across wide screens */
+  list-style: none;
+  padding-left: 0;
+}
+
+.v-main .contents ul.kw-cols > li,
+.v-main .contents ul.kw-cols > li + li { /* Wiki.js adds 8px between list items */
+  break-inside: avoid;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* Wiki.js draws a "▸" bullet via .v-main .contents ul:not(.tabset-tabs):not(.contains-task-list) > li::before;
+   outrank it the same way its own .links-list / .grid-list do. */
+.v-main .contents ul.kw-cols:not(.tabset-tabs):not(.contains-task-list) > li::before {
+  content: "";
+  display: none;
+}
+
+.contents .kw-seat {
+  display: inline-block;
+  min-width: 2em;
+  margin-right: 6px;
+  text-align: right;
+  color: #888;
+  font-variant-numeric: tabular-nums;
+}
+
+.contents .kw-note {
+  margin-left: 4px;
+  font-size: 13px;
+  color: #888;
+}
+
+@media (max-width: 960px) {
+  .contents ul.kw-cols { columns: 2; }
+}
+
+@media (max-width: 600px) {
+  .contents ul.kw-cols { columns: 1; }
+}
+
 /* Hand-written entries (拿破崙, 項劉記) host 64x80 faces under /assets/faces/ and show them at 2-4x.
    Index sheets are excluded: they are often shown smaller than their size, where nearest-neighbour looks ragged. */
 .contents img[src^="/assets/faces/"]:not([src*="INDEX"]):not([src*="index"]) {

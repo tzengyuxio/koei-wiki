@@ -134,9 +134,11 @@ def index_block(mapping: dict, stats: dict) -> str:
     out = []
     for group in ("天罡", "地煞"):
         members = sorted((r for r in rows if r["天罡地煞"] == group), key=lambda r: int(r["梁山座次"]))
-        out += [f"## {group}星（{len(members)} 人）", "", "| 座次 | 星號 | 綽號 | 姓名 |", "| ---: | :--- | :--- | :--- |"]
-        out += [f"| {r['梁山座次']} | {r['星號']} | {r['綽號']} | {link(r)} |" for r in members]
-        out.append("")
+        # one person per line; the multi-column layout lives in theme.css (.kw-cols)
+        out += [f"## {group}星（{len(members)} 人）", ""]
+        out += [f'- <span class="kw-seat">{r["梁山座次"]}</span> {link(r)} '
+                f'<span class="kw-note">{r["星號"]}・{r["綽號"]}</span>' for r in members]
+        out += ["{.kw-cols}", ""]
     women = sorted((r for r in rows if role(r)["性別"] == "女"), key=lambda r: int(r["梁山座次"] or 999))
     out += [f"## 女性角色（{len(women)} 人）", "", "| 姓名 | 綽號 | 座次 | 遊戲中的身份 |", "| :--- | :--- | ---: | :--- |"]
     out += [f"| {link(r)} | {r['綽號']} | {r['梁山座次']} | {role(r)['身份']} |" for r in women]
