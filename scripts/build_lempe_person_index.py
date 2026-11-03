@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the L'Empereur person index 人物/拿破崙時代/home.md from the entries themselves.
+"""Build the L'Empereur person index 人物/拿破崙時代.md from the entries themselves.
 
 Reads each entry's title, 國籍, 中文譯名 and 原文 from its 基本資料 table and the game ID
 from its 遊戲數值 table, then writes the data:index block: one table per country
@@ -16,7 +16,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DIR = ROOT / "人物/拿破崙時代"
-INDEX = DIR / "home.md"
+INDEX = ROOT / "人物/拿破崙時代.md"  # beside the folder, so the breadcrumb link resolves
 
 
 def field(text: str, name: str) -> str:
@@ -27,8 +27,6 @@ def field(text: str, name: str) -> str:
 def load() -> list[dict]:
     people = []
     for f in sorted(DIR.glob("*.md")):
-        if f.name == "home.md":
-            continue
         t = f.read_text(encoding="utf-8")
         gid = re.search(r"^\| (\d+) \|", t, re.M)
         people.append({

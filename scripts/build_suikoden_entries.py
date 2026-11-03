@@ -15,7 +15,7 @@ Inputs:
   遊戲/水滸傳・天命之誓/人物資料.md                   PC-98 stats by 遊戲ID
 
 Usage: scripts/build_suikoden_entries.py [--all | 名1 名2 ...] [--dry-run] [--force]
-  --all    also writes the person index 人物/水滸/home.md (data:index block)
+  --all    also writes the person index 人物/水滸.md (data:index block)
   --force  rewrite whole files even if they are no longer stubs (loses hand edits)
 """
 
@@ -123,7 +123,7 @@ def render_new(row: dict, bio: dict, blocks: dict, targets: dict, old: str) -> s
 
 
 def index_block(mapping: dict, stats: dict) -> str:
-    """Person index for 人物/水滸/home.md: 天罡, 地煞, women, then everyone else by in-game role."""
+    """Person index for 人物/水滸.md: 天罡, 地煞, women, then everyone else by in-game role."""
     def link(r: dict) -> str:
         return r["wiki名"] if r["wiki名"] in NO_LINK else f"[{r['姓名']}](/人物/水滸/{r['wiki名']})"
 
@@ -150,7 +150,7 @@ def index_block(mapping: dict, stats: dict) -> str:
 
 
 def write_index(mapping: dict, stats: dict, dry: bool) -> None:
-    path = OUT_DIR / "home.md"
+    path = ROOT / "人物/水滸.md"  # beside the folder, so the breadcrumb link /人物/水滸 resolves
     old = path.read_text(encoding="utf-8") if path.exists() else ""
     body = index_block(mapping, stats)
     if not old or "Your content here" in old:
