@@ -52,7 +52,7 @@ SYSTEM = """你是三國人物百科的編輯，替人物條目寫定「列傳�
 5. 官職、地名、人名照原文；不要改寫成意思不同的詞（例如劉備東征是伐吳，不是攻打荊州）。只寫此人：背景用一句交代，不展開父兄、主君或對手的事蹟。只見於裴注的事要註明書名，但同一本書在同一段連續引用時只標第一次，不要每句都寫「據《某書》」。
 6. 不要同義重複，不要寫「可見」「顯示」之類解讀前一句的句子，不要誇大或抒情，不要寫「本條目」「綜上所述」。不要談資料本身：不寫「據維基百科」「史書沒有記載」「此後不見記載」「生卒年不詳」「〈某傳〉記載」「沒有為他立傳」「事蹟見於《某書》」「據裴注記載」，不加「（《後漢書》作……）」這類異文註，不討論史學爭議；結局不明就不寫結局。註明裴注引書（如「據《吳歷》記載」）不在此限。不用日文直譯詞（討伐隊、離反、武將登用等），用中文史書的說法。
 7. 不要提到遊戲、能力值或光榮。使用臺灣繁體中文與全形標點，自然分段，不加標題、清單、連結或 Markdown 記號。
-8. 字數：「列傳」{length}；「演義中的形象」約 100–300 字，不要比列傳長。字數是硬上限，寧短勿長：不要逐段翻譯本傳，挑此人最重要的幾件事寫，核心人物也只挑五、六件大事，不要每場戰役、每次封賞都寫；作戰細節、官職遷轉、詔令、旁人言論、史評只留最關鍵的。資料少就寫短，不用背景或旁人的事湊字數。
+8. 字數：「列傳」{length}；「演義中的形象」最多 300 字，不要比列傳長。寫完先數字數，超過就刪到上限以內。字數是硬上限，寧短勿長：不要逐段翻譯本傳，挑此人最重要的幾件事寫，核心人物也只挑五、六件大事，不要每場戰役、每次封賞都寫；作戰細節、官職遷轉、詔令、旁人言論、史評只留最關鍵的。資料少就寫短，不用背景或旁人的事湊字數。
 
 以 JSON 回答：origin 是出典（"正史"、"演義" 或 "其他"），bio 是列傳，yanyi 是演義中的形象（不寫時為 "無"）。"""
 
@@ -66,6 +66,17 @@ SCHEMA = {
     "required": ["origin", "bio", "yanyi"],  # ASCII keys: the CLI passes the schema as a tool
     "additionalProperties": False,
 }
+
+
+
+def max_length(row: dict) -> str:
+    """An explicit ceiling: "約 N 字" ranges were read as targets and overrun by a third."""
+    text = length_for(row)
+    if "1000" in text:
+        return "最多 900 字，劉備、曹操、孫權、諸葛亮等核心人物最多 1200 字"
+    if "600" in text:
+        return "最多 550 字"
+    return "最多 300 字；資料少就如實簡短"
 
 
 def load_inputs():
@@ -93,7 +104,7 @@ def params(wiki: str, inputs, model: str) -> tuple[dict, dict]:
     return {
         "model": model,
         "max_tokens": 16000,
-        "system": SYSTEM.format(length=length_for(row)),
+        "system": SYSTEM.format(length=max_length(row)),
         "messages": [{"role": "user", "content": user}],
         "output_config": {"effort": "medium", "format": {"type": "json_schema", "schema": SCHEMA}},
     }, sources
