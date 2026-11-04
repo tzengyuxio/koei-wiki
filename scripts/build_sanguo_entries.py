@@ -17,6 +17,8 @@ Inputs:
   ~/works/kaodata-re/export/koei-wiki/stats/<dataset>.jsonl  optional, ID-keyed stats
   ~/.cache/koei-wiki/kaodata-faces/        index.json cache (build_sanguo_mapping.py)
 
+Every run also rewrites the person index 人物/三國.md (data:index block) from the finished entries.
+
 Usage: scripts/build_sanguo_entries.py [--all | 名1 名2 ...] [--dry-run] [--force]
   --force  rewrite whole files even if they are no longer stubs (loses hand edits)
 """
@@ -57,6 +59,7 @@ KOEI = [
     ("eiketsu-pc98", "三國志英傑傳", "PC-98"),  # 1995-02
 ]
 STATS = ["統率", "武力", "智力", "政治", "魅力"]
+FACTIONS = ["曹魏", "蜀漢", "東吳", "群雄", "漢朝"]  # index order; the rest follow by name
 # Stats a generation does not have (template's pre-filled —).
 NO_STAT = {"三1": {"統率", "政治"}, "三2": {"統率", "政治"}, "三3": {"統率"},
            "三5": {"統率"}, "三7": {"統率"}, "三8": {"統率"},
@@ -263,6 +266,42 @@ def replace_blocks(text: str, blocks: dict) -> str:
     return text
 
 
+def index_block() -> str:
+    """Finished entries (not Wiki.js stubs) grouped by 所屬, each with its 字."""
+    groups: dict[str, list[str]] = {}
+    for path in sorted(OUT_DIR.glob("*.md")):
+        text = path.read_text(encoding="utf-8")
+        if "Your content here" in text:
+            continue
+        get = lambda key: m.group(1) if (m := re.search(rf"^\| {key} \| (.*?) \|", text, re.M)) else ""  # noqa: E731
+        item = f"- [{title_of(path.stem)}](/人物/三國/{path.stem})"
+        if courtesy := get("字"):
+            item += f' <span class="kw-note">{courtesy}</span>'
+        groups.setdefault(get("所屬") or "其他", []).append(item)
+    order = FACTIONS + sorted(k for k in groups if k not in FACTIONS)
+    out = []
+    for faction in [k for k in order if k in groups]:
+        out += [f"## {faction}（{len(groups[faction])} 人）", "", *groups[faction], "{.kw-cols}", ""]
+    return block("index", "\n".join(out).rstrip())
+
+
+def write_index(dry: bool) -> None:
+    path = ROOT / "人物/三國.md"  # beside the folder, so the breadcrumb link /人物/三國 resolves
+    old = path.read_text(encoding="utf-8") if path.exists() else ""
+    body = index_block()
+    if old:
+        text = replace_blocks(old, {"index": body})
+    else:
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+        text = "\n".join(["---", "title: 三國", 'description: "三國人物索引：依所屬勢力分類。"', "published: true",
+                          f"date: {now}", "tags: 三國", "editor: markdown", f"dateCreated: {now}", "---", "",
+                          "三國人物條目依所屬勢力分類，名字後面是字。列傳分批上架中，"
+                          "尚未上架的人物不列入；各類人數見[網站統計](/統計)。", "", body]) + "\n"
+    if not dry and text != old:
+        path.write_text(text, encoding="utf-8")
+    print("index", "unchanged" if text == old else "written")
+
+
 def main() -> None:
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     dry = "--dry-run" in sys.argv
@@ -302,6 +341,7 @@ def main() -> None:
         if not dry and text != old:
             path.write_text(text, encoding="utf-8")
     print(counts)
+    write_index(dry)
 
 
 if __name__ == "__main__":

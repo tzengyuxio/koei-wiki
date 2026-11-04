@@ -91,7 +91,7 @@ def full(s: dict) -> str:
     era = s["era"]
     out = [f"統計日期：{date.today().isoformat()}。只計已完成的頁面，不含尚未撰寫的空白頁。", "",
            "## 條目數", "", "| 分類 | 條目數 |", "| :--- | ---: |"]
-    out += [f"| [{k}人物](/人物/{k}) | {len(v)} |" if k != "三國" else f"| 三國人物 | {len(v)} |" for k, v in era.items()]
+    out += [f"| [{k}人物](/人物/{k}) | {len(v)} |" for k, v in era.items()]
     out += [f"| {k} | {n} |" for k, n in s["section"].items()]
     out += [f"| 遊戲介紹 | {s['games']} 款（含子頁面共 {s['game_pages']} 頁） |", "",
             f"三國人物另有 {s['sanguo_pending']} 位已建立頁面、列傳待上架。", ""]
