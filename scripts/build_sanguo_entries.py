@@ -11,6 +11,8 @@ Inputs:
   assets/data/sanguo/sanguo-bios-claude.jsonl  rewrite (scripts/sanguo_bios_claude.py), used once it has a review:
                                            replaces bio, adds 演義中的形象, 出典 and the zh.wikipedia ref;
                                            in an already-built file it replaces those two sections only
+                                           Person names in them link to other published entries (first
+                                           mention only, EDITORIAL §6); rebuild all to refresh links.
   assets/data/sanguo/persons-new.csv       faction and 出典 for entries without bios
   ~/works/kaodata-re/export/koei-wiki/stats/<dataset>.jsonl  optional, ID-keyed stats
   ~/.cache/koei-wiki/kaodata-faces/        index.json cache (build_sanguo_mapping.py)
@@ -161,7 +163,8 @@ def title_of(wiki: str) -> str:
     return f"{base} ({tag})" if tag else base
 
 
-def render_new(wiki: str, row: dict, bio: dict, extra: dict, traits: list, blocks: dict, old: str) -> str:
+def render_new(wiki: str, row: dict, bio: dict, extra: dict, traits: list, blocks: dict, old: str,
+               targets: dict) -> str:
     name = wiki.partition("_")[0]
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     created = m.group(1) if (m := re.search(r"^dateCreated: (\S+)", old, re.M)) else now
@@ -170,6 +173,9 @@ def render_new(wiki: str, row: dict, bio: dict, extra: dict, traits: list, block
     tags = ", ".join(["三國"] + [s for s in re.split("[、,]", source) if s] + ([faction] if faction else []) + traits)
     text = (bio or {}).get("bio", "").strip()
     desc = plain(text.split("。")[0]) + "。" if text else ""
+    yanyi = (bio or {}).get("yanyi", "")
+    if bio and bio.get("origin"):  # Claude rewrite: plain prose, links added here
+        text, yanyi = link_text([text, yanyi], name, targets)
     out = ["---", f"title: {title_of(wiki)}", f'description: "{desc}"', "published: true",
            f"date: {now}", f"tags: {tags}", "editor: markdown", f"dateCreated: {created}", "---", "",
            "## 基本資料", "", "| 項目 | 內容 |", "| :--- | :--- |", f"| 姓名 | {name} |"]
@@ -183,8 +189,8 @@ def render_new(wiki: str, row: dict, bio: dict, extra: dict, traits: list, block
     if "portraits-koei" in blocks:
         out += ["", "### 光榮其他作品", "", blocks["portraits-koei"]]
     out += ["", "## 遊戲數值", "", blocks["stats-main"], "", "## 列傳", "", text or "<!-- 列傳待補 -->"]
-    if (bio or {}).get("yanyi"):
-        out += ["", "## 演義中的形象", "", bio["yanyi"]]
+    if yanyi:
+        out += ["", "## 演義中的形象", "", yanyi]
     refs = (bio or {}).get("refs") or []
     if refs:
         out += ["", "## References", ""] + [f"- [{name} - 维基百科]({u})" for u in refs]
@@ -205,6 +211,37 @@ def merge_claude(bio: dict | None, claude: dict | None) -> dict | None:
         origin += "、演義"
     return {**(bio or {}), "bio": claude["bio"], "yanyi": claude["yanyi"], "origin": origin,
             "refs": [wiki_url(src["wikipedia"])] if src.get("wikipedia") else []}
+
+
+# Names that read as ordinary words, or are prefixes of longer names the texts use (孫仲 / 孫仲謀).
+NO_LINK = {"千萬", "史蹟"}
+PROTECTED = ["孫仲謀", "孫伯符"]
+
+
+def link_targets(names: set[str]) -> dict[str, str]:
+    """Display name -> path for published persons; ambiguous names (張南_東漢 / 張南_蜀漢) stay unlinked."""
+    bases = {}
+    for wiki in names:
+        bases.setdefault(wiki.partition("_")[0], []).append(wiki)
+    return {b: f"/人物/三國/{ws[0]}" for b, ws in bases.items()
+            if len(ws) == 1 and "_" not in ws[0] and not b.endswith("氏") and b not in NO_LINK}
+
+
+def link_text(parts: list[str], self_name: str, targets: dict[str, str]) -> list[str]:
+    """Link each target's first mention across the parts (列傳, then 演義中的形象)."""
+    names = sorted([n for n in targets if n != self_name] + PROTECTED, key=len, reverse=True)
+    if not names:
+        return parts
+    pat, seen = re.compile("|".join(map(re.escape, names))), set()
+
+    def sub(m: re.Match) -> str:
+        n = m.group(0)
+        if n in seen or n in PROTECTED:
+            return n
+        seen.add(n)
+        return f"[{n}]({targets[n]})"
+
+    return [pat.sub(sub, t) for t in parts]
 
 
 def replace_section(text: str, heading: str, body: str, after: str) -> str:
@@ -237,6 +274,7 @@ def main() -> None:
     claude = {(r := json.loads(line))["name"]: r
               for line in open(claude_path, encoding="utf-8") if line.strip()} if claude_path.exists() else {}
     claude = {k: r for k, r in claude.items() if r.get("review")}  # unreviewed drafts are not published
+    targets = link_targets(set(claude) | {"周倉", "喬國老"})
     names = list(mapping) if "--all" in sys.argv else args
     faces, stats, traits = faces_index(), load_stats(), load_traits()
     counts = {"new": 0, "updated": 0, "unchanged": 0}
@@ -251,13 +289,14 @@ def main() -> None:
         old = path.read_text(encoding="utf-8") if path.exists() else ""
         if not old or "Your content here" in old or "--force" in sys.argv:
             bio = merge_claude(bios.get(wiki), claude.get(wiki))
-            text = render_new(wiki, row, bio, new.get(wiki, {}), traits.get(wiki, []), blocks, old)
+            text = render_new(wiki, row, bio, new.get(wiki, {}), traits.get(wiki, []), blocks, old, targets)
             kind = "new"
         else:
             text = replace_blocks(old, blocks)
             if wiki in claude:
-                text = replace_section(text, "列傳", claude[wiki]["bio"], "遊戲中的登場")
-                text = replace_section(text, "演義中的形象", claude[wiki]["yanyi"], "列傳")
+                bio_text, yanyi = link_text([claude[wiki]["bio"], claude[wiki]["yanyi"]], name, targets)
+                text = replace_section(text, "列傳", bio_text, "遊戲中的登場")
+                text = replace_section(text, "演義中的形象", yanyi, "列傳")
             kind = "updated" if text != old else "unchanged"
         counts[kind] += 1
         if not dry and text != old:
