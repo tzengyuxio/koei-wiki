@@ -5,7 +5,9 @@ Sources per person, in order of weight:
   1. In-game bios from five games (kaodata-re export, not in git):
      三國志IV・V・VI 威力加強版 (one paragraph each) and 三國志13・14 威力加強版
      (簡介 + 演義 + 史實 segments). Segments starting with 無記述 are dropped.
-  2. zh.wikipedia plain-text extract (cached).
+  2. zh.wikipedia plain-text extract (cached). wiki-titles.csv picks the page by hand where the
+     automatic lookup fails (disambiguation, surname or general pages); an empty title means none.
+     On someone else's page only the paragraphs naming the person are kept.
   3. The earlier Gemini draft in sanguo-bios.jsonl, as a cross-check only.
 
 Qwen writes two parts: 列傳 (EDITORIAL §4; first sentence states the source:
@@ -22,6 +24,7 @@ Key:    Keychain service hikari-litellm-koei-wiki (KOEI_LLM_API / KOEI_LLM_KEY_F
 """
 
 import csv
+import functools
 import json
 import os
 import re
@@ -97,23 +100,43 @@ def game_parts(row: dict, bios: dict) -> tuple[list[str], list[str]]:
     return parts, used
 
 
+@functools.cache
+def wiki_titles() -> dict[str, str]:
+    """wiki名 -> zh.wikipedia title chosen by hand; an empty title means no usable page."""
+    path = DATA / "wiki-titles.csv"
+    if not path.exists():
+        return {}
+    return {r["wiki名"]: r["維基條目"] for r in csv.DictReader(open(path, encoding="utf-8"))}
+
+
+def fetch_extract(title: str) -> tuple[str, str]:
+    q = urllib.parse.urlencode({
+        "action": "query", "format": "json", "formatversion": 2, "prop": "extracts",
+        "explaintext": 1, "redirects": 1, "converttitles": 1, "titles": title, "variant": "zh-tw",
+    })
+    page = get_json(f"https://zh.wikipedia.org/w/api.php?{q}")["query"]["pages"][0]
+    return page.get("title", title), page.get("extract", "")
+
+
 def wiki_extract(wiki: str, title_hint: str) -> tuple[str, str]:
     path = CACHE / f"{wiki}.json"
+    override = wiki_titles().get(wiki)
     if path.exists():
-        return tuple(json.loads(path.read_text(encoding="utf-8")))
-    base, _, tag = wiki.partition("_")
+        cached = tuple(json.loads(path.read_text(encoding="utf-8")))
+        if override is None or override == cached[0]:  # a changed override refetches
+            return cached
     found = ("", "")
-    for title in [t for t in (title_hint, f"{base} ({tag})" if tag else "", base) if t]:
-        q = urllib.parse.urlencode({
-            "action": "query", "format": "json", "formatversion": 2, "prop": "extracts",
-            "explaintext": 1, "redirects": 1, "titles": title, "variant": "zh-tw",
-        })
-        page = get_json(f"https://zh.wikipedia.org/w/api.php?{q}")["query"]["pages"][0]
-        text = page.get("extract", "")
-        is_disambig = re.search("可以指|可能指|可指", text[:300])
-        if text and not is_disambig and re.search("三國|三国|東漢|东汉|演義|演义", text):
-            found = (page["title"], text[:15000])
-            break
+    if override is not None:
+        if override:
+            found = (override, fetch_extract(override)[1][:15000])
+    else:
+        base, _, tag = wiki.partition("_")
+        for title in [t for t in (title_hint, f"{base} ({tag})" if tag else "", base) if t]:
+            title, text = fetch_extract(title)
+            is_disambig = re.search("可以指|可能指|可指", text[:300])
+            if text and not is_disambig and re.search("三國|三国|東漢|东汉|演義|演义", text):
+                found = (title, text[:15000])
+                break
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(found, ensure_ascii=False), encoding="utf-8")
     return found
@@ -134,6 +157,30 @@ def split_output(text: str) -> tuple[str, str]:
         return text.strip(), ""
     bio, yanyi = m.group(1).strip(), m.group(2).strip()
     return bio, "" if yanyi.strip("「」。 ") == "無" else yanyi
+
+
+def context(wiki: str, row: dict, prev: dict, new_row: dict, bios: dict) -> tuple[list[str], list[str], str]:
+    """Source blocks for one person: basic facts, in-game bios, zh.wikipedia. Returns (blocks, games, wiki title)."""
+    name = wiki.partition("_")[0]
+    parts, used = game_parts(row, bios)
+    hint = ""
+    if prev.get("refs"):
+        hint = urllib.parse.unquote(prev["refs"][0].rsplit("/wiki/", 1)[-1]).replace("_", " ")
+    wiki_title, wiki_text = wiki_extract(wiki, hint)
+    if wiki_text and wiki not in wiki_titles() and name not in wiki_text[:200]:
+        # someone else's page or a general one (黃巾軍人物, a battle): keep only what names this person
+        wiki_text = "\n".join(p for p in wiki_text.split("\n") if name in p)
+    facts = [f"姓名：{name}"]
+    if prev.get("courtesy"):
+        facts.append(f"字：{prev['courtesy']}")
+    if (faction := prev.get("faction") or new_row.get("勢力") or row["勢力"]):
+        facts.append(f"所屬：{faction}")
+    if wiki != name:
+        facts.append(f"區分：同名者中的「{wiki.partition('_')[2]}」那一位")
+    ctx = ["【基本資料】\n" + "\n".join(facts)] + parts
+    if wiki_text:
+        ctx.append(f"【維基百科：{wiki_title}】\n{wiki_text}")
+    return ctx, used, wiki_title
 
 
 def main() -> None:
@@ -158,22 +205,8 @@ def main() -> None:
     for wiki in names:
         row = rows[wiki]
         name = wiki.partition("_")[0]
-        parts, used = game_parts(row, bios)
         prev = old.get(wiki, {})
-        hint = ""
-        if prev.get("refs"):
-            hint = urllib.parse.unquote(prev["refs"][0].rsplit("/wiki/", 1)[-1]).replace("_", " ")
-        wiki_title, wiki_text = wiki_extract(wiki, hint)
-        facts = [f"姓名：{name}"]
-        if prev.get("courtesy"):
-            facts.append(f"字：{prev['courtesy']}")
-        if (faction := prev.get("faction") or new.get(wiki, {}).get("勢力") or row["勢力"]):
-            facts.append(f"所屬：{faction}")
-        if wiki != name:
-            facts.append(f"區分：同名者中的「{wiki.partition('_')[2]}」那一位")
-        ctx = ["【基本資料】\n" + "\n".join(facts)] + parts
-        if wiki_text:
-            ctx.append(f"【維基百科：{wiki_title}】\n{wiki_text}")
+        ctx, used, wiki_title = context(wiki, row, prev, new.get(wiki, {}), bios)
         if prev.get("bio"):
             ctx.append("【舊稿】\n" + re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", prev["bio"]))
         user = "\n\n".join(ctx) + f"\n\n請根據以上資料，撰寫{name}的列傳與演義中的形象。"
