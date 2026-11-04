@@ -23,9 +23,10 @@ BIO_CAP = 9000      # chars of a person's own biography
 MENTION_CAP = 3000  # chars of other paragraphs naming the person
 YANYI_CAP = 4000    # chars of 演義 sentences naming the person
 NOTE_CAP = 6000    # chars of 裴注 on the person's own biography
-VARIANT = {"于": "於", "於": "于", "糜": "麋", "麋": "糜", "彤": "肜", "肜": "彤", "婁": "娄", "娄": "婁"}  # the texts mix these (於詮, 傅肜)
+VARIANT = {"于": "於", "於": "于", "糜": "麋", "麋": "糜", "彤": "肜", "肜": "彤", "婁": "娄", "娄": "婁", "協": "恊", "恊": "協"}  # the texts mix these (於詮, 傅肜)
 # Names the wiki takes from 演義 where the histories write another: 呂義 is 呂乂 in 三國志.
-NAME_ALIAS = {"呂義": "呂乂", "吳懿": "吳壹", "孫尚香": "孫夫人", "孫魯班": "全公主", "孫魯育": "朱公主"}
+NAME_ALIAS = {"呂義": "呂乂", "吳懿": "吳壹", "孫尚香": "孫夫人", "孫魯班": "全公主", "孫魯育": "朱公主",
+              "步練師": "步夫人", "沙摩柯": "沙靡柯", "滕脩": "滕循"}
 # Kin named by given name only inside a relative's biography: 典韋傳 "子滿" is 典滿.
 KIN = "子|弟|從弟|兄|從兄|孫|兄子|弟子|從子|姪"
 NOTE_WINDOW = 800   # chars kept on each side of the name in other notes
