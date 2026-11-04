@@ -14,7 +14,7 @@ created: 2026-11-04
   1. `scripts/sanguo_bios_claude.py local --all --jobs 4`：用 `claude -p` 跑 Opus 5.5，走訂閱額度；已有紀錄的人會跳過，跑到目標筆數就手動停止。
   2. 兩個 agent 各審半批，對照 `show <名>` 的來源與 sinotext，寫出 `review-*.jsonl`（verdict、issues、可機械套用的 edits）。
   3. `scripts/sanguo_bios_review.py <review.jsonl> [要跳過的名字,…]`：套用 edits，寫入 `review` 欄位。判為 rewrite 或取材有缺漏的人先刪掉紀錄，下批重跑。
-  4. `scripts/build_sanguo_entries.py $(jq -r 'select(.review) | .name' assets/data/sanguo/sanguo-bios-claude.jsonl)`：全部重建，連結也一併更新；更新 `更新日誌/2026.md` 的人數後 commit、push。
+  4. `scripts/build_sanguo_entries.py $(jq -r 'select(.review) | .name' assets/data/sanguo/sanguo-bios-claude.jsonl)`：全部重建，連結也一併更新；跑 `scripts/site_stats.py` 更新首頁與統計頁的數字，更新 `更新日誌/2026.md` 的人數後 commit、push。
 - 每批審核完才改提示詞，下一批審核時專門檢查回歸（見 memory feedback-batch-prompt-tuning）。
 - 用量：每人約輸入 9k、輸出 1.7k tokens；66 人約佔 5 小時額度 10% 以下（同時有其他 session）。
 
