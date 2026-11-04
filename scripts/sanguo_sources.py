@@ -23,7 +23,7 @@ BIO_CAP = 9000      # chars of a person's own biography
 MENTION_CAP = 3000  # chars of other paragraphs naming the person
 YANYI_CAP = 4000    # chars of 演義 sentences naming the person
 NOTE_CAP = 6000    # chars of 裴注 on the person's own biography
-VARIANT = {"于": "於", "於": "于", "糜": "麋", "麋": "糜", "彤": "肜", "肜": "彤"}  # the texts mix these (於詮, 傅肜)
+VARIANT = {"于": "於", "於": "于", "糜": "麋", "麋": "糜", "彤": "肜", "肜": "彤", "婁": "娄", "娄": "婁"}  # the texts mix these (於詮, 傅肜)
 # Names the wiki takes from 演義 where the histories write another: 呂義 is 呂乂 in 三國志.
 NAME_ALIAS = {"呂義": "呂乂", "吳懿": "吳壹"}
 # Kin named by given name only inside a relative's biography: 典韋傳 "子滿" is 典滿.
@@ -127,7 +127,10 @@ def peizhu(name: str) -> str:
     names = spellings(name)
     own = {a for a, s, _ in book("sanguozhi") if names & s}
     if own:
-        return take([(f"{a} 注", t) for a, t in notes() if a in own], NOTE_CAP)
+        # A shared 篇 (夏侯惇／子 楙) annotates the father too: notes naming the person come first.
+        given = name[2:] if len(name) > 2 else name[1:]
+        mine = [(f"{a} 注", t) for a, t in notes() if a in own]
+        return take(sorted(mine, key=lambda n: given not in n[1]), NOTE_CAP)
     if len(name) < 2:
         return ""
     hits = []

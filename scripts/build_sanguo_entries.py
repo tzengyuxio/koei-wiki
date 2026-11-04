@@ -212,7 +212,7 @@ def replace_section(text: str, heading: str, body: str, after: str) -> str:
     pat = re.compile(rf"^## {heading}\n.*?(?=^## |\Z)", re.S | re.M)
     new = f"## {heading}\n\n{body}\n\n" if body else ""
     if pat.search(text):
-        return pat.sub(lambda _: new, text, count=1)
+        return pat.sub(lambda _: new, text, count=1).rstrip("\n") + "\n"
     if not body:
         return text
     m = re.search(rf"^## {after}\n.*?(?=^## |\Z)", text, re.S | re.M)
