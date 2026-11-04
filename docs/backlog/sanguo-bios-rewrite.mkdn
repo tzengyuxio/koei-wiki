@@ -1,0 +1,47 @@
+---
+status: in-progress
+created: 2026-11-04
+---
+
+# 三國列傳改寫（Claude）
+
+把 818 篇 Qwen 草稿（`assets/data/sanguo/sanguo-bios-qwen.jsonl`）依 sinotext 原文改寫、審核後上架。
+
+## 現況（2026-11-04）
+
+- 已上架 259 人（`sanguo-bios-claude.jsonl` 中有 `review` 欄位的紀錄；builder 只採用這些）。
+- 流程，每批約 64 人：
+  1. `scripts/sanguo_bios_claude.py local --all --jobs 4`：用 `claude -p` 跑 Opus 5.5，走訂閱額度；已有紀錄的人會跳過，跑到目標筆數就手動停止。
+  2. 兩個 agent 各審半批，對照 `show <名>` 的來源與 sinotext，寫出 `review-*.jsonl`（verdict、issues、可機械套用的 edits）。
+  3. `scripts/sanguo_bios_review.py <review.jsonl> [要跳過的名字,…]`：套用 edits，寫入 `review` 欄位。判為 rewrite 或取材有缺漏的人先刪掉紀錄，下批重跑。
+  4. `scripts/build_sanguo_entries.py $(jq -r 'select(.review) | .name' assets/data/sanguo/sanguo-bios-claude.jsonl)`：全部重建，連結也一併更新；更新 `更新日誌/2026.md` 的人數後 commit、push。
+- 每批審核完才改提示詞，下一批審核時專門檢查回歸（見 memory feedback-batch-prompt-tuning）。
+- 用量：每人約輸入 9k、輸出 1.7k tokens；66 人約佔 5 小時額度 10% 以下（同時有其他 session）。
+
+## 提示詞修改紀錄
+
+| 批 | 改了什麼 | 結果 |
+| --- | --- | --- |
+| 1 | 基準版 | 字數超標 38%；常談資料本身（「據維基百科」等） |
+| 2 | 字數改成硬上限，演義段不得長於列傳 | 演義段過長消失；字數幾乎沒改善 |
+| 3 | 列出禁止句型；寧短勿長；只寫此人；用本國年號 | 超標降到 17%，禁止句型歸零，沒有回歸 |
+| 4 | 讀古文先確認主詞；《三國志》優先於《後漢書》；再禁「事蹟見於《某書》」 | 主詞誤讀減少但仍有；沒有回歸 |
+
+## 下一步
+
+- 下一批先重跑孫尚香（已加別名「孫夫人」）。
+- 第五批的提示詞候選，依第四批審核：演義段常把正史本來就有的事說成演義虛構（孫策神亭單挑、審配土山地道），要求先對照【正史原文】再下判斷；同一本書不要反覆標註「據《某書》」。
+- 取材仍會落空：只用官稱或字稱呼的人，例如「角弟寶」、后妃、公主；抓不到正史原文的仍約 150 人。可以再補別名表 `NAME_ALIAS`。
+
+## 負面結論
+
+- Agent tool 的 subagent 每人多帶約一萬多 tokens 的系統提示，比 `claude -p --system-prompt --tools ""` 貴一倍以上。
+- 加大字數規則的語氣沒有用，要給具體做法（不逐段翻譯、刪掉旁人事蹟）才有效。
+- 分批不會比一次跑完貴：每人的輸入都不同，能共用的系統提示太短，快取不到。
+- 不要透過 Wiki.js 後台隱藏空殼頁面（會和 git 同步衝突）。站上空殼頁面的 `is-published` 是 true，和 git 的 `published: false` 不一致。
+
+## 未收尾
+
+- 剩約 560 人待跑；什麼時候繼續，由使用者決定。
+- 待人工確認：州泰條《世語》中的「鍾繇」疑為「鍾毓」，可能是底本的錯。
+- 地名、用語不加連結；等那些頁面建立後再說。
