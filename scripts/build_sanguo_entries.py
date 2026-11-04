@@ -8,6 +8,9 @@ whole from the template layout; any other file only gets its data blocks replace
 Inputs:
   assets/data/sanguo/persons-mapping.csv   wiki name -> game IDs per dataset
   assets/data/sanguo/sanguo-bios.jsonl     courtesy, faction, bio, refs
+  assets/data/sanguo/sanguo-bios-claude.jsonl  rewrite (scripts/sanguo_bios_claude.py), used once it has a review:
+                                           replaces bio, adds 演義中的形象, 出典 and the zh.wikipedia ref;
+                                           in an already-built file it replaces those two sections only
   assets/data/sanguo/persons-new.csv       faction and 出典 for entries without bios
   ~/works/kaodata-re/export/koei-wiki/stats/<dataset>.jsonl  optional, ID-keyed stats
   ~/.cache/koei-wiki/kaodata-faces/        index.json cache (build_sanguo_mapping.py)
@@ -20,6 +23,7 @@ import csv
 import json
 import re
 import sys
+import urllib.parse
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -162,7 +166,7 @@ def render_new(wiki: str, row: dict, bio: dict, extra: dict, traits: list, block
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     created = m.group(1) if (m := re.search(r"^dateCreated: (\S+)", old, re.M)) else now
     faction = (bio or {}).get("faction") or extra.get("勢力") or row["勢力"]
-    source = extra.get("出典", "")
+    source = extra.get("出典") or (bio or {}).get("origin", "")
     tags = ", ".join(["三國"] + [s for s in re.split("[、,]", source) if s] + ([faction] if faction else []) + traits)
     text = (bio or {}).get("bio", "").strip()
     desc = plain(text.split("。")[0]) + "。" if text else ""
@@ -179,10 +183,40 @@ def render_new(wiki: str, row: dict, bio: dict, extra: dict, traits: list, block
     if "portraits-koei" in blocks:
         out += ["", "### 光榮其他作品", "", blocks["portraits-koei"]]
     out += ["", "## 遊戲數值", "", blocks["stats-main"], "", "## 列傳", "", text or "<!-- 列傳待補 -->"]
+    if (bio or {}).get("yanyi"):
+        out += ["", "## 演義中的形象", "", bio["yanyi"]]
     refs = (bio or {}).get("refs") or []
     if refs:
         out += ["", "## References", ""] + [f"- [{name} - 维基百科]({u})" for u in refs]
     return "\n".join(out) + "\n"
+
+
+def wiki_url(title: str) -> str:
+    return "https://zh.wikipedia.org/wiki/" + urllib.parse.quote(title.replace(" ", "_"))
+
+
+def merge_claude(bio: dict | None, claude: dict | None) -> dict | None:
+    """Old bio record with the Claude rewrite's bio, yanyi, 出典 and wiki ref on top."""
+    if not claude:
+        return bio
+    src = claude["sources"]
+    origin = claude["origin"].replace("其他", "其他出典")
+    if origin == "正史" and src.get("yanyi_text"):
+        origin += "、演義"
+    return {**(bio or {}), "bio": claude["bio"], "yanyi": claude["yanyi"], "origin": origin,
+            "refs": [wiki_url(src["wikipedia"])] if src.get("wikipedia") else []}
+
+
+def replace_section(text: str, heading: str, body: str, after: str) -> str:
+    """Set the body of `## heading` (created right after section `after` if missing; removed if body is empty)."""
+    pat = re.compile(rf"^## {heading}\n.*?(?=^## |\Z)", re.S | re.M)
+    new = f"## {heading}\n\n{body}\n\n" if body else ""
+    if pat.search(text):
+        return pat.sub(lambda _: new, text, count=1)
+    if not body:
+        return text
+    m = re.search(rf"^## {after}\n.*?(?=^## |\Z)", text, re.S | re.M)
+    return text[:m.end()] + new + text[m.end():] if m else text.rstrip("\n") + "\n\n" + new
 
 
 def replace_blocks(text: str, blocks: dict) -> str:
@@ -199,6 +233,10 @@ def main() -> None:
     bios = {(r := json.loads(line))["name"]: r
             for line in open(DATA / "sanguo-bios.jsonl", encoding="utf-8") if line.strip()}
     new = {r["wiki名"]: r for r in csv.DictReader(open(DATA / "persons-new.csv", encoding="utf-8"))}
+    claude_path = DATA / "sanguo-bios-claude.jsonl"
+    claude = {(r := json.loads(line))["name"]: r
+              for line in open(claude_path, encoding="utf-8") if line.strip()} if claude_path.exists() else {}
+    claude = {k: r for k, r in claude.items() if r.get("review")}  # unreviewed drafts are not published
     names = list(mapping) if "--all" in sys.argv else args
     faces, stats, traits = faces_index(), load_stats(), load_traits()
     counts = {"new": 0, "updated": 0, "unchanged": 0}
@@ -212,10 +250,14 @@ def main() -> None:
         path = OUT_DIR / f"{wiki}.md"
         old = path.read_text(encoding="utf-8") if path.exists() else ""
         if not old or "Your content here" in old or "--force" in sys.argv:
-            text = render_new(wiki, row, bios.get(wiki), new.get(wiki, {}), traits.get(wiki, []), blocks, old)
+            bio = merge_claude(bios.get(wiki), claude.get(wiki))
+            text = render_new(wiki, row, bio, new.get(wiki, {}), traits.get(wiki, []), blocks, old)
             kind = "new"
         else:
             text = replace_blocks(old, blocks)
+            if wiki in claude:
+                text = replace_section(text, "列傳", claude[wiki]["bio"], "遊戲中的登場")
+                text = replace_section(text, "演義中的形象", claude[wiki]["yanyi"], "列傳")
             kind = "updated" if text != old else "unchanged"
         counts[kind] += 1
         if not dry and text != old:
