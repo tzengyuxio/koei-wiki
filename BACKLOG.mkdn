@@ -17,6 +17,14 @@
 
 - [ ] 評估人物資料改用 SQLite — 目前資料分散在 CSV、JSONL、kaodata-re 匯出與 `.md` 手寫段落。初步看法：git 內仍以文字檔（CSV／JSONL）為正本，SQLite 由腳本產生，用來查詢、統計與匯出；先定好跨作品的穩定人物 ID。等三國 800 多人建完，或三國志與信長之野望人物都初步建立後再評估，可與 vault ADR-005（司馬Game 統一資料平台）一起看（2026-11-04）
 
+## 地點
+
+- [ ] 三國地點與州條目 — 範本 `assets/location_sanguo_template.mkdn`、`location_sanguo_province_template.mkdn`（凡例 §3.3）；等 kaodata-re 匯出各代地點（名稱、種類、所屬州、相鄰、戰場圖），koei-wiki 這邊要建名稱對照表與產生腳本；漢末政區初稿可用 PTT Koei 版 M.1430965372.A.41F（III–12），要對照《續漢書・郡國志》（2026-11-06）
+- [ ] 各代大地圖頁面 — 放在 `遊戲/` 下，標出各地點位置；地點條目連過去，不在條目內標位置（2026-11-06）
+
 ## 網站
+
+- [ ] 頭像擋右鍵另存 — 只求意思一下：theme.css 對頭像區塊（如 `.kw-portraits-mainline img`）加 `pointer-events: none`、`-webkit-user-drag: none`、`-webkit-touch-callout: none`，改完貼到後台 CSS Override；其他頭像區塊的 class 一起加。不採用背景圖（每格要寫 `style`、失去 `alt`、列印不印）或 JS 擋整頁右鍵（2026-11-06）
+- [ ] 圖片防盜連 — R2 圖床 `img.simagame.me` 用 Cloudflare WAF 規則檢查 Referer，放行 koei.wiki、自有網域與空 Referer；與 kaodata 共用，白名單要含它的網域。Wiki.js 自己供應的 `/assets/faces/` 要在 homelab 反向代理處理；repo 公開，raw.githubusercontent.com 管不到，長期可考慮頭像集中到 R2（2026-11-06）
 
 - [ ] 評估升級 Wiki.js 3 — 3.0.1（2026-11-01）起為正式版，要升就直接上 3.0.2（含安全修正）。不能原地升級：另裝 3.x、2.x 匯出 `.wkbackup` 再匯入；限 PostgreSQL 17／18、Node.js 26；目前站台是 Node.js 18.17.0、PostgreSQL 15.4，兩者都要升大版本（PostgreSQL 要另做資料庫升級，如 pg_upgrade 或 dump／restore；3.x 是匯入 `.wkbackup` 到新站，可以直接開新的 PG 17／18）。git 同步、CSS Override 等模組設定不會搬過去，git 同步重設時先單向或接測試分支，避免雙向回寫上千檔；`{.tabset}` 會變一般文字（`遊戲/拿破崙.md`、`遊戲/項劉記.md`）；`kw-*` class 與 `style` 依 3.0.2 原始碼會保留，但 `<details open>` 的 `open` 會被拿掉（能力表預設收合），仍要用測試站驗證；**3.x 只認 YAML 陣列形式的 `tags`**，現行的 `tags: a, b` 會被讀成沒有標籤，且雙向同步會改寫全部頁面的 front matter，切換前先在 repo 把 tags 轉成陣列；根目錄 README 會被當成首頁。先架測試站驗證，不急著切換。另：vault ADR-005（司馬Game 統一資料平台）以「v3 rewrite 停滯」為由排除 Wiki.js，3.0 已正式發布，可一併重新評估；koei.wiki 與開放編輯計畫的關係見 vault ADR-006（2026-11-02）
