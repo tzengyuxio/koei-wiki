@@ -145,6 +145,10 @@ dateCreated: 2026-02-16T12:00:00.000Z
 *   **戰場地圖**：放在條目最後、References 之前。野戰圖跟「戰線」走的代數（IV、VI–VIII）只列以這個地點為名的圖。
 *   **撞名**：與其他時代的地點同名時，檔名用 `名稱_三國.md`，title 寫 `名稱 (三國)`。與州同名的都市用 `名稱_都市.md`，title 寫 `名稱 (都市)`，如三3–三5 的都市徐州是 `徐州_都市.md`，州是 `徐州.md`。
 
+#### 各代都市資料一覽
+
+每一代一頁，放在 `遊戲/<作品名>/都市資料一覽.md`（如 `遊戲/三國志IV/都市資料一覽.md`），模板：`assets/sanguo_game_places_template.mkdn`。列出該代遊戲資料裡的全部地點，包括不另立條目的野戰地點，有條目的連過去；大地圖上的位置標記也放在這一頁，地點條目不放。結構：概要 → 大地圖 → 地點一覽（依遊戲中的等級分 H3） → 州（可選） → 資料來源。遊戲主頁加「主條目」連結。
+
 #### 三國州條目結構
 
 州不是遊戲中的城池，條目記錄各代遊戲把哪些地點歸在這個州，模板：`assets/location_sanguo_province_template.mkdn`。結構：基本資料 → 各代所轄地點（可摺疊） → 遊戲中的登場（可選） → 簡介 → References。
@@ -325,7 +329,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 *   **位置**：標記放在 `<div>`／`<details>` 容器外面，各自獨立一行。
 *   **區塊名**：
     *   三國：`portraits-mainline`、`portraits-koei`、`portraits-other`、`stats-main`
-    *   三國地點：`places-main`、`map-battle`；三國州：`province-places`
+    *   三國地點：`places-main`、`map-battle`；三國州：`province-places`；各代都市資料一覽：`map-world`、`places-index`、`places-province`
     *   水滸：`portraits`、`stats-pc98`；索引頁 `人物/水滸.md`：`index`
     *   拿破崙：索引頁 `人物/拿破崙時代.md`：`index`（`scripts/build_lempe_person_index.py`）
 
@@ -340,6 +344,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 | 地點模板 | `assets/location_template.mkdn` | 地點條目（含多遊戲版面） |
 | 三國地點模板 | `assets/location_sanguo_template.mkdn` | 三國志系列的都市、關、據點 |
 | 三國州模板 | `assets/location_sanguo_province_template.mkdn` | 三國志系列的州 |
+| 三國志各代都市資料一覽模板 | `assets/sanguo_game_places_template.mkdn` | `遊戲/<作品名>/都市資料一覽.md` |
 | 條目檢視日誌 | `assets/review_log.mkdn` | 條目品質檢視紀錄 |
 
 ---

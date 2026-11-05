@@ -1,0 +1,68 @@
+---
+title: {作品名} 都市資料一覽
+description: "{作品名}的全部地點：大地圖與地點一覽"
+published: true
+date: {YYYY-MM-DDTHH:MM:SS.000Z}
+tags: 三國, {作品 tag，如 san4}, 地點
+editor: markdown
+dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
+---
+
+<!--
+三國志各代的都市資料一覽（凡例 §3.3「各代都市資料一覽」）
+- 路徑：遊戲/{作品名}/都市資料一覽.md，如 遊戲/三國志IV/都市資料一覽.md；遊戲主頁加一行「主條目：[{作品名} 都市資料一覽](/遊戲/{作品名}/都市資料一覽)」
+- 列出該代遊戲資料裡的全部地點（含不另立條目的野戰地點、港等），有條目的連到地點條目
+- data:X begin／end 標記之間的內容由 script 從 kaodata-re 匯出（koei-places/1）產生，不要手改（凡例 §10）
+-->
+
+## 概要
+
+{這一代的地點制度：單位叫什麼（國、州、都市）、共有幾個、分幾種等級、怎麼打仗（攻城／野戰怎麼挑地圖）。約 100–300 字}
+
+## 大地圖
+
+<!--
+- 大地圖加上各地點的位置標記（kw-map／kw-map-marker，座標取自 pos）
+- 三1、三2 的國、州只有編號，標記標編號
+-->
+
+<!-- data:map-world begin -->
+<figure class="kw-map">
+<div class="kw-map-frame">
+<img src="{大地圖網址}" alt="{作品名}大地圖" width="{寬}" height="{高}">
+<span class="kw-map-marker" style="left: {x}%; top: {y}%;" title="{名稱}"></span>
+</div>
+<figcaption>{作品名} 大地圖</figcaption>
+</figure>
+<!-- data:map-world end -->
+
+## 地點一覽
+
+<!--
+- 依遊戲中的等級分 H3（都市、關、港、府…），每段內照遊戲內的編號排列
+- 名稱照條目名（正體），遊戲寫法不同時在後面括號註明；沒有條目的地點不加連結
+- 所屬：都市寫所屬州，關、港等寫所屬都市
+- 三1、三2 名稱欄寫「—」；三2 借自三国志ツクール的州名放在「備註」
+-->
+
+<!-- data:places-index begin -->
+### {等級，如 都市}
+
+| 編號 | 名稱 | 所屬 | 相鄰 | 備註 |
+| ---: | :--- | :--- | :--- | :--- |
+| {id} | [{名稱}](/地點/{名稱}) | [{州}](/地點/{州}) | {相鄰地點} | {備註} |
+<!-- data:places-index end -->
+
+## 州
+
+<!-- 可選。這一代有州（或地方）時，列出各州所轄的地點；沒有就刪除 -->
+
+<!-- data:places-province begin -->
+| 州 | 地點 |
+| :--- | :--- |
+| [{州}](/地點/{州}) | [{地點}](/地點/{地點})、… |
+<!-- data:places-province end -->
+
+## 資料來源
+
+- kaodata-re 匯出（koei-places/1），{kaodata-re commit}
