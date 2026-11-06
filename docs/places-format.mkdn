@@ -1,15 +1,15 @@
-# 三國志地點匯出格式（koei-places/1）
+# 地點匯出格式（koei-places/1）
 
-kaodata-re 匯出三國志正傳各代的地點資料，koei-wiki 據此產生地點條目與州條目（凡例 §3.3）。依 `~/.claude/repos.md` A 類交接，規格在下游（本檔），上游照規格輸出；新增選填欄位不升版，不相容的變更升 `koei-places/2`。
+kaodata-re 匯出三國志正傳各代與水滸傳的地點資料，koei-wiki 據此產生地點條目、州條目與各代的都市資料一覽（凡例 §3.3）。依 `~/.claude/repos.md` A 類交接，規格在下游（本檔），上游照規格輸出；新增選填欄位不升版，不相容的變更升 `koei-places/2`。
 
-狀態：2026-11-06 與 kaodata-re 商定，kaodata-re@58f2f12 依此交付（14 個資料集）；複驗用 `scripts/verify_sanguo_places.py`。
+狀態：2026-11-06 與 kaodata-re 商定，kaodata-re@58f2f12 依此交付三國志 14 個資料集；同日放寬到水滸傳（加選填欄位 `cities`、`battlemaps[].season`，不升版），kaodata-re@6a5e026 交付 `suikoden-dos`。複驗用 `scripts/verify_sanguo_places.py`。
 
 ## 檔案
 
 - `~/works/kaodata-re/export/koei-wiki/places/<dataset>.jsonl`：一個地點一行。
 - `~/works/kaodata-re/export/koei-wiki/places/<dataset>/`：該代的戰場圖 PNG，檔名由上游決定，在 `battlemaps[].file` 引用。三12、三13 是 3D 地形，不給圖；三9、三11、三14 沒有戰場圖。
 - R2 上傳由 koei-wiki 做（對外發布要使用者同意）；kaodata-re 只寫本機的 `export/`。
-- `<dataset>` 和能力值匯出相同：`san1-pc98`、`san2-pc98`、`san3-pc98`、`san4pk-pc98`、`san5pk-pc98`、`san6pk-win` … `san14pk-win`。
+- `<dataset>` 和能力值、頭像匯出相同：三國志是 `san1-pc98`、`san2-pc98`、`san3-pc98`、`san4pk-pc98`、`san5pk-pc98`、`san6pk-win` … `san14pk-win`；水滸傳是 `suikoden-dos`（繁中版，主資料集，`name` 用它的寫法，`nameJa` 填 PC-98 版的寫法）。PC-98、FC 版的相鄰與 DOS 版相同，不另出資料集；版本間不同的（如延安的城數）寫在 `notes`。
 - **全部匯出**：遊戲資料裡的每個地點都要列出，包括野戰地點、三13 的縣級地點、三14 的府。收不收條目由 koei-wiki 決定。
 
 ## 欄位
@@ -22,12 +22,13 @@ kaodata-re 匯出三國志正傳各代的地點資料，koei-wiki 據此產生�
 | `nameBorrowed` | | object | 遊戲裡沒有名字、從別的作品借來的名字：`{"name": "襄平", "from": "<資料集>"}`，如三2 的州借三国志ツクール範例劇本的州名。koei-wiki 不拿它建條目，只在遊戲頁對照用 |
 | `nameJa` | | string | 日文版寫法，和 `name` 不同時才填 |
 | `reading` | | string | 遊戲內的讀音 |
-| `level` | ✓ | string | 遊戲中的等級，用遊戲裡的稱呼：都市、関、港、府、渡口、沖、拠点、國、州…。遊戲裡沒有稱呼的，用上游的分類，在 `uncertain` 標 `level` 並在 `notes` 說明（如三3 的據點、三13 的縣級地點） |
+| `level` | ✓ | string | 遊戲中的等級，用遊戲裡的稱呼：都市、関、港、府、渡口、沖、拠点、國、州…（水滸傳是州）。遊戲裡沒有稱呼的，用上游的分類，在 `uncertain` 標 `level` 並在 `notes` 說明（如三3 的據點、三13 的縣級地點） |
 | `province` | | string | 遊戲中所屬的州（或三11 的青徐、荊北這類遊戲自創的州），照遊戲寫法 |
 | `region` | | string | 遊戲中的地方（河北、中原、呉越…；三11–三14） |
+| `cities` | | int | 這個地點裡的城數（水滸傳的州）。版本間不同時填主資料集的數字，其他版本寫在 `notes` |
 | `parentCity` | | int | 關、港等沒有州欄位的地點，所屬都市的 `id` |
 | `adjacent` | | int[] | 相鄰地點的 `id`，照遊戲資料的順序 |
-| `battlemaps` | | object[] | 以這個地點為戰場的圖：`{"file": "<相對於 places/<dataset>/ 的路徑>", "role": "戰場｜攻城｜野戰｜城門戰｜市街戰｜水戰｜關", "from": id, "sharedWith": [id…]}`。`role`：不分攻城、野戰的代數（三1–三3，打到哪裡就用那一張）填「戰場」；`from`：野戰圖依攻方從哪個鄰點來而定的代數（三4、三6–三8），填攻方來的地點，同一地點會有多筆；`sharedWith`：共用同一張圖的其他地點。沒有就省略。不看地點選圖的（三13 依部隊所在的地域碼選野戰圖）不掛在地點上，在 `notes` 說明 |
+| `battlemaps` | | object[] | 以這個地點為戰場的圖：`{"file": "<相對於 places/<dataset>/ 的路徑>", "role": "戰場｜攻城｜野戰｜城門戰｜市街戰｜水戰｜關", "from": id, "sharedWith": [id…], "season": "春"}`。`role`：不分攻城、野戰的代數（三1–三3，打到哪裡就用那一張）填「戰場」；`from`：野戰圖依攻方從哪個鄰點來而定的代數（三4、三6–三8），填攻方來的地點，同一地點會有多筆；`sharedWith`：共用同一張圖的其他地點。`season`：依季節換圖的代數（水滸傳）填「春｜夏｜秋｜冬」，同一地點每季一筆。沒有就省略。不看地點選圖的（三13 依部隊所在的地域碼選野戰圖）不掛在地點上，在 `notes` 說明 |
 | `pos` | | object | 大地圖座標 `{"x", "y", "grid", "w", "h"}`，給日後的大地圖頁面用。`grid` 是自由字串：`hex-offset`、`hex-axial`、`square`、`pixel`…；`w`、`h`（選填）是整張圖的寬高，單位同 `x`、`y` |
 | `uncertain` | | string[] | 推定、未確認的欄位名稱（對應上游筆記的 🟡、【推】），如 `["parentCity"]` |
 | `notes` | | string | 給 koei-wiki 的補充（繁中），如「遊戲裡這類地點沒有稱呼」「讀的是 PC-98 本體，PK 的地點表沒比對」 |
@@ -38,6 +39,7 @@ kaodata-re 匯出三國志正傳各代的地點資料，koei-wiki 據此產生�
 {"dataset": "san4pk-pc98", "id": 22, "name": "襄陽", "level": "都市", "province": "荊州", "adjacent": [21, 23, 24, 25], "battlemaps": [{"file": "68.png", "role": "攻城"}, {"file": "30.png", "role": "野戰", "from": 21, "sharedWith": [3, 9]}], "notes": "讀的是 PC-98 本體"}
 {"dataset": "san13pk-win", "id": 42, "name": "襄陽", "level": "都市", "province": "荊州", "region": "荊楚", "adjacent": [40, 41, 43, 45], "pos": {"x": 702, "y": 655, "grid": "square", "w": 1440, "h": 1120}}
 {"dataset": "san13pk-win", "id": 107, "name": "長坂", "level": "縣級地點", "parentCity": 42, "uncertain": ["parentCity", "level"], "notes": "遊戲裡這類地點的稱呼沒找到"}
+{"dataset": "suikoden-dos", "id": 12, "name": "太原", "nameJa": "大原", "level": "州", "cities": 4, "adjacent": [11, 13, 14], "battlemaps": [{"file": "12-spring.png", "role": "戰場", "season": "春"}, {"file": "12-summer.png", "role": "戰場", "season": "夏"}]}
 ```
 
 ## 驗證
@@ -46,6 +48,7 @@ kaodata-re 匯出三國志正傳各代的地點資料，koei-wiki 據此產生�
 
 - `adjacent`、`parentCity`、`sharedWith`、`battlemaps[].from` 引用的 `id` 都存在於同一資料集。
 - `battlemaps[].file` 的檔案都存在，`from` 引用的 `id` 存在且和該地點相鄰。
+- `battlemaps[].season` 只能是春、夏、秋、冬。
 - `adjacent` 雙向一致；遊戲資料本身不對稱的（如三7 會稽第 4 格）在 `notes` 說明。
 
 koei-wiki 收下前用自己的 script 再驗一次。
@@ -55,3 +58,4 @@ koei-wiki 收下前用自己的 script 再驗一次。
 1. 三1（58 國＋州）、三2（41 州＋借用的名字）、三3（46 州＋22 據點）、三4（43 都市），附戰場圖。
 2. 三10、三11、三14 的地點（三10 的戰場圖晚點補）。
 3. 三5（讀戰場的程式沒追）、三6–三8（要新寫渲染程式）、三12、三13。
+4. 水滸傳 `suikoden-dos`（49 州，相鄰與每州四季的戰場圖；2026-11-06 使用者決定開工）。大地圖座標是推定的，`uncertain` 標 `pos`。
