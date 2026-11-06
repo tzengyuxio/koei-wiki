@@ -21,8 +21,8 @@ dateCreated: 2023-02-12T20:55:06.081Z
 | 水滸人物 | 255 |
 | 拿破崙時代人物 | 260 |
 | 秦漢之際人物 | 93 |
-| 地點、用語、事件 | 76 |
-| 遊戲介紹 | 40 款 |
+| 地點、用語、事件 | 728 |
+| 遊戲介紹 | 44 款 |
 | 遊戲頭像、歷史肖像、地圖 | 10855 張 |
 <!-- data:site-stats-summary end -->
 
@@ -32,25 +32,25 @@ dateCreated: 2023-02-12T20:55:06.081Z
 
 同一位武將，在十四代《三國志》裡各有不同的模樣。以[劉備](/人物/三國/劉備)為例：
 
-<div class="kw-portraits-mainline">
+<div class="kw-portraits-mainline kw-1x">
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/san1-pc98/3.png" alt="劉備 三國志" width="96" height="120">
+<img src="https://img.simagame.me/kaodata/faces/san1-pc98/3.png" alt="劉備 三國志" width="48" height="80">
 <figcaption>I</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/san2-pc98/1.png" alt="劉備 三國志II" width="96" height="120">
+<img src="https://img.simagame.me/kaodata/faces/san2-pc98/1.png" alt="劉備 三國志II" width="64" height="80">
 <figcaption>II</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/san3-pc98/9.png" alt="劉備 三國志III" width="96" height="120">
+<img src="https://img.simagame.me/kaodata/faces/san3-pc98/9.png" alt="劉備 三國志III" width="64" height="80">
 <figcaption>III</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/san4pk-pc98/151.png" alt="劉備 三國志IV" width="96" height="120">
+<img src="https://img.simagame.me/kaodata/faces/san4pk-pc98/151.png" alt="劉備 三國志IV" width="64" height="80">
 <figcaption>IV</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/san5pk-pc98/110.png" alt="劉備 三國志V" width="96" height="120">
+<img src="https://img.simagame.me/kaodata/faces/san5pk-pc98/110.png" alt="劉備 三國志V" width="64" height="80">
 <figcaption>V</figcaption>
 </figure>
 <figure class="kw-face">
@@ -62,19 +62,19 @@ dateCreated: 2023-02-12T20:55:06.081Z
 <figcaption>VII</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/san8pk-win/493.png" alt="劉備 三國志VIII" width="96" height="120">
+<img src="https://img.simagame.me/kaodata/faces/san8pk-win/493.png" alt="劉備 三國志VIII" width="64" height="80">
 <figcaption>VIII</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/san9pk-win/621.png" alt="劉備 三國志IX" width="96" height="120">
+<img src="https://img.simagame.me/kaodata/faces/san9pk-win/621.png" alt="劉備 三國志IX" width="64" height="80">
 <figcaption>IX</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/san10pk-win/614.png" alt="劉備 三國志X" width="96" height="120">
+<img src="https://img.simagame.me/kaodata/faces/san10pk-win/614.png" alt="劉備 三國志X" width="64" height="80">
 <figcaption>X</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/san11pk-win/635.png" alt="劉備 三國志11" width="96" height="120">
+<img src="https://img.simagame.me/kaodata/faces/san11pk-win/635.png" alt="劉備 三國志11" width="64" height="80">
 <figcaption>11</figcaption>
 </figure>
 <figure class="kw-face">
@@ -101,17 +101,17 @@ dateCreated: 2023-02-12T20:55:06.081Z
 
 [《水滸傳・天命之誓》](/遊戲/水滸傳・天命之誓)的 255 位人物都已建立條目，收錄 PC-88、PC-98、FC 三個版本的頭像。以[宋江](/人物/水滸/宋江)為例：
 
-<div class="kw-portraits">
+<div class="kw-portraits kw-1x">
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/suikoden-pc88/3.png" alt="宋江 PC-88" height="120">
+<img src="https://img.simagame.me/kaodata/faces/suikoden-pc88/3.png" alt="宋江 PC-88" width="64" height="80">
 <figcaption>PC-88</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/suikoden-pc98/3.png" alt="宋江 PC-98" height="120">
+<img src="https://img.simagame.me/kaodata/faces/suikoden-pc98/3.png" alt="宋江 PC-98" width="64" height="80">
 <figcaption>PC-98</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="https://img.simagame.me/kaodata/faces/suikoden-fc/3.png" alt="宋江 FC" height="120">
+<img src="https://img.simagame.me/kaodata/faces/suikoden-fc/3.png" alt="宋江 FC" width="40" height="48">
 <figcaption>FC</figcaption>
 </figure>
 </div>
@@ -123,17 +123,17 @@ dateCreated: 2023-02-12T20:55:06.081Z
 
 [《拿破崙》](/遊戲/拿破崙)（L'Empereur）的人物逐一考證了真實身分，附歷史肖像與列傳。[拿破崙](/人物/拿破崙時代/拿破崙)本人在遊戲中隨身分變換頭像：
 
-<div class="kw-portraits">
+<div class="kw-portraits kw-1x">
 <figure class="kw-face">
-<img src="/assets/faces/lempe/LEMPE_DOS_F0000.png" alt="拿破崙（司令官）" height="120">
+<img src="/assets/faces/lempe/LEMPE_DOS_F0000.png" alt="拿破崙（司令官）" width="64" height="80">
 <figcaption>司令官</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="/assets/faces/lempe/LEMPE_DOS_F0255.png" alt="拿破崙（執政）" height="120">
+<img src="/assets/faces/lempe/LEMPE_DOS_F0255.png" alt="拿破崙（執政）" width="64" height="80">
 <figcaption>執政</figcaption>
 </figure>
 <figure class="kw-face">
-<img src="/assets/faces/lempe/LEMPE_DOS_F0256.png" alt="拿破崙（皇帝）" height="120">
+<img src="/assets/faces/lempe/LEMPE_DOS_F0256.png" alt="拿破崙（皇帝）" width="64" height="80">
 <figcaption>皇帝</figcaption>
 </figure>
 </div>

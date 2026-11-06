@@ -45,6 +45,18 @@
   object-fit: contain;
 }
 
+/* Home page: native size (1x), bottoms aligned, as many per row as fit. */
+.contents .kw-portraits-mainline.kw-1x {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.contents .kw-1x .kw-face img {
+  width: auto;
+  height: auto;
+}
+
 .contents .kw-face figcaption {
   margin-top: 2px;
   font-size: 14px;
