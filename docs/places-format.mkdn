@@ -10,6 +10,7 @@ kaodata-re 匯出三國志正傳各代與水滸傳的地點資料，koei-wiki �
 - `~/works/kaodata-re/export/koei-wiki/places/<dataset>/`：該代的戰場圖 PNG，檔名由上游決定，在 `battlemaps[].file` 引用。三12、三13 是 3D 地形，不給圖；三9、三11、三14 沒有戰場圖。
 - R2 上傳由 koei-wiki 做（`scripts/upload_battlemaps.py`，對外發布要使用者同意）；kaodata-re 只寫本機的 `export/`。網址見下方「R2 地圖網址」。
 - `<dataset>` 和能力值、頭像匯出相同：三國志是 `san1-pc98`、`san2-pc98`、`san3-pc98`、`san4pk-pc98`、`san5pk-pc98`、`san6pk-win` … `san14pk-win`；水滸傳是 `suikoden-dos`（繁中版，主資料集，`name` 用它的寫法，`nameJa` 填 PC-98 版的寫法）。PC-98、FC 版的相鄰與 DOS 版相同，不另出資料集；版本間不同的（如延安的城數）寫在 `notes`。
+- **主資料集**（使用者 2026-11-06 定，三國志、信長之野望等各系列共用）：以 PC-98 版與 Windows 版為主。Windows 版取 Steam 版：Steam 版有中文就用中文版，有 PK 就用 PK 版（通常四代之後就有 PK）。Steam 版沒有中文、但另有中文版的，資料仍取主資料集，`name` 改用中文版的人名、地名（兩版要能逐筆對上），日文版的寫法放 `nameJa`。哪些代數有中文版、Steam 版有沒有中文與 PK，以 Steam 與 kaodata-re 實際有的版本為準，交付時列出。例外（使用者 2026-11-06 定）：信長之野望・全国版沒有 PC-98 資料集，用 PC-88 版（`nobu2-pc88`，PC-98 版同圖同名）；戦国群雄伝、武将風雲録有 PC-98 版也有 Steam 版（日文、沒有 PK），用 PC-98 版（`nobu3-pc98`、`nobu4-pc98`），與三國志 I–V 一致。覇王伝用 `nobu5pk-win`（Steam 版是有 PK 的 Windows 移植，頭像與原版劇本同 PC-98；PC-98 PK 版沒有另做資料集）。理由（使用者）：早期作品的 Steam 版多半是 PC-98／PC-88 版套模擬器，直接取 PC-98 版比較好解析，也反映當年初上市的資料；所以原作是 PC-98 的代數優先取 PC-98。
 - **全部匯出**：遊戲資料裡的每個地點都要列出，包括野戰地點、三13 的縣級地點、三14 的府。收不收條目由 koei-wiki 決定。
 
 ## 欄位
@@ -20,7 +21,7 @@ kaodata-re 匯出三國志正傳各代與水滸傳的地點資料，koei-wiki �
 | `id` | ✓ | int | 遊戲內的地點號，起算照原作；同一資料集內唯一，`adjacent` 用它互相引用 |
 | `name` | ✓ | string／null | 遊戲寫法，照原樣，不轉正體。有繁中版的代數用繁中版；遊戲裡只有號碼的（三1 的國、三2 的州）填 null |
 | `nameBorrowed` | | object | 遊戲裡沒有名字、從別的作品借來的名字：`{"name": "襄平", "from": "<資料集>"}`，如三2 的州借三国志ツクール範例劇本的州名。koei-wiki 不拿它建條目，只在遊戲頁對照用 |
-| `nameJa` | | string | 日文版寫法，和 `name` 不同時才填 |
+| `nameJa` | | string | 日文版寫法，和 `name` 不同時才填（`name` 取自中文版時，這裡放主資料集的日文寫法） |
 | `reading` | | string | 遊戲內的讀音 |
 | `level` | ✓ | string | 遊戲中的等級，用遊戲裡的稱呼：都市、関、港、府、渡口、沖、拠点、國、州…（水滸傳是州）。遊戲裡沒有稱呼的，用上游的分類，在 `uncertain` 標 `level` 並在 `notes` 說明（如三3 的據點、三13 的縣級地點） |
 | `province` | | string | 遊戲中所屬的州（或三11 的青徐、荊北這類遊戲自創的州），照遊戲寫法 |

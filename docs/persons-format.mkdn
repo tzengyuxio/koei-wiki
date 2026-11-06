@@ -1,0 +1,52 @@
+# 人物匯出格式（koei-persons/1）
+
+kaodata-re 匯出光榮各系列的人物資料，koei-wiki 據此產生人物條目的遊戲數值與各代人物資料一覽。三國志、信長之野望共用這份格式，之後的太閤立志傳、三國志英傑傳等也照它交，遊戲類型特有的資料放 `game`。依 `~/.claude/repos.md` A 類交接，規格在下游（本檔），上游照規格輸出；新增選填欄位不升版，不相容的變更升 `koei-persons/2`。
+
+狀態：2026-11-06 使用者確認草案。三國志的 `stats/<dataset>.jsonl`（`{dataset, id, name, stats}`）本身就是合法的 koei-persons/1，之後補其他能力只是多填欄位；信長之野望（2–8 代）第一次就照這份交全部欄位。
+
+## 檔案
+
+- `~/works/kaodata-re/export/koei-wiki/persons/<dataset>.jsonl`：一個人物一行。三國志現有的 `export/koei-wiki/stats/` 繼續有效，補欄位時改出到 `persons/`。
+- `<dataset>` 與主資料集的選法同地點格式（`docs/places-format.mkdn`「檔案」的主資料集規則）：資料取主資料集，有中文版的代數 `name` 用中文版的寫法、`nameJa` 放日文寫法。
+- 全部匯出：遊戲資料裡的每個人物都列出，包括後登場、虛構、一般武將；收不收條目由 koei-wiki 決定。
+
+## 欄位
+
+標籤（`stats`、`more`、`hidden`、`aptitude`、`skills` 的鍵）一律用遊戲裡的稱呼，照遊戲寫法，不跨代統一；跨代要比較的屬性（如義理）由 koei-wiki 做對照表。數值照遊戲存的值（0–100、A–D、E–S 等），推定的換算寫在 `notes`。
+
+| 欄位 | 必填 | 型別 | 說明 |
+| :--- | :---: | :--- | :--- |
+| `dataset` | ✓ | string | 資料集 ID |
+| `id` | ✓ | int | kaodata 的人物編號（和頭像 `faces/<dataset>/<id>.png` 相同），同一資料集內唯一 |
+| `name` | ✓ | string | 遊戲寫法；有中文版的代數用中文版 |
+| `nameJa` | | string | 日文寫法，和 `name` 不同時才填 |
+| `courtesy` | | string | 字（三國志） |
+| `reading` | | string | 遊戲內的讀音 |
+| `born`、`died` | | int | 生年、歿年（西元）；遊戲用年齡或壽命等級表示的，原值放 `more`／`hidden`，換算寫在 `notes` |
+| `debut` | | int | 登場年（後登場武將） |
+| `stats` | | object | 主能力，如 `{"統率": 77, "武力": 74}`。百科的歷代能力表只讀這一欄 |
+| `more` | | object | 畫面上看得到的其他數值：年齢、忠誠、教養、勲功、身分等 |
+| `hidden` | | object | 隱藏值：壽命、相性、義理、血族編號、口調等 |
+| `aptitude` | | object | 兵科適性，如 `{"足軽": "S", "騎馬": "A", "大砲": "○"}` |
+| `skills` | | object | 技能，依遊戲的分類分組：`{"特技": ["…"], "戦法": ["…"]}`；只有一類時也用物件 |
+| `relations` | | object | 人際關係，值是同一資料集的人物 `id` 陣列：`father`、`mother`、`children`、`siblings`、`spouse`（夫妻）、`sworn`（義兄弟）、`clan`（一門／血族群組編號，int）。遊戲裡沒有的就不填 |
+| `scenarios` | | object[] | 各劇本的狀態：`{"scenario": "<劇本編號或名稱>", "year": 1560, "lord": <大名 id>, "location": <地點 id>, "status": "城主", "loyalty": 80}`；`location` 是同一代地點匯出（koei-places/1）的 `id`。不在場的劇本不列 |
+| `game` | | object | 遊戲類型特有的資料，鍵照遊戲的稱呼：如太閤立志傳的職業、技能等級，三國志英傑傳的兵種、稱號、等級 |
+| `uncertain` | | string[] | 推定、未確認的欄位（可寫到子鍵，如 `hidden.義理`） |
+| `notes` | | string | 給 koei-wiki 的補充（繁中） |
+
+範例（數值只是示意）：
+
+```json
+{"dataset": "san4pk-pc98", "id": 1, "name": "于禁", "stats": {"統率": 77, "武力": 74, "知力": 51, "政治": 48, "魅力": 60}}
+{"dataset": "nobu8pk-win", "id": 120, "name": "織田信長", "reading": "おだのぶなが", "born": 1534, "died": 1582, "stats": {"政治": 120, "戦闘": 98, "采配": 115, "知謀": 102}, "hidden": {"相性": 0, "義理": 40}, "aptitude": {"足軽": "A", "騎馬": "A", "鉄砲": "S", "水軍": "B"}, "skills": {"特技": ["…"], "戦法": ["…"]}, "relations": {"father": [119], "spouse": [130], "clan": 44}, "scenarios": [{"scenario": 1, "year": 1555, "lord": 120, "location": 31, "status": "大名"}], "uncertain": ["hidden.義理"]}
+{"dataset": "san7pk-win", "id": 3, "name": "劉備", "courtesy": "玄德", "relations": {"sworn": [52, 210], "spouse": [400, 401]}}
+```
+
+## 列傳
+
+遊戲內附的列傳（信長 6–8 代、三國志各代）照三國志現有的 biography 匯出另交，以 `dataset`＋`id` 對上本格式的人物。
+
+## 驗證
+
+上游交付時附上 kaodata-re 的 commit 與驗證結果（N 筆檢查、0 筆不符）。至少檢查：`relations`、`scenarios[].lord` 引用的人物 `id` 存在於同一資料集；`scenarios[].location` 存在於同一代的地點匯出；`id` 唯一。koei-wiki 收下前再驗一次（驗證 script 隨第一批交付補上）。

@@ -67,6 +67,8 @@ def main() -> None:
         nonlocal written
         old = path.read_text(encoding="utf-8") if path.exists() else None
         text = new_text if old is None else keep_created(old, new_text) if force else replace_blocks(old, blocks)
+        if old is not None and re.sub(r"^date: .*$", "", text, flags=re.M) == re.sub(r"^date: .*$", "", old, flags=re.M):
+            return  # only the date would change
         if not path.exists() or text != path.read_text(encoding="utf-8"):
             written += 1
             if not dry:
@@ -89,7 +91,7 @@ def main() -> None:
     page = "\n\n".join([front(f"{GAME} 州資料一覽", f"{GAME}的 49 州一覽", "水滸, suikoden, 地點"),
                         "## 概要\n\n" + summary,
                         "## 州一覽\n\n" + block("places-index", index),
-                        "## 資料來源\n\n- kaodata-re 匯出（koei-places/1，資料集 suikoden-dos）"]) + "\n"
+                        "## 資料來源\n\n州名取自 DOS 繁體中文版，日文寫法對照 PC-98 版；城數、相鄰關係與戰場地圖取自遊戲資料，三個版本的相鄰關係相同。"]) + "\n"
     write(OUT / "遊戲" / GAME / "州資料一覽.md", page, {"places-index": index})
     print(f"{'would write' if dry else 'wrote'} {written} files")
 

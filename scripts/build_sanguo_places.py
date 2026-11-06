@@ -147,6 +147,29 @@ def battle_block(maps: list[tuple[str, dict]], title_of: dict[str, str], alt_nam
     return "\n".join(figs)
 
 
+def borrowed(p: dict, files: dict[str, str], pfiles: dict[str, str]) -> str:
+    """SAN2's nameless 州 carry a name borrowed from 三國志ツクール: link it like any place name."""
+    if not p.get("nameBorrowed"):
+        return ""
+    from build_sanguo_places_csv import norm  # noqa: PLC0415
+    e = {"郁林": "鬱林"}.get(n := norm(p["nameBorrowed"]["name"])[0], n)
+    f = files.get(e) or pfiles.get(e) or e
+    return f"[{e}](/地點/{f})（借自三國志ツクール）"
+
+
+PLATFORM = {"pc98": "PC-98", "win": "Windows", "dos": "DOS"}
+
+
+def source_text(dataset: str, game: str, borrowed_names: bool) -> str:
+    """The 資料來源 sentence of a per-game list: which version of the game the data comes from."""
+    base, _, platform = dataset.partition("-")
+    version = PLATFORM.get(platform, platform) + (" 威力加強版" if base.endswith("pk") else " 版")
+    text = f"本頁的地點、所屬與相鄰關係，取自《{game}》{version}的遊戲資料。"
+    if borrowed_names:
+        text += "遊戲裡的州沒有名字，只有編號；備註欄的地名借自《三國志ツクール》的範例劇本，方便對照。"
+    return text
+
+
 def link(e: str, files: dict[str, str]) -> str:
     f = files.get(e)
     return f"[{e}](/地點/{f})" if f else e
@@ -188,6 +211,8 @@ def main() -> None:
         nonlocal written
         old = path.read_text(encoding="utf-8") if path.exists() else None
         text = new_text if old is None else keep_created(old, new_text) if force else replace_blocks(old, blocks)
+        if old is not None and re.sub(r"^date: .*$", "", text, flags=re.M) == re.sub(r"^date: .*$", "", old, flags=re.M):
+            return  # only the date would change
         if not path.exists() or text != path.read_text(encoding="utf-8"):
             written += 1
             if not dry:
@@ -258,12 +283,13 @@ def main() -> None:
                 shown = link(e, files) if e else (p.get("name") or "—")
                 if e and p.get("name") and p["name"] != e:
                     shown += f"（{p['name']}）"
-                note = p["nameBorrowed"]["name"] + "（借自三国志ツクール）" if p.get("nameBorrowed") else ""
+                note = borrowed(p, files, pfiles)
                 adj = "、".join(name_of(ds, a) for a in p.get("adjacent", [])) or "—"
                 out.append(f"| {p['id']} | {shown} | {owner(ds, p)} | {adj} | {note} |")
             out.append("")
+        source = source_text(ds, game, any(p.get("nameBorrowed") for p in export[ds].values()))
         write(OUT / "遊戲" / game / "都市資料一覽.md", render_game(game, tag, export[ds], "\n".join(out).rstrip(),
-                                                              facts.get(f"遊戲:{game}", {}).get("summary")),
+                                                              facts.get(f"遊戲:{game}", {}).get("summary"), source),
               {"places-index": "\n".join(out).rstrip()})
     print(f"{'would write' if dry else 'wrote'} {written} files")
 
@@ -340,11 +366,11 @@ def render_province(pe, lines, writings, f, targets) -> str:
     return "\n\n".join(parts) + "\n"
 
 
-def render_game(game, tag, places, index, summary) -> str:
+def render_game(game, tag, places, index, summary, source) -> str:
     parts = [front(f"{game} 都市資料一覽", f"{game}的全部地點一覽", f"三國, {tag}, 地點"),
              "## 概要\n\n" + (summary or "{概要}"),
              "## 地點一覽\n\n" + block("places-index", index),
-             "## 資料來源\n\n- kaodata-re 匯出（koei-places/1）"]
+             "## 資料來源\n\n" + source]
     return "\n\n".join(parts) + "\n"
 
 
