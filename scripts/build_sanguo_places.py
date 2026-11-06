@@ -130,21 +130,25 @@ def link_intro(text: str, self_name: str, targets: dict[str, str]) -> str:
 
 
 def battle_block(maps: list[tuple[str, dict]], title_of: dict[str, str], alt_name: str) -> str:
-    """Figures for the place's own battle maps (R2, scripts/upload_battlemaps.py). Field maps that follow a
-    line between two cities (they carry `from`) are left out (EDITORIAL §3.3)."""
-    from upload_battlemaps import map_path, map_url, png_size  # noqa: PLC0415
-    figs, seen = [], set()
+    """Figures for the place's own battle maps (R2, scripts/upload_battlemaps.py), under an H3 per game when
+    the game has a title here (Suikoden has one game: no heading). Field maps that follow a line between two
+    cities (they carry `from`) are left out (EDITORIAL §3.3)."""
+    from upload_battlemaps import map_url, png_size  # noqa: PLC0415
+    groups, seen = {}, set()
     for ds, m in maps:
         url = map_url(ds, m)
         if "from" in m or url in seen:
             continue
         seen.add(url)
         w, h = png_size(EXPORT / ds / m["file"])
-        label = " ".join(filter(None, [title_of[ds], "" if m["role"] == "戰場" else m["role"], m.get("season")]))
+        label = " ".join(filter(None, ["" if m["role"] == "戰場" else m["role"], m.get("season")]))
+        alt = " ".join(filter(None, [title_of[ds], label, "戰場地圖"])) + f"：{alt_name}"
         wide = " kw-map-wide" if w > 1000 else ""
-        figs.append(f'<figure class="kw-map{wide}">\n<img src="{url}" alt="{label} 戰場地圖：{alt_name}" '
-                    f'width="{w}" height="{h}" loading="lazy">\n<figcaption>{label}</figcaption>\n</figure>')
-    return "\n".join(figs)
+        cap = f"\n<figcaption>{label}</figcaption>" if label else ""
+        groups.setdefault(ds, []).append(f'<figure class="kw-map{wide}">\n<img src="{url}" alt="{alt}" '
+                                         f'width="{w}" height="{h}" loading="lazy">{cap}\n</figure>')
+    return "\n\n".join((f"### {title_of[ds]}\n\n" if title_of[ds] else "") + "\n".join(figs)
+                       for ds, figs in groups.items())
 
 
 def borrowed(p: dict, files: dict[str, str], pfiles: dict[str, str]) -> str:
