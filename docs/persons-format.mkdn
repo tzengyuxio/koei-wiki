@@ -30,7 +30,7 @@ kaodata-re 匯出光榮各系列的人物資料，koei-wiki 據此產生人物�
 | `aptitude` | | object | 兵科適性，如 `{"足軽": "S", "騎馬": "A", "大砲": "○"}` |
 | `skills` | | object | 技能，依遊戲的分類分組：`{"特技": ["…"], "戦法": ["…"]}`；只有一類時也用物件 |
 | `relations` | | object | 人際關係，值是同一資料集的人物 `id` 陣列：`father`、`mother`、`children`、`siblings`、`spouse`（夫妻）、`sworn`（義兄弟）、`clan`（一門／血族群組編號，int）。遊戲裡沒有的就不填 |
-| `scenarios` | | object[] | 各劇本的狀態：`{"scenario": "<劇本編號或名稱>", "year": 1560, "lord": <大名 id>, "location": <地點 id>, "status": "城主", "loyalty": 80}`；`location` 是同一代地點匯出（koei-places/1）的 `id`。不在場的劇本不列 |
+| `scenarios` | | object[] | 各劇本的狀態：`{"scenario": "<劇本編號或名稱>", "year": 1560, "lord": <大名 id>, "location": <地點 id>, "status": "城主", "loyalty": 80}`；`location` 是同一代地點匯出（koei-places/1）的 `id`。`status` 照遊戲的稱呼（大名、家臣、浪人、姫…）；劇本開始時還沒登場、之後才登場的人也列，`status` 用遊戲的稱呼（如 5 代「後登場」），遊戲沒有稱呼時寫「未登場」，並填 `debut`（該劇本的登場年，int）；`rank` 是遊戲裡的位階（如 6 代的足軽頭、侍大将、家老），和 `status` 分開。整個劇本都沒有這個人時才不列 |
 | `game` | | object | 遊戲類型特有的資料，鍵照遊戲的稱呼：如太閤立志傳的職業、技能等級，三國志英傑傳的兵種、稱號、等級 |
 | `uncertain` | | string[] | 推定、未確認的欄位（可寫到子鍵，如 `hidden.義理`） |
 | `notes` | | string | 給 koei-wiki 的補充（繁中） |
@@ -49,4 +49,4 @@ kaodata-re 匯出光榮各系列的人物資料，koei-wiki 據此產生人物�
 
 ## 驗證
 
-上游交付時附上 kaodata-re 的 commit 與驗證結果（N 筆檢查、0 筆不符）。至少檢查：`relations`、`scenarios[].lord` 引用的人物 `id` 存在於同一資料集；`scenarios[].location` 存在於同一代的地點匯出；`id` 唯一。koei-wiki 收下前再驗一次（驗證 script 隨第一批交付補上）。
+上游交付時附上 kaodata-re 的 commit 與驗證結果（N 筆檢查、0 筆不符）。至少檢查：`relations`、`scenarios[].lord` 引用的人物 `id` 存在於同一資料集；`scenarios[].location` 存在於同一代的地點匯出；`id` 唯一。koei-wiki 收下前再驗一次：`python3 scripts/verify_persons.py [dataset ...]`（地點用 `scripts/verify_sanguo_places.py`）。
