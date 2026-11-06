@@ -19,8 +19,10 @@
 
 ## 地點
 
-- [ ] 三國地點與州條目 — 範本 `assets/location_sanguo_template.mkdn`、`location_sanguo_province_template.mkdn`（凡例 §3.3）；等 kaodata-re 匯出各代地點（名稱、種類、所屬州、相鄰、戰場圖），koei-wiki 這邊要建名稱對照表與產生腳本；漢末政區初稿可用 PTT Koei 版 M.1430965372.A.41F（III–12），要對照《續漢書・郡國志》（2026-11-06）
-- [ ] 三國志各代都市資料一覽 — `遊戲/<作品名>/都市資料一覽.md`，全部地點一覽加大地圖位置標記（模板 `assets/sanguo_game_places_template.mkdn`）；地點條目連過去，不在條目內標位置。三11–三14 還沒有遊戲主頁與資料夾（2026-11-06）
+- [ ] 地點條目抽查 — 三國 603 條、水滸 49 條的事實欄位與簡介是 Claude Batch 寫的（`assets/data/{sanguo,suikoden}/place-entries.jsonl`），要抽查漢末／北宋政區與沿革（已知天水簡介「194 年漢陽郡隸屬雍州系統」可疑）；水滸事件的回目混用百回本與百二十回本。改資料後重跑 `scripts/build_*_places.py`（2026-11-06）
+- [ ] 戰場地圖上 R2 — 三1–三7 與水滸（每州四季 196 張）的 PNG 在 kaodata-re `export/koei-wiki/places/<dataset>/`，上傳要使用者同意；上傳後產生器補 data:map-battle 區塊（2026-11-06）
+- [ ] 各代大地圖 — 都市資料一覽的「大地圖」段落（位置標記）還沒做，`pos` 有的代數才做得出來（2026-11-06）
+- [ ] 事件條目 — 地點條目「發生於此的事件」連到 `/事件/<名稱>`，名稱是模型寫的，建事件條目時要統一（如「孫劉聯盟」）（2026-11-06）
 
 ## 網站
 

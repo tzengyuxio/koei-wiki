@@ -143,6 +143,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 *   **漢末所屬州**：與遊戲中的歸屬不同時，在基本資料加注說明（如平原：青州，遊戲多歸冀州）。
 *   **大地圖位置**：不放在地點條目，放在各代的大地圖頁面。
 *   **戰場地圖**：放在條目最後、References 之前。野戰圖跟「戰線」走的代數（IV、VI–VIII）只列以這個地點為名的圖。
+*   **遊戲寫法與條目名**：日文字形轉正體（寿春 → 壽春）；遊戲錯字改用正確寫法為條目名（東來 → 東萊）；差異不大的寫法併入一個條目，以系列中先出現的寫法為條目名（長坂坡 → 長坂、荊州北部 → 荊北）。遊戲裡的寫法記在「遊戲寫法」，錯字註明是錯字。有沒有「縣」字不算差異不大：遊戲寫「代」的是代條目（視為代郡），寫「代縣」的是代縣條目。對照表是 `assets/data/sanguo/places.csv`（地點）與 `places-provinces.csv`（州），由 `scripts/build_sanguo_places_csv.py` 從 kaodata-re 匯出產生，錯字與合併的清單在 script 裡。
 *   **撞名**：與其他時代的地點同名時，檔名用 `名稱_三國.md`，title 寫 `名稱 (三國)`。與州同名的都市用 `名稱_都市.md`，title 寫 `名稱 (都市)`，如三3–三5 的都市徐州是 `徐州_都市.md`，州是 `徐州.md`。
 
 #### 各代都市資料一覽
@@ -152,6 +153,16 @@ dateCreated: 2026-02-16T12:00:00.000Z
 #### 三國州條目結構
 
 州不是遊戲中的城池，條目記錄各代遊戲把哪些地點歸在這個州，模板：`assets/location_sanguo_province_template.mkdn`。結構：基本資料 → 各代所轄地點（可摺疊） → 遊戲中的登場（可選） → 簡介 → References。
+
+#### 水滸州條目結構
+
+水滸傳・天命之誓的地點只有 49 州（州以下的城沒有資料），一州一條，模板：`assets/location_suikoden_template.mkdn`。結構：基本資料 → 遊戲中的地點資料 → 簡介 → 水滸傳中的事件（可選） → 戰場地圖 → References。
+
+*   **名稱**：以繁中版（DOS）的州名為準，錯字改用正確寫法為條目名（窿德 → 隆德、鳳祥 → 鳳翔、穎州 → 潁州），遊戲寫法與日文版（PC-98）寫法記在「遊戲寫法」。
+*   **北宋政區**：以《宋史・地理志》為準，寫到路與府州（如 京東西路鄆州）。
+*   **撞名**：和三國地點或州同名的（徐州、青州、代州、京兆、江陵、江州、河南、河間、太原、開封），檔名用 `名稱_水滸.md`，title 寫 `名稱 (水滸)`，開頭一行連到三國的條目；三國那邊也連回來。
+*   **一覽**：`遊戲/水滸傳・天命之誓/州資料一覽.md`，列 49 州的城數與相鄰。
+*   **產生**：`scripts/build_suikoden_places.py`，讀 kaodata-re 的 `suikoden-dos` 匯出（`docs/places-format.mkdn`）與 `assets/data/suikoden/place-entries.jsonl`。
 
 ## §4 列傳規範
 
@@ -344,6 +355,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 | 地點模板 | `assets/location_template.mkdn` | 地點條目（含多遊戲版面） |
 | 三國地點模板 | `assets/location_sanguo_template.mkdn` | 三國志系列的都市、關、據點 |
 | 三國州模板 | `assets/location_sanguo_province_template.mkdn` | 三國志系列的州 |
+| 水滸州模板 | `assets/location_suikoden_template.mkdn` | 水滸傳・天命之誓的州 |
 | 三國志各代都市資料一覽模板 | `assets/sanguo_game_places_template.mkdn` | `遊戲/<作品名>/都市資料一覽.md` |
 | 條目檢視日誌 | `assets/review_log.mkdn` | 條目品質檢視紀錄 |
 
