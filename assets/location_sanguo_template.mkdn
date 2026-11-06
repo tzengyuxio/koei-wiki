@@ -100,7 +100,7 @@ dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
 - 以這個地點為戰場的圖，依代數排列；caption 寫作品名，必要時補「攻城」「野戰」
 - 野戰圖跟「戰線」走的代數（IV、VI–VIII）只列以這個地點為名的圖
 - 大地圖上的位置不放在地點條目，放在各代的大地圖頁面
-- 圖片網址待定（kaodata-re 匯出後放 R2）
+- 圖片在 R2：https://img.simagame.me/kaodata/map/{資料集}/battlefield/{檔名}.png，對照表是同目錄的 index.json（docs/places-format.mkdn）；只放這個地點自己的圖，跟著戰線走的野戰圖（有 from 的）不放
 -->
 
 <!-- data:map-battle begin -->

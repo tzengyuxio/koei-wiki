@@ -129,6 +129,24 @@ def link_intro(text: str, self_name: str, targets: dict[str, str]) -> str:
     return pat.sub(sub, text)
 
 
+def battle_block(maps: list[tuple[str, dict]], title_of: dict[str, str], alt_name: str) -> str:
+    """Figures for the place's own battle maps (R2, scripts/upload_battlemaps.py). Field maps that follow a
+    line between two cities (they carry `from`) are left out (EDITORIAL §3.3)."""
+    from upload_battlemaps import map_path, map_url, png_size  # noqa: PLC0415
+    figs, seen = [], set()
+    for ds, m in maps:
+        url = map_url(ds, m)
+        if "from" in m or url in seen:
+            continue
+        seen.add(url)
+        w, h = png_size(EXPORT / ds / m["file"])
+        label = " ".join(filter(None, [title_of[ds], "" if m["role"] == "戰場" else m["role"], m.get("season")]))
+        wide = " kw-map-wide" if w > 1000 else ""
+        figs.append(f'<figure class="kw-map{wide}">\n<img src="{url}" alt="{label} 戰場地圖：{alt_name}" '
+                    f'width="{w}" height="{h}" loading="lazy">\n<figcaption>{label}</figcaption>\n</figure>')
+    return "\n".join(figs)
+
+
 def link(e: str, files: dict[str, str]) -> str:
     f = files.get(e)
     return f"[{e}](/地點/{f})" if f else e
@@ -202,8 +220,9 @@ def main() -> None:
                 writings[(r["game_name"], r["diff"])].append(KBD[r["dataset"]])
         f = facts.get(e, {})
         intro = link_intro(f["intro"], e, targets) if f.get("intro") else "{簡介}"
-        write(OUT / "地點" / f"{files[e]}.md", render_place(e, files, erows, table, writings, f, intro, maps, per_ds),
-              {"places-main": "\n".join(table)})
+        battle = battle_block(maps, {g[0]: g[2] for g in GAMES}, e)
+        write(OUT / "地點" / f"{files[e]}.md", render_place(e, files, erows, table, writings, f, intro, battle, per_ds),
+              {"places-main": "\n".join(table), "map-battle": battle})
 
     # ---- 州 entries (peoples share their place entry)
     for pe in sorted(prov_entries - {e for e in shared if is_people(e)}):
@@ -290,7 +309,7 @@ def suikoden_see_also(page: str) -> list[str]:
     return [f"> 水滸傳・天命之誓的同名州見 [{page} (水滸)](/地點/{page}_水滸)。"] if page in _SUIKODEN else []
 
 
-def render_place(e, files, erows, table, writings, f, intro, maps, per_ds) -> str:
+def render_place(e, files, erows, table, writings, f, intro, battle, per_ds) -> str:
     desc = f.get("description") or f"三國志系列的地點：{e}"
     parts = [front(files[e].replace("_", " (", 1) + ")" if "_" in files[e] else e, desc, "三國, 地點"),
              *suikoden_see_also(files[e]),
@@ -299,6 +318,8 @@ def render_place(e, files, erows, table, writings, f, intro, maps, per_ds) -> st
              "## 簡介\n\n" + intro]
     if f.get("events"):
         parts.append("## 發生於此的事件\n\n" + "\n".join(event_line(ev) for ev in f["events"]))
+    if battle:
+        parts.append("## 戰場地圖\n\n" + block("map-battle", battle))
     parts.append("## References\n\n" + "\n".join(refs(f, e)))
     return "\n\n".join(parts) + "\n"
 

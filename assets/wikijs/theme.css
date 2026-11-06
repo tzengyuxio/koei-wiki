@@ -35,6 +35,7 @@
 .contents .kw-face img {
   display: block; /* no inline gap under the image, so captions line up with empty cells */
   margin: 0 auto;
+  width: auto; /* keep the aspect ratio whatever width attribute the page carries */
   height: 120px;
   image-rendering: pixelated;
 }
@@ -187,7 +188,18 @@
 
 .contents .kw-map img {
   display: block;
+  max-width: 100%;
+  height: auto;
   image-rendering: pixelated;
+}
+
+/* Battle maps and other wide maps fit the column; very wide ones (三8, 2016px) shrink smoothly. */
+.contents .kw-map {
+  max-width: 100%;
+}
+
+.contents .kw-map-wide img {
+  image-rendering: auto;
 }
 
 /* The marker's left/top come from the entry (percent of the map); its size is one 8px tile. */

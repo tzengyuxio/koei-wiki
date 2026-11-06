@@ -55,7 +55,7 @@ dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
 
 ## 戰場地圖
 
-<!-- 每州春夏秋冬四張；圖上傳 R2 後才放 -->
+<!-- 每州春夏秋冬四張，在 R2：https://img.simagame.me/kaodata/map/suikoden-dos/battlefield/{NN}-{spring|summer|autumn|winter}.png -->
 
 ## References
 

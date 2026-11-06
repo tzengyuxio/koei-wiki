@@ -20,7 +20,7 @@ import re
 import sys
 from pathlib import Path
 
-from build_sanguo_places import block, front, keep_created, link_intro, replace_blocks
+from build_sanguo_places import battle_block, block, front, keep_created, link_intro, replace_blocks
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "assets/data/suikoden"
@@ -76,8 +76,9 @@ def main() -> None:
     for p in rows:
         table = "\n".join(["| 項目 | 內容 |", "| :--- | :--- |", f"| 編號 | {p['id']} |", f"| 城數 | {p['cities']} |",
                            f"| 相鄰 | {'、'.join(link(by_id[a]) for a in p['adjacent'])} |"])
-        write(OUT / "地點" / f"{p['file']}.md", render(p, table, facts.get(p["entry"], {}), targets),
-              {"suikoden-places-main": table})
+        battle = battle_block([("suikoden-dos", m) for m in p.get("battlemaps", [])], {"suikoden-dos": ""}, f"{p['entry']}（{GAME}）")
+        write(OUT / "地點" / f"{p['file']}.md", render(p, table, facts.get(p["entry"], {}), targets, battle),
+              {"suikoden-places-main": table, "map-battle": battle})
 
     index = ["| 編號 | 州 | 城數 | 相鄰 |", "| ---: | :--- | ---: | :--- |"]
     for p in rows:
@@ -93,7 +94,7 @@ def main() -> None:
     print(f"{'would write' if dry else 'wrote'} {written} files")
 
 
-def render(p: dict, table: str, f: dict, targets: dict[str, str]) -> str:
+def render(p: dict, table: str, f: dict, targets: dict[str, str], battle: str) -> str:
     e = p["entry"]
     title = f"{e} (水滸)" if p["sanguo"] else e
     rows = [f"| 名稱 | {e} |"]
@@ -117,6 +118,8 @@ def render(p: dict, table: str, f: dict, targets: dict[str, str]) -> str:
               "## 簡介\n\n" + (link_intro(f["intro"], e, targets) if f.get("intro") else "{簡介}")]
     if f.get("events"):
         parts.append("## 水滸傳中的事件\n\n" + "\n".join(f"- {ev}" for ev in f["events"]))
+    if battle:
+        parts.append("## 戰場地圖\n\n戰場依季節換圖。\n\n" + block("map-battle", battle))
     titles = f.get("refs") or []
     if titles:
         parts.append("## References\n\n" + "\n".join(

@@ -8,7 +8,7 @@ kaodata-re 匯出三國志正傳各代與水滸傳的地點資料，koei-wiki �
 
 - `~/works/kaodata-re/export/koei-wiki/places/<dataset>.jsonl`：一個地點一行。
 - `~/works/kaodata-re/export/koei-wiki/places/<dataset>/`：該代的戰場圖 PNG，檔名由上游決定，在 `battlemaps[].file` 引用。三12、三13 是 3D 地形，不給圖；三9、三11、三14 沒有戰場圖。
-- R2 上傳由 koei-wiki 做（對外發布要使用者同意）；kaodata-re 只寫本機的 `export/`。
+- R2 上傳由 koei-wiki 做（`scripts/upload_battlemaps.py`，對外發布要使用者同意）；kaodata-re 只寫本機的 `export/`。網址見下方「R2 地圖網址」。
 - `<dataset>` 和能力值、頭像匯出相同：三國志是 `san1-pc98`、`san2-pc98`、`san3-pc98`、`san4pk-pc98`、`san5pk-pc98`、`san6pk-win` … `san14pk-win`；水滸傳是 `suikoden-dos`（繁中版，主資料集，`name` 用它的寫法，`nameJa` 填 PC-98 版的寫法）。PC-98、FC 版的相鄰與 DOS 版相同，不另出資料集；版本間不同的（如延安的城數）寫在 `notes`。
 - **全部匯出**：遊戲資料裡的每個地點都要列出，包括野戰地點、三13 的縣級地點、三14 的府。收不收條目由 koei-wiki 決定。
 
@@ -41,6 +41,20 @@ kaodata-re 匯出三國志正傳各代與水滸傳的地點資料，koei-wiki �
 {"dataset": "san13pk-win", "id": 107, "name": "長坂", "level": "縣級地點", "parentCity": 42, "uncertain": ["parentCity", "level"], "notes": "遊戲裡這類地點的稱呼沒找到"}
 {"dataset": "suikoden-dos", "id": 12, "name": "太原", "nameJa": "大原", "level": "州", "cities": 4, "adjacent": [11, 13, 14], "battlemaps": [{"file": "12-spring.png", "role": "戰場", "season": "春"}, {"file": "12-summer.png", "role": "戰場", "season": "夏"}]}
 ```
+
+## R2 地圖網址
+
+上傳後的地圖給所有網站共用（和頭像一樣放在 `img.simagame.me/kaodata/` 底下），2026-11-06 與使用者商定：
+
+```
+https://img.simagame.me/kaodata/map/<dataset>/index.json
+https://img.simagame.me/kaodata/map/<dataset>/<種類>/<檔名>.png
+```
+
+- **種類**：照各遊戲的慣例，不強求各作品用同一套。戰場圖是 `battlefield/`，大地圖預定 `world/`；其他遊戲可能有 `hex/`、`city/`、`minimap/`、`dungeon/`、`port/`（如大航海時代的港口）等。
+- **檔名**：英數字，用遊戲裡這張圖自己的編號或檔名（三1–三5 `01`…，三6 `SENJOU0`、`SHIRO9`，三7 `G_YMap00`，三8 `W01Map_00_35`）；同一張圖有變體時在編號後加描述，如水滸的季節 `01-spring`、`01-summer`、`01-autumn`、`01-winter`。共用的圖只存一份。
+- **`index.json`**：雙向對照。`battlefield` 列出每張圖（`file`、`width`、`height`）和用到它的地點（`id`、`name`、`role`，以及 `from`、`season`）；`places` 列出每個地點用到的圖。要找某地點的圖就查這份，不要從檔名猜。
+- 快取一天（`Cache-Control: public, max-age=86400`）；修正後覆蓋同一個網址，不刪除舊檔。
 
 ## 驗證
 
