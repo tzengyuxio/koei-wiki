@@ -7,7 +7,10 @@ when present, assets/data/sanguo/place-entries.jsonl (per-entry facts and intro,
 
 New files get the full template; existing files only get their data blocks replaced (EDITORIAL §10).
 
-Usage: python3 scripts/build_sanguo_places.py [--dry-run]
+Person and place names in the intros link to their entries, first mention only (EDITORIAL §6).
+
+Usage: python3 scripts/build_sanguo_places.py [--dry-run] [--force]
+  --force  rewrite whole files, not only the data blocks (loses hand edits)
 """
 
 import csv
@@ -41,6 +44,12 @@ NOW = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
 
 def block(name: str, body: str) -> str:
     return f"<!-- data:{name} begin -->\n{body}\n<!-- data:{name} end -->"
+
+
+def keep_created(old: str, new: str) -> str:
+    """A rewritten page keeps its original dateCreated."""
+    m = re.search(r"^dateCreated: .*$", old, re.M)
+    return re.sub(r"^dateCreated: .*$", lambda _: m.group(0), new, count=1, flags=re.M) if m else new
 
 
 def replace_blocks(text: str, blocks: dict[str, str]) -> str:
@@ -81,6 +90,45 @@ def is_people(e: str) -> bool:
     return e in PEOPLES
 
 
+# Place names that also read as ordinary words, or name a different place inside a common writing (雒陽).
+NO_LINK_PLACE = {"長子", "房子", "符節", "分水", "海防", "公安", "同並", "安定", "平原", "當塗", "望海", "三水", "三江",
+                 "白水", "南城", "安國", "東光", "臨江", "雒"}
+# Single-character places that rarely occur inside other words; other single characters (吳, 代, 宛…) stay unlinked.
+ONE_CHAR = set("鄴譙薊郿皖涿郯郪鄂鄃鄞鄨鄳酈鬲黟穰繒圉涅淩羌氐倭")
+ERA_AFTER = re.compile(r"[元0-9０-９一二三四五六七八九十]*年|[（(]?[0-9]+")  # 建安十三年, 建安年間: an era, not the place
+# A place name followed by one of these is part of something else: 河南省, 河南岸, 鄱陽湖, 華北平原, 東平陵, 東漢安帝
+NOT_BEFORE = set("省市區湖岸期原陵帝")
+DYNASTY = set("東西後蜀季")  # 東漢中平, 蜀漢中: a 漢- place name right after these is the dynasty
+
+
+def text_targets(files: dict[str, str], pfiles: dict[str, str]) -> dict[str, str]:
+    """Display name -> path: published Sanguo persons, then place and 州 entries."""
+    from build_sanguo_entries import link_targets  # noqa: PLC0415
+    persons = {f.stem for f in (ROOT / "人物/三國").glob("*.md") if "Your content here" not in f.read_text(encoding="utf-8")}
+    targets = link_targets(persons)
+    for e, f in [*pfiles.items(), *files.items()]:  # a place page wins over a 州 page of the same name (none but peoples)
+        if e not in NO_LINK_PLACE and (len(e) > 1 or e in ONE_CHAR) and e not in targets:
+            targets[e] = f"/地點/{f}"
+    return targets
+
+
+def link_intro(text: str, self_name: str, targets: dict[str, str]) -> str:
+    """Link each target's first mention; the longest name wins, era names followed by a year stay plain."""
+    names = sorted((n for n in targets if n != self_name), key=len, reverse=True)
+    pat, seen = re.compile("|".join(map(re.escape, names + [self_name]))), {self_name}
+
+    def sub(m: re.Match) -> str:
+        n = m.group(0)
+        place = targets.get(n, "").startswith("/地點/")
+        if n in seen or place and (ERA_AFTER.match(text, m.end()) or text[m.end():m.end() + 1] in NOT_BEFORE
+                                   or n[0] == "漢" and text[m.start() - 1:m.start()] in DYNASTY):
+            return n
+        seen.add(n)
+        return f"[{n}]({targets[n]})"
+
+    return pat.sub(sub, text)
+
+
 def link(e: str, files: dict[str, str]) -> str:
     f = files.get(e)
     return f"[{e}](/地點/{f})" if f else e
@@ -115,10 +163,13 @@ def main() -> None:
         return "—"
 
     written = 0
+    force = "--force" in sys.argv
+    targets = text_targets(files, pfiles)
 
     def write(path: Path, new_text: str, blocks: dict[str, str]) -> None:
         nonlocal written
-        text = replace_blocks(path.read_text(encoding="utf-8"), blocks) if path.exists() else new_text
+        old = path.read_text(encoding="utf-8") if path.exists() else None
+        text = new_text if old is None else keep_created(old, new_text) if force else replace_blocks(old, blocks)
         if not path.exists() or text != path.read_text(encoding="utf-8"):
             written += 1
             if not dry:
@@ -150,7 +201,7 @@ def main() -> None:
             if r["game_name"] != e and r["diff"]:
                 writings[(r["game_name"], r["diff"])].append(KBD[r["dataset"]])
         f = facts.get(e, {})
-        intro = f.get("intro") or "{簡介}"
+        intro = link_intro(f["intro"], e, targets) if f.get("intro") else "{簡介}"
         write(OUT / "地點" / f"{files[e]}.md", render_place(e, files, erows, table, writings, f, intro, maps, per_ds),
               {"places-main": "\n".join(table)})
 
@@ -172,7 +223,7 @@ def main() -> None:
         for (ds, g), v in provs.items():
             if v["entry"] == pe and g != pe:
                 writings[(g, v["diff"])].append(KBD[ds])
-        write(OUT / "地點" / f"{pfiles[pe]}.md", render_province(pe, lines, writings, facts.get(f"州:{pe}") or facts.get(pe, {})),
+        write(OUT / "地點" / f"{pfiles[pe]}.md", render_province(pe, lines, writings, facts.get(f"州:{pe}") or facts.get(pe, {}), targets),
               {"province-places": "\n".join(lines)})
 
     # ---- per-game city lists
@@ -252,7 +303,7 @@ def render_place(e, files, erows, table, writings, f, intro, maps, per_ds) -> st
     return "\n\n".join(parts) + "\n"
 
 
-def render_province(pe, lines, writings, f) -> str:
+def render_province(pe, lines, writings, f, targets) -> str:
     rows = [f"| 名稱 | {pe} |"]
     if f.get("han_division"):
         rows.append(f"| 漢末治所 | {f['han_division']} |")
@@ -263,7 +314,7 @@ def render_province(pe, lines, writings, f) -> str:
              *suikoden_see_also(pe),
              "## 基本資料\n\n| 項目 | 內容 |\n| :--- | :--- |\n" + "\n".join(rows),
              "## 各代所轄地點\n\n" + block("province-places", "\n".join(lines)),
-             "## 簡介\n\n" + (f.get("intro") or "{簡介}"),
+             "## 簡介\n\n" + (link_intro(f["intro"], pe, targets) if f.get("intro") else "{簡介}"),
              "## References\n\n" + "\n".join(refs(f, pe))]
     return "\n\n".join(parts) + "\n"
 
