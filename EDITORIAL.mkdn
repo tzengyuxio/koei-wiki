@@ -227,7 +227,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 
 #### 站台 CSS class（三國、水滸人物條目）
 
-三國、水滸人物條目的頭像與能力表、拿破崙城市條目的地圖只寫 class，不寫 `style`；版面全部定義在 `assets/wikijs/theme.css`，貼在 Wiki.js 後台「管理 → 主題 → Code Injection → CSS Override」（前後加 `<style>`）。要改對齊、間距、尺寸只改 CSS，不必改動 Markdown 檔，也不產生大量 commit。該檔是正本，後台欄位是複本，兩邊要一起改。
+三國、水滸人物條目的頭像與能力表、拿破崙城市條目的地圖只寫 class，不寫 `style`；版面全部定義在 `assets/wikijs/theme.css`，對應 Wiki.js 後台「管理 → 主題 → Code Injection → CSS Override」，改完跑 `python3 scripts/push_theme.py` 透過 API 寫進後台（不必手貼；`--dry-run` 只比對）。要改對齊、間距、尺寸只改 CSS，不必改動 Markdown 檔，也不產生大量 commit。該檔是正本，後台欄位是複本，兩邊要一起改。
 
 | class | 用途 |
 | :--- | :--- |
@@ -242,7 +242,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 
 `<img>` 仍保留 `width`／`height` 屬性，CSS 沒載入時版面不至於跑掉。
 
-每頁頁尾的「追蹤 司馬Game 粉專」連結由 `assets/wikijs/body.html` 加上，貼在同一頁的「Body HTML Injection」；樣式（`kw-follow`）也在 `theme.css`。同樣是 repo 為正本、後台為複本。
+每頁頁尾的「追蹤 司馬Game 粉專」連結由 `assets/wikijs/body.html` 加上，對應同一頁的「Body HTML Injection」，同樣用 `scripts/push_theme.py` 寫入；樣式（`kw-follow`）也在 `theme.css`。同樣是 repo 為正本、後台為複本。
 
 #### 頭像 caption
 

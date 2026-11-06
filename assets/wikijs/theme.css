@@ -1,6 +1,6 @@
 /*
  * koei-wiki site CSS for Wiki.js.
- * Paste into Administration > Theme > Code Injection > CSS Override, wrapped in a style element (open and close tags).
+ * Goes to Administration > Theme > Code Injection > CSS Override; push it with scripts/push_theme.py.
  * This file is the source of truth; the admin field is a copy.
  *
  * Entries only carry class names (written by scripts/build_*_entries.py); all layout lives here,
