@@ -2,7 +2,7 @@
 title: 提督之決斷II
 description: 提督の決断II | P.T.O. II
 published: true
-date: 2023-04-15T16:53:21.080Z
+date: 2026-11-06T12:00:00.000Z
 tags: tk2
 editor: markdown
 dateCreated: 2023-02-19T07:39:55.116Z
@@ -17,3 +17,4 @@ dateCreated: 2023-02-19T07:39:55.116Z
 ## References
 
 - [提督の決断II \- Wikipedia](https://ja.wikipedia.org/wiki/%E6%8F%90%E7%9D%A3%E3%81%AE%E6%B1%BA%E6%96%ADII)
+- [提督之決斷2 - 中文 DOS 遊戲資料庫](https://cdosgame.simagame.me/games/cdg-4052/)
