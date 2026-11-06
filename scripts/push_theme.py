@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Push assets/wikijs/theme.css and body.html to koei.wiki (Administration > Theme > Code Injection).
+"""Push assets/wikijs/theme.css and body.htm to koei.wiki (Administration > Theme > Code Injection).
 
 The repo files are the source of truth; this replaces CSS Override and Body HTML Injection through
 the Wiki.js GraphQL API, keeping the other theme settings (theme, icons, dark mode, TOC, Head HTML).
@@ -46,7 +46,7 @@ def main() -> None:
     key = subprocess.run(["security", "find-generic-password", "-s", "koei-wiki-api-full", "-w"],
                          capture_output=True, text=True, check=True).stdout.strip()
     cfg = gql(key, "{ theming { config { theme iconset darkMode tocPosition injectCSS injectHead injectBody } } }")["theming"]["config"]
-    css, body = source("theme.css", r"/\*.*?\*/"), source("body.html", r"<!--.*?-->")
+    css, body = source("theme.css", r"/\*.*?\*/"), source("body.htm", r"<!--.*?-->")
     changed = [n for n, same in (("CSS", norm_css(css) == norm_css(cfg["injectCSS"])),
                                   ("Body HTML", body.strip() == (cfg["injectBody"] or "").strip())) if not same]
     if not changed:

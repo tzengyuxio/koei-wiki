@@ -16,7 +16,7 @@ dateCreated: 2023-02-13T11:37:34.739Z
 
 - 網站以 [Wiki.js](https://js.wiki/) 架設，內容從本 repo 的 `main` 同步，git 是正本。
 - `.md` 會成為網站頁面；不上站的文件（凡例、決策紀錄、模板、資料說明）用 `.mkdn`，或在 front matter 寫 `published: false`。
-- 網站樣式的正本是 `assets/wikijs/theme.css`，頁尾附加的 HTML 是 `assets/wikijs/body.html`。條目只寫 `kw-*` class，不寫 `style`。
+- 網站樣式的正本是 `assets/wikijs/theme.css`，頁尾附加的 HTML 是 `assets/wikijs/body.htm`。條目只寫 `kw-*` class，不寫 `style`。
 
 ## 目錄
 

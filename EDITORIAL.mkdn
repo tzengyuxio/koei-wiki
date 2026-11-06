@@ -242,7 +242,7 @@ dateCreated: 2026-02-16T12:00:00.000Z
 
 `<img>` 仍保留 `width`／`height` 屬性，CSS 沒載入時版面不至於跑掉。
 
-每頁頁尾的「追蹤 司馬Game 粉專」連結由 `assets/wikijs/body.html` 加上，對應同一頁的「Body HTML Injection」，同樣用 `scripts/push_theme.py` 寫入；樣式（`kw-follow`）也在 `theme.css`。同樣是 repo 為正本、後台為複本。
+每頁頁尾的「追蹤 司馬Game 粉專」連結由 `assets/wikijs/body.htm` 加上，對應同一頁的「Body HTML Injection」，同樣用 `scripts/push_theme.py` 寫入；樣式（`kw-follow`）也在 `theme.css`。同樣是 repo 為正本、後台為複本。
 
 #### 頭像 caption
 

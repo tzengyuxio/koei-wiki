@@ -146,7 +146,7 @@
   .contents ul.kw-cols { columns: 1; }
 }
 
-/* ---- Footer follow link (inserted by body.html) ------------------------- */
+/* ---- Footer follow link (inserted by body.htm) ------------------------- */
 
 /* .v-application footer: this CSS loads before Vuetify's, so a bare .v-footer loses to its align-items: center */
 .v-application footer.v-footer {
