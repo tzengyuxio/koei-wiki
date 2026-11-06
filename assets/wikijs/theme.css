@@ -45,16 +45,21 @@
   object-fit: contain;
 }
 
-/* Home page: native size (1x), bottoms aligned, as many per row as fit. */
-.contents .kw-portraits-mainline.kw-1x {
+/* Home page: every portrait 80px high (most are 64x80 at 1x), as many per row as fit.
+   96x120 portraits are shrunk to 2/3, which pixelated rendering would tear; smooth those. */
+.contents .kw-portraits-mainline.kw-h80 {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
 }
 
-.contents .kw-1x .kw-face img {
+.contents .kw-h80 .kw-face img {
   width: auto;
-  height: auto;
+  height: 80px;
+}
+
+.contents .kw-h80 .kw-face img[width="96"] {
+  image-rendering: auto;
 }
 
 .contents .kw-face figcaption {

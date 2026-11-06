@@ -32,7 +32,7 @@ dateCreated: 2023-02-12T20:55:06.081Z
 
 同一位武將，在十四代《三國志》裡各有不同的模樣。以[劉備](/人物/三國/劉備)為例：
 
-<div class="kw-portraits-mainline kw-1x">
+<div class="kw-portraits-mainline kw-h80">
 <figure class="kw-face">
 <img src="https://img.simagame.me/kaodata/faces/san1-pc98/3.png" alt="劉備 三國志" width="48" height="80">
 <figcaption>I</figcaption>
@@ -101,7 +101,7 @@ dateCreated: 2023-02-12T20:55:06.081Z
 
 [《水滸傳・天命之誓》](/遊戲/水滸傳・天命之誓)的 255 位人物都已建立條目，收錄 PC-88、PC-98、FC 三個版本的頭像。以[宋江](/人物/水滸/宋江)為例：
 
-<div class="kw-portraits kw-1x">
+<div class="kw-portraits kw-h80">
 <figure class="kw-face">
 <img src="https://img.simagame.me/kaodata/faces/suikoden-pc88/3.png" alt="宋江 PC-88" width="64" height="80">
 <figcaption>PC-88</figcaption>
@@ -123,7 +123,7 @@ dateCreated: 2023-02-12T20:55:06.081Z
 
 [《拿破崙》](/遊戲/拿破崙)（L'Empereur）的人物逐一考證了真實身分，附歷史肖像與列傳。[拿破崙](/人物/拿破崙時代/拿破崙)本人在遊戲中隨身分變換頭像：
 
-<div class="kw-portraits kw-1x">
+<div class="kw-portraits kw-h80">
 <figure class="kw-face">
 <img src="/assets/faces/lempe/LEMPE_DOS_F0000.png" alt="拿破崙（司令官）" width="64" height="80">
 <figcaption>司令官</figcaption>
