@@ -10,8 +10,11 @@ Inputs:
   ~/works/kaodata-re/export/koei-wiki/persons/<dataset>.jsonl   (koei-persons/1)
   https://img.simagame.me/kaodata/faces/<dataset>/index.json   cached in ~/.cache/koei-wiki/kaodata-faces/
   ja.wikipedia titles for References, cached in ~/.cache/koei-wiki/nobunaga-jawiki.json
+  assets/data/nobunaga/nobunaga-bios.jsonl   列傳 (scripts/nobunaga_bios.py); names of other entries are linked
+                                             at their first mention, so rebuild all to refresh links
 
 Usage: python3 scripts/build_nobunaga_entries.py [--first-batch | 名1 名2 ...] [--dry-run] [--force]
+  --first-batch also writes the index page 人物/日本戰國.md (grouped by the house of each person's main lord)
 """
 
 import csv
@@ -170,7 +173,7 @@ def jawiki_title(ja: str, recs: dict, titles: dict) -> str | None:
 
 
 # Entries whose lookup lands on a namesake from another era: wiki名 -> the right title (None: no article).
-JAWIKI_FIX = {"織田信行": "織田信行", "白河義綱": "結城義綱", "岩城常隆_2": None, "真里谷信保": "真里谷恕鑑"}
+JAWIKI_FIX = {"織田信行": "織田信行", "白河義綱": "結城義綱", "岩城常隆_室町": None, "真里谷信保": "真里谷恕鑑"}
 
 
 def person_title(wiki: str, ja: str, recs: dict, titles: dict | None = None) -> str | None:
@@ -248,11 +251,35 @@ def main_lords(recs: dict, owner: dict) -> list[str]:
 
 
 EXISTING: set[str] = set()
+MIN_HOUSE = 5
 
 
 def link(wiki: str) -> str:
     base = wiki.partition("_")[0]
     return f"[{base}](/人物/日本戰國/{wiki})" if wiki in EXISTING else base
+
+
+def link_bio(bio: str, self_wiki: str) -> str:
+    """Link the first mention of each other entry's name (EDITORIAL §6); namesakes (_1, _2) and clans stay plain."""
+    names = sorted((w for w in EXISTING if "_" not in w and w != self_wiki and not w.endswith("氏")), key=len, reverse=True)
+    if not names:
+        return bio
+    seen: set[str] = set()
+
+    def sub(m: re.Match) -> str:
+        n = m.group(0)
+        if n in seen:
+            return n
+        seen.add(n)
+        return f"[{n}](/人物/日本戰國/{n})"
+
+    return re.sub("|".join(map(re.escape, names)), sub, bio)
+
+
+def replace_section(text: str, heading: str, body: str) -> str:
+    """Set the body of an existing `## heading` section."""
+    pat = re.compile(rf"^## {heading}\n.*?(?=^## |\Z)", re.S | re.M)
+    return pat.sub(lambda _: f"## {heading}\n\n{body}\n\n", text, count=1).rstrip("\n") + "\n"
 
 
 def portraits(name: str, recs: dict, faces: dict) -> str:
@@ -299,7 +326,7 @@ def replace_blocks(text: str, blocks: dict) -> str:
     return text
 
 
-def render(wiki: str, row: dict, recs: dict, blocks: dict, ja_title: str | None, old: str) -> str:
+def render(wiki: str, row: dict, recs: dict, blocks: dict, bio: str, ja_title: str | None, old: str) -> str:
     now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     created = m.group(1) if (m := re.search(r"^dateCreated: (\S+)", old, re.M)) else now
     base, _, tag = wiki.partition("_")
@@ -310,13 +337,67 @@ def render(wiki: str, row: dict, recs: dict, blocks: dict, ja_title: str | None,
            f"date: {now}", f"tags: {', '.join(tags)}", "editor: markdown", f"dateCreated: {created}", "---", "",
            "## 基本資料", "", blocks["basic"], "", "## 人物畫像", "", "### 正傳", "", MAINLINE_NOTE, "",
            blocks["portraits-mainline"], "", "## 遊戲數值", "", blocks["stats-main"], "",
-           "## 列傳", "", "<!-- 列傳待補 -->"]
+           "## 列傳", "", bio or "<!-- 列傳待補 -->"]
     if "relations" in blocks:
         out += ["", "## 相關人物", "", blocks["relations"]]
     if ja_title:
         url = "https://ja.wikipedia.org/wiki/" + urllib.parse.quote(ja_title.replace(" ", "_"))
         out += ["", "## References", "", f"- [{ja_title} - Wikipedia（日本語）]({url})"]
     return "\n".join(out) + "\n"
+
+
+def main_lord(recs: dict, owner: dict) -> str | None:
+    """The lord served in the most games (ties: the most scenarios); "大名" when that is the person himself."""
+    count: dict[str, list[int]] = {}
+    for ds, r in recs.items():
+        for s in r.get("scenarios", []):
+            if "lord" in s and (who := "大名" if s["lord"] == r["id"] else owner.get((ds, s["lord"]))):
+                c = count.setdefault(who, [0, 0, 0])
+                c[1] += 1
+                if c[2] != hash(ds):
+                    c[0], c[2] = c[0] + 1, hash(ds)
+    return max(count, key=lambda w: count[w][:2]) if count else None
+
+
+HOUSE_FIX = {"顯如": "本願寺家", "證如": "本願寺家", "鈴木佐大夫": "鈴木家"}  # names without a two-character given name
+
+
+def house(daimyo: str) -> str:
+    """織田信長 -> 織田家: given names are two characters (長宗我部元親, 本願寺蓮如); exceptions in HOUSE_FIX."""
+    return HOUSE_FIX.get(daimyo) or daimyo.partition("_")[0][:-2] + "家"
+
+
+def write_index(names: list[str], all_recs: dict, owner: dict, mapping: dict, dry: bool) -> None:
+    """人物/日本戰國.md: entries grouped by the house of their main lord (houses under MIN_HOUSE go to 其他)."""
+    groups: dict[str, list[str]] = {}
+    for wiki in names:
+        lord = main_lord(all_recs[wiki], owner)
+        key = house(wiki if lord == "大名" else lord) if lord else "其他"
+        groups.setdefault(key, []).append(wiki)
+    for key in [k for k, v in groups.items() if len(v) < MIN_HOUSE and k != "其他"]:
+        groups.setdefault("其他", []).extend(groups.pop(key))
+    order = sorted((k for k in groups if k != "其他"), key=lambda k: (-len(groups[k]), k)) + ["其他"] * ("其他" in groups)
+    out = []
+    for key in order:
+        items = []
+        for wiki in sorted(groups[key], key=lambda w: (mapping[w]["生年"] or "9999", w)):
+            row, base, _, tag = mapping[wiki], *wiki.partition("_")
+            life = f"{row['生年'] or '?'}–{row['卒年'] or '?'}"
+            items.append(f"- [{base}](/人物/日本戰國/{wiki}) <span class=\"kw-note\">{tag + '，' if tag else ''}{life}</span>")
+        out += [f"## {key}（{len(items)} 人）", "", *items, "{.kw-cols}", ""]
+    body = block("index", "\n".join(out).rstrip())
+    path = ROOT / "人物/日本戰國.md"  # beside the folder, so the breadcrumb link /人物/日本戰國 resolves
+    old = path.read_text(encoding="utf-8") if path.exists() else ""
+    if old:
+        text = replace_blocks(old, {"index": body})
+    else:
+        now = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
+        text = "\n".join(["---", "title: 日本戰國", 'description: "日本戰國人物索引：依侍奉的大名家分類。"', "published: true",
+                          f"date: {now}", "tags: 日本戰國, 信長之野望", "editor: markdown", f"dateCreated: {now}", "---", "",
+                          "《信長之野望》系列登場的人物，依在最多代遊戲中侍奉的主君所屬的家分類，大名本人歸入自己的家；"
+                          f"不滿 {MIN_HOUSE} 人的家併入「其他」。名字後面是生卒年（遊戲設定）。", "", body]) + "\n"
+    if not dry and text != old:
+        path.write_text(text, encoding="utf-8")
 
 
 def main() -> None:
@@ -333,6 +414,7 @@ def main() -> None:
     all_recs = {w: records(mapping[w], persons) for w in names}
     jas = {w: ja_name(w.partition("_")[0], r, tw) for w, r in all_recs.items()}
     titles = jawiki_titles(list(jas.values()))
+    bios = {(r := json.loads(line))["name"]: r["bio"] for line in open(DATA / "nobunaga-bios.jsonl", encoding="utf-8")}
     counts = {"new": 0, "updated": 0, "unchanged": 0}
     for wiki in names:
         recs = all_recs[wiki]
@@ -341,18 +423,23 @@ def main() -> None:
                   "stats-main": stats(recs)}
         if rel := relations(recs, owner):
             blocks["relations"] = rel
+        bio = link_bio(bios[wiki], wiki) if wiki in bios else ""
         path = OUT_DIR / f"{wiki}.md"
         old = path.read_text(encoding="utf-8") if path.exists() else ""
         if not old or "Your content here" in old or "--force" in sys.argv:
-            text = render(wiki, mapping[wiki], recs, blocks, person_title(wiki, jas[wiki], recs, titles), old)
+            text = render(wiki, mapping[wiki], recs, blocks, bio, person_title(wiki, jas[wiki], recs, titles), old)
             kind = "new"
         else:
             text = replace_blocks(old, blocks)
+            if bio:  # bios are generated data too (nobunaga_bios.py); rebuild to refresh links
+                text = replace_section(text, "列傳", bio)
             kind = "updated" if text != old else "unchanged"
         counts[kind] += 1
         if not dry and text != old:
             OUT_DIR.mkdir(parents=True, exist_ok=True)
             path.write_text(text, encoding="utf-8")
+    if "--first-batch" in sys.argv:
+        write_index(names, all_recs, owner, mapping, dry)
     print(counts)
 
 
