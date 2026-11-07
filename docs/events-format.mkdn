@@ -1,0 +1,57 @@
+# 事件圖匯出格式（koei-events/1）
+
+kaodata-re 匯出光榮遊戲裡的事件圖（災害、豐凶、一揆等），koei-wiki 據此建立 `用語/` 下的事件條目。依 `~/.claude/repos.md` A 類交接，規格在下游（本檔），上游照規格輸出；新增選填欄位不升版，不相容的變更升 `koei-events/2`。
+
+狀態：2026-11-07 與 kaodata-re 商定（使用者同意做事件條目，放在 `用語/`）。第一輪只做一般的災害與豐凶，共 3 個資料集 22 張：`nobu4-pc98`、`nobu6pk-pc98`、`san4pk-pc98`。kaodata-re@b7335fd（`dekoei/events_export.py`，`events-export` 指令）交付。歷史事件（赤壁、桶狹間）和觸發規則之後另外一輪。
+
+## 檔案
+
+- `~/works/kaodata-re/export/koei-wiki/events/<dataset>.jsonl`：一張圖一行。
+- `~/works/kaodata-re/export/koei-wiki/events/<dataset>/<file>.png`：圖檔，檔名是英數字的事件名（`typhoon.png`、`good-harvest.png`），由上游決定。
+- `<dataset>` 和頭像、地點匯出相同，主資料集的規則見 `docs/places-format.mkdn`。
+- R2 上傳由 koei-wiki 做，對外發布要使用者同意；kaodata-re 只寫本機的 `export/`。
+
+## 欄位
+
+| 欄位 | 必填 | 型別 | 說明 |
+| :--- | :---: | :--- | :--- |
+| `dataset` | ✓ | string | 資料集 ID |
+| `file` | ✓ | string | 相對於 `events/<dataset>/` 的檔名 |
+| `name` | ✓ | string | 遊戲裡對這個事件的稱呼，照原樣（日文版用日文）。主資料集找不到稱呼時，用其他語言版本的，並在 `notes` 說明 |
+| `nameZh` | | string | 上游建議的正體中文稱呼。條目名由 koei-wiki 決定，不必和這裡一致 |
+| `confidence` | ✓ | string | `code`：程式顯示這張圖時同時顯示的訊息就是 `name`；`picture`：從圖的內容與訊息文字判斷 |
+| `notes` | | string | 依據（訊息的位址與原文、圖檔在封包中的編號）與其他說明 |
+
+## 條目名
+
+一種事件一條，放在 `用語/`，各遊戲用 H3 分段，排序照跨遊戲條目的規則。遊戲稱呼對到的條目名：
+
+| 遊戲稱呼 | 條目名 |
+| --- | --- |
+| 一揆 | 一揆 |
+| 一向一揆 | 一向一揆 |
+| 疫病 | 疫病 |
+| 豊作 | 豐收 |
+| 凶作 | 歉收 |
+| 台風 | 颱風 |
+| 地震 | 地震 |
+| 大雪 | 大雪 |
+| 日照り | 乾旱 |
+| 長雨 | 長雨 |
+| 飢饉 | 飢荒 |
+| 反乱 | 民變 |
+| 蝗災 | 蝗災 |
+| 洪水 | 洪水 |
+
+## R2 網址
+
+```
+https://img.simagame.me/kaodata/event/<dataset>/index.json
+https://img.simagame.me/kaodata/event/<dataset>/<file>.png
+```
+
+`kaodata/` 是光榮遊戲素材的總目錄（見 `docs/places-format.mkdn`「R2 地圖網址」）。
+
+## 驗收紀錄
+
+- 2026-11-07，第一輪（kaodata-re@b7335fd）：22 張圖都在，尺寸是 152×112、280×120、240×160 三種，欄位符合規格。目視檢查 22 張縮圖，`nobu6pk-pc98`、`san4pk-pc98` 正常；`nobu4-pc98` 7 張的人臉是綠色、天空是洋紅，原本以為色盤錯了。kaodata-re 用同一套解碼器與色盤輸出同批的另一張圖（侵攻），和實機截圖逐像素比對，17024 像素全部相同（`kaodata-re/captures/screenshots/nobu4-pc98/guest os_032.raw1.png`）。信4 PC-98 只用 8 種數位色並刻意抖色，這就是原貌，不用重匯出；條目裡可以加註說明。
