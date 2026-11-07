@@ -45,7 +45,7 @@ kaodata-re 匯出三國志正傳各代與水滸傳的地點資料，koei-wiki �
 
 ## R2 地圖網址
 
-上傳後的地圖給所有網站共用（和頭像一樣放在 `img.simagame.me/kaodata/` 底下），2026-11-06 與使用者商定：
+上傳後的地圖給所有網站共用（和頭像一樣放在 `img.simagame.me/kaodata/` 底下），2026-11-06 與使用者商定。`kaodata/` 是光榮遊戲素材的總目錄，算 kaodata 專案的延伸，不只放頭像：`faces/`、`map/`，以及之後的 `event/` 都放在這裡（2026-11-07 確認）。之後如果有非光榮的遊戲（SEGA 三國志列傳、橫山光輝三國志、吞食天地等），要重新決定放在哪裡，不要直接塞進 `kaodata/`。
 
 ```
 https://img.simagame.me/kaodata/map/<dataset>/index.json
@@ -53,7 +53,7 @@ https://img.simagame.me/kaodata/map/<dataset>/<種類>/<檔名>.png
 ```
 
 - **種類**：照各遊戲的慣例，不強求各作品用同一套。戰場圖是 `battlefield/`，大地圖預定 `world/`；其他遊戲可能有 `hex/`、`city/`、`minimap/`、`dungeon/`、`port/`（如大航海時代的港口）等。
-- **檔名**：英數字，用遊戲裡這張圖自己的編號或檔名（三1–三5 `01`…，三6 `SENJOU0`、`SHIRO9`，三7 `G_YMap00`，三8 `W01Map_00_35`）；同一張圖有變體時在編號後加描述，如水滸的季節 `01-spring`、`01-summer`、`01-autumn`、`01-winter`。共用的圖只存一份。
+- **檔名**：英數字，用遊戲裡這張圖自己的編號或檔名（三1–三5 `01`…，三6 `SENJOU0`、`SHIRO9`，三7 `G_YMap00`，三8 `W01Map_00_35`）；同一張圖有變體時在編號後加描述，如水滸的季節 `01-spring`、`01-summer`、`01-autumn`、`01-winter`。匯出時放在子目錄裡的圖（信3、信4 的 `field/`、`castle/`），檔名前加上目錄名：`field-01`、`castle-01`。共用的圖只存一份。
 - **`index.json`**：雙向對照。`battlefield` 列出每張圖（`file`、`width`、`height`）和用到它的地點（`id`、`name`、`role`，以及 `from`、`season`）；`places` 列出每個地點用到的圖。要找某地點的圖就查這份，不要從檔名猜。
 - 快取一天（`Cache-Control: public, max-age=86400`）；修正後覆蓋同一個網址，不刪除舊檔。
 

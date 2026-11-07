@@ -34,8 +34,13 @@ SEASONS = {"春": "spring", "夏": "summer", "秋": "autumn", "冬": "winter"}
 
 def map_path(m: dict) -> str:
     """Export battlemap entry -> path under map/<dataset>/: battlefield/<game name>[-<season>].png."""
-    stem = Path(m["file"]).stem
-    name = f"{stem}-{SEASONS[m['season']]}" if m.get("season") else stem
+    file = Path(m["file"])
+    if m.get("season"):
+        name = f"{file.stem}-{SEASONS[m['season']]}"
+    elif file.parent != Path("."):  # field/01.png and castle/01.png are different maps (信3, 信4)
+        name = f"{file.parent.as_posix().replace('/', '-')}-{file.stem}"
+    else:
+        name = file.stem
     assert name.isascii(), name
     return f"battlefield/{name}.png"
 
