@@ -1,0 +1,98 @@
+---
+title: {條目名稱}
+description: "{一句話描述}"
+published: true
+date: {YYYY-MM-DDTHH:MM:SS.000Z}
+tags: 日本戰國, 信長之野望{, 大名}
+editor: markdown
+dateCreated: {YYYY-MM-DDTHH:MM:SS.000Z}
+---
+
+<!--
+信長之野望人物模板（凡例 §3.1「信長人物條目」；設計見 docs/backlog/nobunaga-persons.mkdn）
+- data:X begin／end 之間由 scripts/build_nobunaga_entries.py 產生，不要手改；之外的內容 script 不碰（凡例 §10）
+- 條目名：日文名轉繁體（北條氏康、豐臣秀吉）；改名的人用日文維基條目標題（細川藤孝，不是細川幽齋）
+- 標「可選」的段落，沒有內容就整段刪除（含標題）
+-->
+
+## 基本資料
+
+<!-- data:basic begin -->
+| 項目 | 內容 |
+| :--- | :--- |
+| 姓名 | {條目名} |
+| 日文 | {日文寫法}（{讀音，片假名}） |
+| 生卒 | {生年}–{卒年}（取最新一代的設定，各代不同時見遊戲數值） |
+| 主君 | {劇本中的主君，依年代以 → 相接；自己是大名寫「大名」} |
+| 遊戲寫法 | {與條目名不同時才列，例：羽柴秀吉（<kbd>信2</kbd>–<kbd>信7</kbd>）} |
+<!-- data:basic end -->
+
+## 人物畫像
+
+### 正傳
+
+信2 為 PC-88 版，信3、信4、信6 為 PC-98 版，其餘為 Windows 版；信5 以後為威力加強版。
+
+<!--
+- 固定 12 格（信2–信13），排法同三國（kw-portraits-mainline）；信1 沒有資料，信14–16 尚未匯出
+- 未登場：<div class="kw-absent">未登場</div>；有登場但頭像還沒上傳：<div class="kw-absent">待補</div>
+- 圖片：https://img.simagame.me/kaodata/faces/{資料集}/{遊戲內ID}.png
+-->
+
+<!-- data:portraits-mainline begin -->
+<div class="kw-portraits-mainline">
+<figure class="kw-face">
+<img src="{信2 頭像網址}" alt="{姓名} 信長之野望・全國版" width="96" height="120">
+<figcaption>全國版（2）</figcaption>
+</figure>
+<!-- …群雄傳（3）、風雲錄（4）…天道（13），共 12 格；說明是作品名加代數 -->
+</div>
+<!-- data:portraits-mainline end -->
+
+## 遊戲數值
+
+<!--
+- 欄位統一為 政治／統率／武勇／智謀／魅力／野望，各代原名的對照見凡例 §3.1；—：該代沒有這項；整列「未登場」：該代沒有這個人
+- 同一代有多筆（信3、信4 有些人每個劇本一筆）時取第一筆
+- <details> 內的表格前後必須空一行
+-->
+
+<!-- data:stats-main begin -->
+<details class="kw-stats" open>
+<summary>歷代能力</summary>
+
+| 作品 | 政治 | 統率 | 武勇 | 智謀 | 魅力 | 野望 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| <kbd>信2</kbd> | — | — | — | {ＩＱ} | {魅力} | {野心} |
+| … | | | | | | |
+| <kbd>信13</kbd> | {政治} | {統率} | {武勇} | {知略} | — | — |
+
+</details>
+<!-- data:stats-main end -->
+
+## 遊戲中的登場
+
+<!-- 可選。後登場（第幾代、幾年登場）、只在某些劇本出現、改名、專屬事件等；以 <kbd> 標明代數 -->
+
+## 列傳
+
+<!-- 自然分段，不加 H3；字數見凡例 §4；提到的人物、地點、用語只連第一次（凡例 §6） -->
+
+{列傳}
+
+## 相關人物
+
+<!-- 可選。由遊戲資料的父、母、子、兄弟、配偶、義兄弟產生；有條目的才加連結 -->
+
+<!-- data:relations begin -->
+- 父：[{人名}](/人物/日本戰國/{人名})
+- 子：[{人名}](/人物/日本戰國/{人名})、{人名}
+<!-- data:relations end -->
+
+## 攻略建議
+
+<!-- 可選 -->
+
+## References
+
+- [{日文寫法} - Wikipedia（日本語）]({日文維基URL})
